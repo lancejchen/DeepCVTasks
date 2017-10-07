@@ -1,0 +1,724 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>object_detection.models package &#8212; models 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="object-detection-models-package">
+<h1>object_detection.models package<a class="headerlink" href="#object-detection-models-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor">
+<span id="object-detection-models-faster-rcnn-inception-resnet-v2-feature-extractor-module"></span><h2>object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor module<a class="headerlink" href="#module-object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor" title="Permalink to this headline">¶</a></h2>
+<p>Inception Resnet v2 Faster R-CNN implementation.</p>
+<p>See &#8220;Inception-v4, Inception-ResNet and the Impact of Residual Connections on
+Learning&#8221; by Szegedy et al. (<a class="reference external" href="https://arxiv.org/abs/1602.07261">https://arxiv.org/abs/1602.07261</a>)
+as well as
+&#8220;Speed/accuracy trade-offs for modern convolutional object detectors&#8221; by
+Huang et al. (<a class="reference external" href="https://arxiv.org/abs/1611.10012">https://arxiv.org/abs/1611.10012</a>)</p>
+<dl class="class">
+<dt id="object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor.FasterRCNNInceptionResnetV2FeatureExtractor">
+<em class="property">class </em><code class="descclassname">object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor.</code><code class="descname">FasterRCNNInceptionResnetV2FeatureExtractor</code><span class="sig-paren">(</span><em>is_training</em>, <em>first_stage_features_stride</em>, <em>reuse_weights=None</em>, <em>weight_decay=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor.FasterRCNNInceptionResnetV2FeatureExtractor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="object_detection.meta_architectures.html#object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNFeatureExtractor" title="object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNFeatureExtractor"><code class="xref py py-class docutils literal"><span class="pre">object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNFeatureExtractor</span></code></a></p>
+<p>Faster R-CNN with Inception Resnet v2 feature extractor implementation.</p>
+<dl class="method">
+<dt id="object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor.FasterRCNNInceptionResnetV2FeatureExtractor.preprocess">
+<code class="descname">preprocess</code><span class="sig-paren">(</span><em>resized_inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor.FasterRCNNInceptionResnetV2FeatureExtractor.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Faster R-CNN with Inception Resnet v2 preprocessing.</p>
+<p>Maps pixel values to the range [-1, 1].</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>resized_inputs</strong> &#8211; A [batch, height_in, width_in, channels] float32 tensor
+representing a batch of images with values between 0 and 255.0.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>A [batch, height_out, width_out, channels] float32</dt>
+<dd>tensor representing a batch of images.</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">preprocessed_inputs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor.FasterRCNNInceptionResnetV2FeatureExtractor.restore_from_classification_checkpoint_fn">
+<code class="descname">restore_from_classification_checkpoint_fn</code><span class="sig-paren">(</span><em>first_stage_feature_extractor_scope</em>, <em>second_stage_feature_extractor_scope</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor.FasterRCNNInceptionResnetV2FeatureExtractor.restore_from_classification_checkpoint_fn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a map of variables to load from a foreign checkpoint.</p>
+<p>Note that this overrides the default implementation in
+faster_rcnn_meta_arch.FasterRCNNFeatureExtractor which does not work for
+InceptionResnetV2 checkpoints.</p>
+<p>TODO: revisit whether it&#8217;s possible to force the
+<cite>Repeat</cite> namescope as created in <cite>_extract_box_classifier_features</cite> to
+start counting at 2 (e.g. <cite>Repeat_2</cite>) so that the default restore_fn can
+be used.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>first_stage_feature_extractor_scope</strong> &#8211; A scope name for the first stage
+feature extractor.</li>
+<li><strong>second_stage_feature_extractor_scope</strong> &#8211; A scope name for the second stage
+feature extractor.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dict mapping variable names (to load from a checkpoint) to variables in
+the model graph.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test">
+<span id="object-detection-models-faster-rcnn-inception-resnet-v2-feature-extractor-test-module"></span><h2>object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test module<a class="headerlink" href="#module-object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for models.faster_rcnn_inception_resnet_v2_feature_extractor.</p>
+<dl class="class">
+<dt id="object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test.FasterRcnnInceptionResnetV2FeatureExtractorTest">
+<em class="property">class </em><code class="descclassname">object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test.</code><code class="descname">FasterRcnnInceptionResnetV2FeatureExtractorTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test.FasterRcnnInceptionResnetV2FeatureExtractorTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test.FasterRcnnInceptionResnetV2FeatureExtractorTest.test_extract_box_classifier_features_returns_expected_size">
+<code class="descname">test_extract_box_classifier_features_returns_expected_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test.FasterRcnnInceptionResnetV2FeatureExtractorTest.test_extract_box_classifier_features_returns_expected_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test.FasterRcnnInceptionResnetV2FeatureExtractorTest.test_extract_proposal_features_dies_on_invalid_stride">
+<code class="descname">test_extract_proposal_features_dies_on_invalid_stride</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test.FasterRcnnInceptionResnetV2FeatureExtractorTest.test_extract_proposal_features_dies_on_invalid_stride" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test.FasterRcnnInceptionResnetV2FeatureExtractorTest.test_extract_proposal_features_dies_with_incorrect_rank_inputs">
+<code class="descname">test_extract_proposal_features_dies_with_incorrect_rank_inputs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test.FasterRcnnInceptionResnetV2FeatureExtractorTest.test_extract_proposal_features_dies_with_incorrect_rank_inputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test.FasterRcnnInceptionResnetV2FeatureExtractorTest.test_extract_proposal_features_half_size_input">
+<code class="descname">test_extract_proposal_features_half_size_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test.FasterRcnnInceptionResnetV2FeatureExtractorTest.test_extract_proposal_features_half_size_input" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test.FasterRcnnInceptionResnetV2FeatureExtractorTest.test_extract_proposal_features_returns_expected_size">
+<code class="descname">test_extract_proposal_features_returns_expected_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test.FasterRcnnInceptionResnetV2FeatureExtractorTest.test_extract_proposal_features_returns_expected_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test.FasterRcnnInceptionResnetV2FeatureExtractorTest.test_extract_proposal_features_stride_eight">
+<code class="descname">test_extract_proposal_features_stride_eight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test.FasterRcnnInceptionResnetV2FeatureExtractorTest.test_extract_proposal_features_stride_eight" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.models.faster_rcnn_resnet_v1_feature_extractor">
+<span id="object-detection-models-faster-rcnn-resnet-v1-feature-extractor-module"></span><h2>object_detection.models.faster_rcnn_resnet_v1_feature_extractor module<a class="headerlink" href="#module-object_detection.models.faster_rcnn_resnet_v1_feature_extractor" title="Permalink to this headline">¶</a></h2>
+<p>Resnet V1 Faster R-CNN implementation.</p>
+<p>See &#8220;Deep Residual Learning for Image Recognition&#8221; by He et al., 2015.
+<a class="reference external" href="https://arxiv.org/abs/1512.03385">https://arxiv.org/abs/1512.03385</a></p>
+<p>Note: this implementation assumes that the classification checkpoint used
+to finetune this model is trained using the same configuration as that of
+the MSRA provided checkpoints
+(see <a class="reference external" href="https://github.com/KaimingHe/deep-residual-networks">https://github.com/KaimingHe/deep-residual-networks</a>), e.g., with
+same preprocessing, batch norm scaling, etc.</p>
+<dl class="class">
+<dt id="object_detection.models.faster_rcnn_resnet_v1_feature_extractor.FasterRCNNResnet101FeatureExtractor">
+<em class="property">class </em><code class="descclassname">object_detection.models.faster_rcnn_resnet_v1_feature_extractor.</code><code class="descname">FasterRCNNResnet101FeatureExtractor</code><span class="sig-paren">(</span><em>is_training</em>, <em>first_stage_features_stride</em>, <em>reuse_weights=None</em>, <em>weight_decay=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_resnet_v1_feature_extractor.FasterRCNNResnet101FeatureExtractor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#object_detection.models.faster_rcnn_resnet_v1_feature_extractor.FasterRCNNResnetV1FeatureExtractor" title="object_detection.models.faster_rcnn_resnet_v1_feature_extractor.FasterRCNNResnetV1FeatureExtractor"><code class="xref py py-class docutils literal"><span class="pre">object_detection.models.faster_rcnn_resnet_v1_feature_extractor.FasterRCNNResnetV1FeatureExtractor</span></code></a></p>
+<p>Faster R-CNN Resnet 101 feature extractor implementation.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="object_detection.models.faster_rcnn_resnet_v1_feature_extractor.FasterRCNNResnet152FeatureExtractor">
+<em class="property">class </em><code class="descclassname">object_detection.models.faster_rcnn_resnet_v1_feature_extractor.</code><code class="descname">FasterRCNNResnet152FeatureExtractor</code><span class="sig-paren">(</span><em>is_training</em>, <em>first_stage_features_stride</em>, <em>reuse_weights=None</em>, <em>weight_decay=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_resnet_v1_feature_extractor.FasterRCNNResnet152FeatureExtractor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#object_detection.models.faster_rcnn_resnet_v1_feature_extractor.FasterRCNNResnetV1FeatureExtractor" title="object_detection.models.faster_rcnn_resnet_v1_feature_extractor.FasterRCNNResnetV1FeatureExtractor"><code class="xref py py-class docutils literal"><span class="pre">object_detection.models.faster_rcnn_resnet_v1_feature_extractor.FasterRCNNResnetV1FeatureExtractor</span></code></a></p>
+<p>Faster R-CNN Resnet 152 feature extractor implementation.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="object_detection.models.faster_rcnn_resnet_v1_feature_extractor.FasterRCNNResnet50FeatureExtractor">
+<em class="property">class </em><code class="descclassname">object_detection.models.faster_rcnn_resnet_v1_feature_extractor.</code><code class="descname">FasterRCNNResnet50FeatureExtractor</code><span class="sig-paren">(</span><em>is_training</em>, <em>first_stage_features_stride</em>, <em>reuse_weights=None</em>, <em>weight_decay=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_resnet_v1_feature_extractor.FasterRCNNResnet50FeatureExtractor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#object_detection.models.faster_rcnn_resnet_v1_feature_extractor.FasterRCNNResnetV1FeatureExtractor" title="object_detection.models.faster_rcnn_resnet_v1_feature_extractor.FasterRCNNResnetV1FeatureExtractor"><code class="xref py py-class docutils literal"><span class="pre">object_detection.models.faster_rcnn_resnet_v1_feature_extractor.FasterRCNNResnetV1FeatureExtractor</span></code></a></p>
+<p>Faster R-CNN Resnet 50 feature extractor implementation.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="object_detection.models.faster_rcnn_resnet_v1_feature_extractor.FasterRCNNResnetV1FeatureExtractor">
+<em class="property">class </em><code class="descclassname">object_detection.models.faster_rcnn_resnet_v1_feature_extractor.</code><code class="descname">FasterRCNNResnetV1FeatureExtractor</code><span class="sig-paren">(</span><em>architecture</em>, <em>resnet_model</em>, <em>is_training</em>, <em>first_stage_features_stride</em>, <em>reuse_weights=None</em>, <em>weight_decay=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_resnet_v1_feature_extractor.FasterRCNNResnetV1FeatureExtractor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="object_detection.meta_architectures.html#object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNFeatureExtractor" title="object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNFeatureExtractor"><code class="xref py py-class docutils literal"><span class="pre">object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNFeatureExtractor</span></code></a></p>
+<p>Faster R-CNN Resnet V1 feature extractor implementation.</p>
+<dl class="method">
+<dt id="object_detection.models.faster_rcnn_resnet_v1_feature_extractor.FasterRCNNResnetV1FeatureExtractor.preprocess">
+<code class="descname">preprocess</code><span class="sig-paren">(</span><em>resized_inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_resnet_v1_feature_extractor.FasterRCNNResnetV1FeatureExtractor.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Faster R-CNN Resnet V1 preprocessing.</p>
+<p>VGG style channel mean subtraction as described here:
+<a class="reference external" href="https://gist.github.com/ksimonyan/211839e770f7b538e2d8#file-readme-md">https://gist.github.com/ksimonyan/211839e770f7b538e2d8#file-readme-md</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>resized_inputs</strong> &#8211; A [batch, height_in, width_in, channels] float32 tensor
+representing a batch of images with values between 0 and 255.0.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>A [batch, height_out, width_out, channels] float32</dt>
+<dd>tensor representing a batch of images.</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">preprocessed_inputs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test">
+<span id="object-detection-models-faster-rcnn-resnet-v1-feature-extractor-test-module"></span><h2>object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test module<a class="headerlink" href="#module-object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for object_detection.models.faster_rcnn_resnet_v1_feature_extractor.</p>
+<dl class="class">
+<dt id="object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test.FasterRcnnResnetV1FeatureExtractorTest">
+<em class="property">class </em><code class="descclassname">object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test.</code><code class="descname">FasterRcnnResnetV1FeatureExtractorTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test.FasterRcnnResnetV1FeatureExtractorTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test.FasterRcnnResnetV1FeatureExtractorTest.test_extract_box_classifier_features_returns_expected_size">
+<code class="descname">test_extract_box_classifier_features_returns_expected_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test.FasterRcnnResnetV1FeatureExtractorTest.test_extract_box_classifier_features_returns_expected_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test.FasterRcnnResnetV1FeatureExtractorTest.test_extract_proposal_features_dies_on_invalid_stride">
+<code class="descname">test_extract_proposal_features_dies_on_invalid_stride</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test.FasterRcnnResnetV1FeatureExtractorTest.test_extract_proposal_features_dies_on_invalid_stride" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test.FasterRcnnResnetV1FeatureExtractorTest.test_extract_proposal_features_dies_on_very_small_images">
+<code class="descname">test_extract_proposal_features_dies_on_very_small_images</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test.FasterRcnnResnetV1FeatureExtractorTest.test_extract_proposal_features_dies_on_very_small_images" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test.FasterRcnnResnetV1FeatureExtractorTest.test_extract_proposal_features_dies_with_incorrect_rank_inputs">
+<code class="descname">test_extract_proposal_features_dies_with_incorrect_rank_inputs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test.FasterRcnnResnetV1FeatureExtractorTest.test_extract_proposal_features_dies_with_incorrect_rank_inputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test.FasterRcnnResnetV1FeatureExtractorTest.test_extract_proposal_features_half_size_input">
+<code class="descname">test_extract_proposal_features_half_size_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test.FasterRcnnResnetV1FeatureExtractorTest.test_extract_proposal_features_half_size_input" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test.FasterRcnnResnetV1FeatureExtractorTest.test_extract_proposal_features_returns_expected_size">
+<code class="descname">test_extract_proposal_features_returns_expected_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test.FasterRcnnResnetV1FeatureExtractorTest.test_extract_proposal_features_returns_expected_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test.FasterRcnnResnetV1FeatureExtractorTest.test_extract_proposal_features_stride_eight">
+<code class="descname">test_extract_proposal_features_stride_eight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test.FasterRcnnResnetV1FeatureExtractorTest.test_extract_proposal_features_stride_eight" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.models.feature_map_generators">
+<span id="object-detection-models-feature-map-generators-module"></span><h2>object_detection.models.feature_map_generators module<a class="headerlink" href="#module-object_detection.models.feature_map_generators" title="Permalink to this headline">¶</a></h2>
+<p>Functions to generate a list of feature maps based on image features.</p>
+<p>Provides several feature map generators that can be used to build object
+detection feature extractors.</p>
+<p>Object detection feature extractors usually are built by stacking two components
+- A base feature extractor such as Inception V3 and a feature map generator.
+Feature map generators build on the base feature extractors and produce a list
+of final feature maps.</p>
+<dl class="function">
+<dt id="object_detection.models.feature_map_generators.get_depth_fn">
+<code class="descclassname">object_detection.models.feature_map_generators.</code><code class="descname">get_depth_fn</code><span class="sig-paren">(</span><em>depth_multiplier</em>, <em>min_depth</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.feature_map_generators.get_depth_fn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds a callable to compute depth (output channels) of conv filters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>depth_multiplier</strong> &#8211; a multiplier for the nominal depth.</li>
+<li><strong>min_depth</strong> &#8211; a lower bound on the depth of filters.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A callable that takes in a nominal depth and returns the depth to use.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="object_detection.models.feature_map_generators.multi_resolution_feature_maps">
+<code class="descclassname">object_detection.models.feature_map_generators.</code><code class="descname">multi_resolution_feature_maps</code><span class="sig-paren">(</span><em>feature_map_layout</em>, <em>depth_multiplier</em>, <em>min_depth</em>, <em>insert_1x1_conv</em>, <em>image_features</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.feature_map_generators.multi_resolution_feature_maps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates multi resolution feature maps from input image features.</p>
+<p>Generates multi-scale feature maps for detection as in the SSD papers by
+Liu et al: <a class="reference external" href="https://arxiv.org/pdf/1512.02325v2.pdf">https://arxiv.org/pdf/1512.02325v2.pdf</a>, See Sec 2.1.</p>
+<p>More specifically, it performs the following two tasks:
+1) If a layer name is provided in the configuration, returns that layer as a</p>
+<blockquote>
+<div>feature map.</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>If a layer name is left as an empty string, constructs a new feature map
+based on the spatial shape and depth configuration. Note that the current
+implementation only supports generating new layers using convolution of
+stride 2 resulting in a spatial resolution reduction by a factor of 2.</li>
+</ol>
+<p>An example of the configuration for Inception V3:
+{</p>
+<blockquote>
+<div>&#8216;from_layer&#8217;: [&#8216;Mixed_5d&#8217;, &#8216;Mixed_6e&#8217;, &#8216;Mixed_7c&#8217;, &#8216;&#8217;, &#8216;&#8217;, &#8216;&#8217;],
+&#8216;layer_depth&#8217;: [-1, -1, -1, 512, 256, 128],
+&#8216;anchor_strides&#8217;: [16, 32, 64, -1, -1, -1]</div></blockquote>
+<p>}</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>feature_map_layout</strong> &#8211; <p>Dictionary of specifications for the feature map
+layouts in the following format (Inception V2/V3 respectively):
+{</p>
+<blockquote>
+<div>&#8216;from_layer&#8217;: [&#8216;Mixed_3c&#8217;, &#8216;Mixed_4c&#8217;, &#8216;Mixed_5c&#8217;, &#8216;&#8217;, &#8216;&#8217;, &#8216;&#8217;],
+&#8216;layer_depth&#8217;: [-1, -1, -1, 512, 256, 128],
+&#8216;anchor_strides&#8217;: [16, 32, 64, -1, -1, -1]</div></blockquote>
+<p>}
+or
+{</p>
+<blockquote>
+<div>&#8216;from_layer&#8217;: [&#8216;Mixed_5d&#8217;, &#8216;Mixed_6e&#8217;, &#8216;Mixed_7c&#8217;, &#8216;&#8217;, &#8216;&#8217;, &#8216;&#8217;, &#8216;&#8217;],
+&#8216;layer_depth&#8217;: [-1, -1, -1, 512, 256, 128],
+&#8216;anchor_strides&#8217;: [16, 32, 64, -1, -1, -1]</div></blockquote>
+<p>}
+If &#8216;from_layer&#8217; is specified, the specified feature map is directly used
+as a box predictor layer, and the layer_depth is directly infered from the
+feature map (instead of using the provided &#8216;layer_depth&#8217; parameter). In
+this case, our convention is to set &#8216;layer_depth&#8217; to -1 for clarity.
+Otherwise, if &#8216;from_layer&#8217; is an empty string, then the box predictor
+layer will be built from the previous layer using convolution operations.
+Note that the current implementation only supports generating new layers
+using convolutions of stride 2 (resulting in a spatial resolution
+reduction by a factor of 2), and will be extended to a more flexible
+design. Finally, the optional &#8216;anchor_strides&#8217; can be used to specify the
+anchor stride at each layer where &#8216;from_layer&#8217; is specified. Our
+convention is to set &#8216;anchor_strides&#8217; to -1 whenever at the positions that
+&#8216;from_layer&#8217; is an empty string, and anchor strides at these layers will
+be inferred from the previous layer&#8217;s anchor strides and the current
+layer&#8217;s stride length. In the case where &#8216;anchor_strides&#8217; is not
+specified, the anchor strides will default to the image width and height
+divided by the number of anchors.</p>
+</li>
+<li><strong>depth_multiplier</strong> &#8211; Depth multiplier for convolutional layers.</li>
+<li><strong>min_depth</strong> &#8211; Minimum depth for convolutional layers.</li>
+<li><strong>insert_1x1_conv</strong> &#8211; A boolean indicating whether an additional 1x1 convolution
+should be inserted before shrinking the feature map.</li>
+<li><strong>image_features</strong> &#8211; A dictionary of handles to activation tensors from the
+base feature extractor.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>an OrderedDict mapping keys (feature map names) to</dt>
+<dd><p class="first last">tensors where each tensor has shape [batch, height_i, width_i, depth_i].</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">feature_maps</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; if the number entries in &#8216;from_layer&#8217; and
+&#8216;layer_depth&#8217; do not match.</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; if the generated layer does not have the same resolution
+as specified.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.models.feature_map_generators_test">
+<span id="object-detection-models-feature-map-generators-test-module"></span><h2>object_detection.models.feature_map_generators_test module<a class="headerlink" href="#module-object_detection.models.feature_map_generators_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for feature map generators.</p>
+<dl class="class">
+<dt id="object_detection.models.feature_map_generators_test.GetDepthFunctionTest">
+<em class="property">class </em><code class="descclassname">object_detection.models.feature_map_generators_test.</code><code class="descname">GetDepthFunctionTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.feature_map_generators_test.GetDepthFunctionTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.models.feature_map_generators_test.GetDepthFunctionTest.test_return_correct_depth_with_multiplier">
+<code class="descname">test_return_correct_depth_with_multiplier</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.feature_map_generators_test.GetDepthFunctionTest.test_return_correct_depth_with_multiplier" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.feature_map_generators_test.GetDepthFunctionTest.test_return_min_depth_when_multiplier_is_small">
+<code class="descname">test_return_min_depth_when_multiplier_is_small</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.feature_map_generators_test.GetDepthFunctionTest.test_return_min_depth_when_multiplier_is_small" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="object_detection.models.feature_map_generators_test.MultiResolutionFeatureMapGeneratorTest">
+<em class="property">class </em><code class="descclassname">object_detection.models.feature_map_generators_test.</code><code class="descname">MultiResolutionFeatureMapGeneratorTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.feature_map_generators_test.MultiResolutionFeatureMapGeneratorTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.models.feature_map_generators_test.MultiResolutionFeatureMapGeneratorTest.test_get_expected_feature_map_shapes_with_inception_v2">
+<code class="descname">test_get_expected_feature_map_shapes_with_inception_v2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.feature_map_generators_test.MultiResolutionFeatureMapGeneratorTest.test_get_expected_feature_map_shapes_with_inception_v2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.feature_map_generators_test.MultiResolutionFeatureMapGeneratorTest.test_get_expected_feature_map_shapes_with_inception_v3">
+<code class="descname">test_get_expected_feature_map_shapes_with_inception_v3</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.feature_map_generators_test.MultiResolutionFeatureMapGeneratorTest.test_get_expected_feature_map_shapes_with_inception_v3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.models.ssd_feature_extractor_test">
+<span id="object-detection-models-ssd-feature-extractor-test-module"></span><h2>object_detection.models.ssd_feature_extractor_test module<a class="headerlink" href="#module-object_detection.models.ssd_feature_extractor_test" title="Permalink to this headline">¶</a></h2>
+<p>Base test class SSDFeatureExtractors.</p>
+<dl class="class">
+<dt id="object_detection.models.ssd_feature_extractor_test.SsdFeatureExtractorTestBase">
+<em class="property">class </em><code class="descclassname">object_detection.models.ssd_feature_extractor_test.</code><code class="descname">SsdFeatureExtractorTestBase</code><a class="headerlink" href="#object_detection.models.ssd_feature_extractor_test.SsdFeatureExtractorTestBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="object_detection.models.ssd_feature_extractor_test.SsdFeatureExtractorTestBase.check_extract_features_raises_error_with_invalid_image_size">
+<code class="descname">check_extract_features_raises_error_with_invalid_image_size</code><span class="sig-paren">(</span><em>image_height</em>, <em>image_width</em>, <em>depth_multiplier</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_feature_extractor_test.SsdFeatureExtractorTestBase.check_extract_features_raises_error_with_invalid_image_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.ssd_feature_extractor_test.SsdFeatureExtractorTestBase.check_extract_features_returns_correct_shape">
+<code class="descname">check_extract_features_returns_correct_shape</code><span class="sig-paren">(</span><em>image_height</em>, <em>image_width</em>, <em>depth_multiplier</em>, <em>expected_feature_map_shapes_out</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_feature_extractor_test.SsdFeatureExtractorTestBase.check_extract_features_returns_correct_shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.ssd_feature_extractor_test.SsdFeatureExtractorTestBase.check_feature_extractor_variables_under_scope">
+<code class="descname">check_feature_extractor_variables_under_scope</code><span class="sig-paren">(</span><em>depth_multiplier</em>, <em>scope_name</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_feature_extractor_test.SsdFeatureExtractorTestBase.check_feature_extractor_variables_under_scope" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.models.ssd_inception_v2_feature_extractor">
+<span id="object-detection-models-ssd-inception-v2-feature-extractor-module"></span><h2>object_detection.models.ssd_inception_v2_feature_extractor module<a class="headerlink" href="#module-object_detection.models.ssd_inception_v2_feature_extractor" title="Permalink to this headline">¶</a></h2>
+<p>SSDFeatureExtractor for InceptionV2 features.</p>
+<dl class="class">
+<dt id="object_detection.models.ssd_inception_v2_feature_extractor.SSDInceptionV2FeatureExtractor">
+<em class="property">class </em><code class="descclassname">object_detection.models.ssd_inception_v2_feature_extractor.</code><code class="descname">SSDInceptionV2FeatureExtractor</code><span class="sig-paren">(</span><em>depth_multiplier</em>, <em>min_depth</em>, <em>conv_hyperparams</em>, <em>reuse_weights=None</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_inception_v2_feature_extractor.SSDInceptionV2FeatureExtractor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="object_detection.meta_architectures.html#object_detection.meta_architectures.ssd_meta_arch.SSDFeatureExtractor" title="object_detection.meta_architectures.ssd_meta_arch.SSDFeatureExtractor"><code class="xref py py-class docutils literal"><span class="pre">object_detection.meta_architectures.ssd_meta_arch.SSDFeatureExtractor</span></code></a></p>
+<p>SSD Feature Extractor using InceptionV2 features.</p>
+<dl class="method">
+<dt id="object_detection.models.ssd_inception_v2_feature_extractor.SSDInceptionV2FeatureExtractor.extract_features">
+<code class="descname">extract_features</code><span class="sig-paren">(</span><em>preprocessed_inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_inception_v2_feature_extractor.SSDInceptionV2FeatureExtractor.extract_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract features from preprocessed inputs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>preprocessed_inputs</strong> &#8211; a [batch, height, width, channels] float tensor
+representing a batch of images.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>a list of tensors where the ith tensor has shape</dt>
+<dd>[batch, height_i, width_i, depth_i]</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">feature_maps</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.ssd_inception_v2_feature_extractor.SSDInceptionV2FeatureExtractor.preprocess">
+<code class="descname">preprocess</code><span class="sig-paren">(</span><em>resized_inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_inception_v2_feature_extractor.SSDInceptionV2FeatureExtractor.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>SSD preprocessing.</p>
+<p>Maps pixel values to the range [-1, 1].</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>resized_inputs</strong> &#8211; a [batch, height, width, channels] float tensor
+representing a batch of images.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>a [batch, height, width, channels] float tensor</dt>
+<dd>representing a batch of images.</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">preprocessed_inputs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.models.ssd_inception_v2_feature_extractor_test">
+<span id="object-detection-models-ssd-inception-v2-feature-extractor-test-module"></span><h2>object_detection.models.ssd_inception_v2_feature_extractor_test module<a class="headerlink" href="#module-object_detection.models.ssd_inception_v2_feature_extractor_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for object_detection.models.ssd_inception_v2_feature_extractor.</p>
+<dl class="class">
+<dt id="object_detection.models.ssd_inception_v2_feature_extractor_test.SsdInceptionV2FeatureExtractorTest">
+<em class="property">class </em><code class="descclassname">object_detection.models.ssd_inception_v2_feature_extractor_test.</code><code class="descname">SsdInceptionV2FeatureExtractorTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_inception_v2_feature_extractor_test.SsdInceptionV2FeatureExtractorTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#object_detection.models.ssd_feature_extractor_test.SsdFeatureExtractorTestBase" title="object_detection.models.ssd_feature_extractor_test.SsdFeatureExtractorTestBase"><code class="xref py py-class docutils literal"><span class="pre">object_detection.models.ssd_feature_extractor_test.SsdFeatureExtractorTestBase</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.models.ssd_inception_v2_feature_extractor_test.SsdInceptionV2FeatureExtractorTest.test_extract_features_raises_error_with_invalid_image_size">
+<code class="descname">test_extract_features_raises_error_with_invalid_image_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_inception_v2_feature_extractor_test.SsdInceptionV2FeatureExtractorTest.test_extract_features_raises_error_with_invalid_image_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.ssd_inception_v2_feature_extractor_test.SsdInceptionV2FeatureExtractorTest.test_extract_features_returns_correct_shapes_128">
+<code class="descname">test_extract_features_returns_correct_shapes_128</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_inception_v2_feature_extractor_test.SsdInceptionV2FeatureExtractorTest.test_extract_features_returns_correct_shapes_128" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.ssd_inception_v2_feature_extractor_test.SsdInceptionV2FeatureExtractorTest.test_extract_features_returns_correct_shapes_299">
+<code class="descname">test_extract_features_returns_correct_shapes_299</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_inception_v2_feature_extractor_test.SsdInceptionV2FeatureExtractorTest.test_extract_features_returns_correct_shapes_299" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.ssd_inception_v2_feature_extractor_test.SsdInceptionV2FeatureExtractorTest.test_extract_features_returns_correct_shapes_enforcing_min_depth">
+<code class="descname">test_extract_features_returns_correct_shapes_enforcing_min_depth</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_inception_v2_feature_extractor_test.SsdInceptionV2FeatureExtractorTest.test_extract_features_returns_correct_shapes_enforcing_min_depth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.ssd_inception_v2_feature_extractor_test.SsdInceptionV2FeatureExtractorTest.test_preprocess_returns_correct_value_range">
+<code class="descname">test_preprocess_returns_correct_value_range</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_inception_v2_feature_extractor_test.SsdInceptionV2FeatureExtractorTest.test_preprocess_returns_correct_value_range" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.ssd_inception_v2_feature_extractor_test.SsdInceptionV2FeatureExtractorTest.test_variables_only_created_in_scope">
+<code class="descname">test_variables_only_created_in_scope</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_inception_v2_feature_extractor_test.SsdInceptionV2FeatureExtractorTest.test_variables_only_created_in_scope" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.models.ssd_mobilenet_v1_feature_extractor">
+<span id="object-detection-models-ssd-mobilenet-v1-feature-extractor-module"></span><h2>object_detection.models.ssd_mobilenet_v1_feature_extractor module<a class="headerlink" href="#module-object_detection.models.ssd_mobilenet_v1_feature_extractor" title="Permalink to this headline">¶</a></h2>
+<p>SSDFeatureExtractor for MobilenetV1 features.</p>
+<dl class="class">
+<dt id="object_detection.models.ssd_mobilenet_v1_feature_extractor.SSDMobileNetV1FeatureExtractor">
+<em class="property">class </em><code class="descclassname">object_detection.models.ssd_mobilenet_v1_feature_extractor.</code><code class="descname">SSDMobileNetV1FeatureExtractor</code><span class="sig-paren">(</span><em>depth_multiplier</em>, <em>min_depth</em>, <em>conv_hyperparams</em>, <em>reuse_weights=None</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_mobilenet_v1_feature_extractor.SSDMobileNetV1FeatureExtractor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="object_detection.meta_architectures.html#object_detection.meta_architectures.ssd_meta_arch.SSDFeatureExtractor" title="object_detection.meta_architectures.ssd_meta_arch.SSDFeatureExtractor"><code class="xref py py-class docutils literal"><span class="pre">object_detection.meta_architectures.ssd_meta_arch.SSDFeatureExtractor</span></code></a></p>
+<p>SSD Feature Extractor using MobilenetV1 features.</p>
+<dl class="method">
+<dt id="object_detection.models.ssd_mobilenet_v1_feature_extractor.SSDMobileNetV1FeatureExtractor.extract_features">
+<code class="descname">extract_features</code><span class="sig-paren">(</span><em>preprocessed_inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_mobilenet_v1_feature_extractor.SSDMobileNetV1FeatureExtractor.extract_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract features from preprocessed inputs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>preprocessed_inputs</strong> &#8211; a [batch, height, width, channels] float tensor
+representing a batch of images.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>a list of tensors where the ith tensor has shape</dt>
+<dd>[batch, height_i, width_i, depth_i]</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">feature_maps</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.ssd_mobilenet_v1_feature_extractor.SSDMobileNetV1FeatureExtractor.preprocess">
+<code class="descname">preprocess</code><span class="sig-paren">(</span><em>resized_inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_mobilenet_v1_feature_extractor.SSDMobileNetV1FeatureExtractor.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>SSD preprocessing.</p>
+<p>Maps pixel values to the range [-1, 1].</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>resized_inputs</strong> &#8211; a [batch, height, width, channels] float tensor
+representing a batch of images.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>a [batch, height, width, channels] float tensor</dt>
+<dd>representing a batch of images.</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">preprocessed_inputs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.models.ssd_mobilenet_v1_feature_extractor_test">
+<span id="object-detection-models-ssd-mobilenet-v1-feature-extractor-test-module"></span><h2>object_detection.models.ssd_mobilenet_v1_feature_extractor_test module<a class="headerlink" href="#module-object_detection.models.ssd_mobilenet_v1_feature_extractor_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for ssd_mobilenet_v1_feature_extractor.</p>
+<dl class="class">
+<dt id="object_detection.models.ssd_mobilenet_v1_feature_extractor_test.SsdMobilenetV1FeatureExtractorTest">
+<em class="property">class </em><code class="descclassname">object_detection.models.ssd_mobilenet_v1_feature_extractor_test.</code><code class="descname">SsdMobilenetV1FeatureExtractorTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_mobilenet_v1_feature_extractor_test.SsdMobilenetV1FeatureExtractorTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#object_detection.models.ssd_feature_extractor_test.SsdFeatureExtractorTestBase" title="object_detection.models.ssd_feature_extractor_test.SsdFeatureExtractorTestBase"><code class="xref py py-class docutils literal"><span class="pre">object_detection.models.ssd_feature_extractor_test.SsdFeatureExtractorTestBase</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.models.ssd_mobilenet_v1_feature_extractor_test.SsdMobilenetV1FeatureExtractorTest.test_extract_features_raises_error_with_invalid_image_size">
+<code class="descname">test_extract_features_raises_error_with_invalid_image_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_mobilenet_v1_feature_extractor_test.SsdMobilenetV1FeatureExtractorTest.test_extract_features_raises_error_with_invalid_image_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.ssd_mobilenet_v1_feature_extractor_test.SsdMobilenetV1FeatureExtractorTest.test_extract_features_returns_correct_shapes_128">
+<code class="descname">test_extract_features_returns_correct_shapes_128</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_mobilenet_v1_feature_extractor_test.SsdMobilenetV1FeatureExtractorTest.test_extract_features_returns_correct_shapes_128" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.ssd_mobilenet_v1_feature_extractor_test.SsdMobilenetV1FeatureExtractorTest.test_extract_features_returns_correct_shapes_299">
+<code class="descname">test_extract_features_returns_correct_shapes_299</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_mobilenet_v1_feature_extractor_test.SsdMobilenetV1FeatureExtractorTest.test_extract_features_returns_correct_shapes_299" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.ssd_mobilenet_v1_feature_extractor_test.SsdMobilenetV1FeatureExtractorTest.test_extract_features_returns_correct_shapes_enforcing_min_depth">
+<code class="descname">test_extract_features_returns_correct_shapes_enforcing_min_depth</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_mobilenet_v1_feature_extractor_test.SsdMobilenetV1FeatureExtractorTest.test_extract_features_returns_correct_shapes_enforcing_min_depth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.ssd_mobilenet_v1_feature_extractor_test.SsdMobilenetV1FeatureExtractorTest.test_preprocess_returns_correct_value_range">
+<code class="descname">test_preprocess_returns_correct_value_range</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_mobilenet_v1_feature_extractor_test.SsdMobilenetV1FeatureExtractorTest.test_preprocess_returns_correct_value_range" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.models.ssd_mobilenet_v1_feature_extractor_test.SsdMobilenetV1FeatureExtractorTest.test_variables_only_created_in_scope">
+<code class="descname">test_variables_only_created_in_scope</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.models.ssd_mobilenet_v1_feature_extractor_test.SsdMobilenetV1FeatureExtractorTest.test_variables_only_created_in_scope" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.models">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-object_detection.models" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">object_detection.models package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor">object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor module</a></li>
+<li><a class="reference internal" href="#module-object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test">object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.models.faster_rcnn_resnet_v1_feature_extractor">object_detection.models.faster_rcnn_resnet_v1_feature_extractor module</a></li>
+<li><a class="reference internal" href="#module-object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test">object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.models.feature_map_generators">object_detection.models.feature_map_generators module</a></li>
+<li><a class="reference internal" href="#module-object_detection.models.feature_map_generators_test">object_detection.models.feature_map_generators_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.models.ssd_feature_extractor_test">object_detection.models.ssd_feature_extractor_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.models.ssd_inception_v2_feature_extractor">object_detection.models.ssd_inception_v2_feature_extractor module</a></li>
+<li><a class="reference internal" href="#module-object_detection.models.ssd_inception_v2_feature_extractor_test">object_detection.models.ssd_inception_v2_feature_extractor_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.models.ssd_mobilenet_v1_feature_extractor">object_detection.models.ssd_mobilenet_v1_feature_extractor module</a></li>
+<li><a class="reference internal" href="#module-object_detection.models.ssd_mobilenet_v1_feature_extractor_test">object_detection.models.ssd_mobilenet_v1_feature_extractor_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.models">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/object_detection.models.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, lance.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/object_detection.models.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>object_detection &#8212; models 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="object-detection">
+<h1>object_detection<a class="headerlink" href="#object-detection" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="object_detection.html">object_detection package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="object_detection.anchor_generators.html">object_detection.anchor_generators package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.anchor_generators.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.anchor_generators.html#module-object_detection.anchor_generators.grid_anchor_generator">object_detection.anchor_generators.grid_anchor_generator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.anchor_generators.html#module-object_detection.anchor_generators.grid_anchor_generator_test">object_detection.anchor_generators.grid_anchor_generator_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.anchor_generators.html#module-object_detection.anchor_generators.multiple_grid_anchor_generator">object_detection.anchor_generators.multiple_grid_anchor_generator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.anchor_generators.html#module-object_detection.anchor_generators.multiple_grid_anchor_generator_test">object_detection.anchor_generators.multiple_grid_anchor_generator_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.anchor_generators.html#module-object_detection.anchor_generators">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="object_detection.box_coders.html">object_detection.box_coders package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.box_coders.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.box_coders.html#module-object_detection.box_coders.faster_rcnn_box_coder">object_detection.box_coders.faster_rcnn_box_coder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.box_coders.html#module-object_detection.box_coders.faster_rcnn_box_coder_test">object_detection.box_coders.faster_rcnn_box_coder_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.box_coders.html#module-object_detection.box_coders.keypoint_box_coder">object_detection.box_coders.keypoint_box_coder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.box_coders.html#module-object_detection.box_coders.keypoint_box_coder_test">object_detection.box_coders.keypoint_box_coder_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.box_coders.html#module-object_detection.box_coders.mean_stddev_box_coder">object_detection.box_coders.mean_stddev_box_coder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.box_coders.html#module-object_detection.box_coders.mean_stddev_box_coder_test">object_detection.box_coders.mean_stddev_box_coder_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.box_coders.html#module-object_detection.box_coders.square_box_coder">object_detection.box_coders.square_box_coder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.box_coders.html#module-object_detection.box_coders.square_box_coder_test">object_detection.box_coders.square_box_coder_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.box_coders.html#module-object_detection.box_coders">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="object_detection.builders.html">object_detection.builders package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.anchor_generator_builder">object_detection.builders.anchor_generator_builder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.anchor_generator_builder_test">object_detection.builders.anchor_generator_builder_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.box_coder_builder">object_detection.builders.box_coder_builder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.box_coder_builder_test">object_detection.builders.box_coder_builder_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.box_predictor_builder">object_detection.builders.box_predictor_builder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.box_predictor_builder_test">object_detection.builders.box_predictor_builder_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.hyperparams_builder">object_detection.builders.hyperparams_builder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.hyperparams_builder_test">object_detection.builders.hyperparams_builder_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.image_resizer_builder">object_detection.builders.image_resizer_builder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.image_resizer_builder_test">object_detection.builders.image_resizer_builder_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.input_reader_builder">object_detection.builders.input_reader_builder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.input_reader_builder_test">object_detection.builders.input_reader_builder_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.losses_builder">object_detection.builders.losses_builder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.losses_builder_test">object_detection.builders.losses_builder_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.matcher_builder">object_detection.builders.matcher_builder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.matcher_builder_test">object_detection.builders.matcher_builder_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.model_builder">object_detection.builders.model_builder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.model_builder_test">object_detection.builders.model_builder_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.optimizer_builder">object_detection.builders.optimizer_builder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.optimizer_builder_test">object_detection.builders.optimizer_builder_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.post_processing_builder">object_detection.builders.post_processing_builder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.post_processing_builder_test">object_detection.builders.post_processing_builder_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.preprocessor_builder">object_detection.builders.preprocessor_builder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.preprocessor_builder_test">object_detection.builders.preprocessor_builder_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.region_similarity_calculator_builder">object_detection.builders.region_similarity_calculator_builder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.region_similarity_calculator_builder_test">object_detection.builders.region_similarity_calculator_builder_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="object_detection.core.html">object_detection.core package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.anchor_generator">object_detection.core.anchor_generator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.balanced_positive_negative_sampler">object_detection.core.balanced_positive_negative_sampler module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.balanced_positive_negative_sampler_test">object_detection.core.balanced_positive_negative_sampler_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.batcher">object_detection.core.batcher module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.batcher_test">object_detection.core.batcher_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.box_coder">object_detection.core.box_coder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.box_coder_test">object_detection.core.box_coder_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.box_list">object_detection.core.box_list module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.box_list_ops">object_detection.core.box_list_ops module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.box_list_ops_test">object_detection.core.box_list_ops_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.box_list_test">object_detection.core.box_list_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.box_predictor">object_detection.core.box_predictor module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.box_predictor_test">object_detection.core.box_predictor_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.data_decoder">object_detection.core.data_decoder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.keypoint_ops">object_detection.core.keypoint_ops module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.keypoint_ops_test">object_detection.core.keypoint_ops_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.losses">object_detection.core.losses module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.losses_test">object_detection.core.losses_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.matcher">object_detection.core.matcher module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.matcher_test">object_detection.core.matcher_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.minibatch_sampler">object_detection.core.minibatch_sampler module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.minibatch_sampler_test">object_detection.core.minibatch_sampler_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.model">object_detection.core.model module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.post_processing">object_detection.core.post_processing module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.post_processing_test">object_detection.core.post_processing_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.prefetcher">object_detection.core.prefetcher module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.prefetcher_test">object_detection.core.prefetcher_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.preprocessor">object_detection.core.preprocessor module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.preprocessor_test">object_detection.core.preprocessor_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.region_similarity_calculator">object_detection.core.region_similarity_calculator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.region_similarity_calculator_test">object_detection.core.region_similarity_calculator_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.standard_fields">object_detection.core.standard_fields module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.target_assigner">object_detection.core.target_assigner module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.target_assigner_test">object_detection.core.target_assigner_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.core.html#module-object_detection.core">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="object_detection.data_decoders.html">object_detection.data_decoders package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.data_decoders.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.data_decoders.html#module-object_detection.data_decoders.tf_example_decoder">object_detection.data_decoders.tf_example_decoder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.data_decoders.html#module-object_detection.data_decoders.tf_example_decoder_test">object_detection.data_decoders.tf_example_decoder_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.data_decoders.html#module-object_detection.data_decoders">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="object_detection.matchers.html">object_detection.matchers package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.matchers.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.matchers.html#module-object_detection.matchers.argmax_matcher">object_detection.matchers.argmax_matcher module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.matchers.html#module-object_detection.matchers.argmax_matcher_test">object_detection.matchers.argmax_matcher_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.matchers.html#module-object_detection.matchers.bipartite_matcher">object_detection.matchers.bipartite_matcher module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.matchers.html#module-object_detection.matchers.bipartite_matcher_test">object_detection.matchers.bipartite_matcher_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.matchers.html#module-object_detection.matchers">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="object_detection.meta_architectures.html">object_detection.meta_architectures package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.meta_architectures.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.meta_architectures.html#module-object_detection.meta_architectures.faster_rcnn_meta_arch">object_detection.meta_architectures.faster_rcnn_meta_arch module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.meta_architectures.html#module-object_detection.meta_architectures.faster_rcnn_meta_arch_test">object_detection.meta_architectures.faster_rcnn_meta_arch_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.meta_architectures.html#module-object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib">object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.meta_architectures.html#module-object_detection.meta_architectures.rfcn_meta_arch">object_detection.meta_architectures.rfcn_meta_arch module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.meta_architectures.html#module-object_detection.meta_architectures.rfcn_meta_arch_test">object_detection.meta_architectures.rfcn_meta_arch_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.meta_architectures.html#module-object_detection.meta_architectures.ssd_meta_arch">object_detection.meta_architectures.ssd_meta_arch module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.meta_architectures.html#module-object_detection.meta_architectures.ssd_meta_arch_test">object_detection.meta_architectures.ssd_meta_arch_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.meta_architectures.html#module-object_detection.meta_architectures">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="object_detection.models.html">object_detection.models package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.models.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor">object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test">object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.faster_rcnn_resnet_v1_feature_extractor">object_detection.models.faster_rcnn_resnet_v1_feature_extractor module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test">object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.feature_map_generators">object_detection.models.feature_map_generators module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.feature_map_generators_test">object_detection.models.feature_map_generators_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.ssd_feature_extractor_test">object_detection.models.ssd_feature_extractor_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.ssd_inception_v2_feature_extractor">object_detection.models.ssd_inception_v2_feature_extractor module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.ssd_inception_v2_feature_extractor_test">object_detection.models.ssd_inception_v2_feature_extractor_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.ssd_mobilenet_v1_feature_extractor">object_detection.models.ssd_mobilenet_v1_feature_extractor module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.ssd_mobilenet_v1_feature_extractor_test">object_detection.models.ssd_mobilenet_v1_feature_extractor_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.models.html#module-object_detection.models">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="object_detection.protos.html">object_detection.protos package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.anchor_generator_pb2">object_detection.protos.anchor_generator_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.argmax_matcher_pb2">object_detection.protos.argmax_matcher_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.bipartite_matcher_pb2">object_detection.protos.bipartite_matcher_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.box_coder_pb2">object_detection.protos.box_coder_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.box_predictor_pb2">object_detection.protos.box_predictor_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.eval_pb2">object_detection.protos.eval_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.faster_rcnn_box_coder_pb2">object_detection.protos.faster_rcnn_box_coder_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.faster_rcnn_pb2">object_detection.protos.faster_rcnn_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.grid_anchor_generator_pb2">object_detection.protos.grid_anchor_generator_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.hyperparams_pb2">object_detection.protos.hyperparams_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.image_resizer_pb2">object_detection.protos.image_resizer_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.input_reader_pb2">object_detection.protos.input_reader_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.losses_pb2">object_detection.protos.losses_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.matcher_pb2">object_detection.protos.matcher_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.mean_stddev_box_coder_pb2">object_detection.protos.mean_stddev_box_coder_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.model_pb2">object_detection.protos.model_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.optimizer_pb2">object_detection.protos.optimizer_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.pipeline_pb2">object_detection.protos.pipeline_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.post_processing_pb2">object_detection.protos.post_processing_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.preprocessor_pb2">object_detection.protos.preprocessor_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.region_similarity_calculator_pb2">object_detection.protos.region_similarity_calculator_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.square_box_coder_pb2">object_detection.protos.square_box_coder_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.ssd_anchor_generator_pb2">object_detection.protos.ssd_anchor_generator_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.ssd_pb2">object_detection.protos.ssd_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.string_int_label_map_pb2">object_detection.protos.string_int_label_map_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.train_pb2">object_detection.protos.train_pb2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="object_detection.utils.html">object_detection.utils package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.category_util">object_detection.utils.category_util module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.category_util_test">object_detection.utils.category_util_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.dataset_util">object_detection.utils.dataset_util module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.dataset_util_test">object_detection.utils.dataset_util_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.label_map_util">object_detection.utils.label_map_util module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.label_map_util_test">object_detection.utils.label_map_util_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.learning_schedules">object_detection.utils.learning_schedules module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.learning_schedules_test">object_detection.utils.learning_schedules_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.metrics">object_detection.utils.metrics module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.metrics_test">object_detection.utils.metrics_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.np_box_list">object_detection.utils.np_box_list module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.np_box_list_ops">object_detection.utils.np_box_list_ops module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.np_box_list_ops_test">object_detection.utils.np_box_list_ops_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.np_box_list_test">object_detection.utils.np_box_list_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.np_box_ops">object_detection.utils.np_box_ops module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.np_box_ops_test">object_detection.utils.np_box_ops_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.object_detection_evaluation">object_detection.utils.object_detection_evaluation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.object_detection_evaluation_test">object_detection.utils.object_detection_evaluation_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.ops">object_detection.utils.ops module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.ops_test">object_detection.utils.ops_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.per_image_evaluation">object_detection.utils.per_image_evaluation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.per_image_evaluation_test">object_detection.utils.per_image_evaluation_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.shape_utils">object_detection.utils.shape_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.shape_utils_test">object_detection.utils.shape_utils_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.static_shape">object_detection.utils.static_shape module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.static_shape_test">object_detection.utils.static_shape_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.test_utils">object_detection.utils.test_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.test_utils_test">object_detection.utils.test_utils_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.variables_helper">object_detection.utils.variables_helper module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.variables_helper_test">object_detection.utils.variables_helper_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.visualization_utils">object_detection.utils.visualization_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.visualization_utils_test">object_detection.utils.visualization_utils_test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.html#module-object_detection.create_pascal_tf_record">object_detection.create_pascal_tf_record module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.html#module-object_detection.create_pascal_tf_record_test">object_detection.create_pascal_tf_record_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.html#object-detection-create-pet-tf-record-module">object_detection.create_pet_tf_record module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.html#module-object_detection.eval">object_detection.eval module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.html#module-object_detection.eval_util">object_detection.eval_util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.html#module-object_detection.evaluator">object_detection.evaluator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.html#object-detection-export-inference-graph-module">object_detection.export_inference_graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.html#object-detection-exporter-module">object_detection.exporter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.html#object-detection-exporter-test-module">object_detection.exporter_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.html#module-object_detection.test">object_detection.test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.html#object-detection-train-module">object_detection.train module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.html#module-object_detection.trainer">object_detection.trainer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.html#module-object_detection.trainer_test">object_detection.trainer_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.html#module-object_detection">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/modules.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, lance.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/modules.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

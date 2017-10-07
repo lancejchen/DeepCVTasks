@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>object_detection.data_decoders package &#8212; models 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="object-detection-data-decoders-package">
+<h1>object_detection.data_decoders package<a class="headerlink" href="#object-detection-data-decoders-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-object_detection.data_decoders.tf_example_decoder">
+<span id="object-detection-data-decoders-tf-example-decoder-module"></span><h2>object_detection.data_decoders.tf_example_decoder module<a class="headerlink" href="#module-object_detection.data_decoders.tf_example_decoder" title="Permalink to this headline">¶</a></h2>
+<p>Tensorflow Example proto decoder for object detection.</p>
+<p>A decoder to decode string tensors containing serialized tensorflow.Example
+protos for object detection.</p>
+<dl class="class">
+<dt id="object_detection.data_decoders.tf_example_decoder.TfExampleDecoder">
+<em class="property">class </em><code class="descclassname">object_detection.data_decoders.tf_example_decoder.</code><code class="descname">TfExampleDecoder</code><a class="headerlink" href="#object_detection.data_decoders.tf_example_decoder.TfExampleDecoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="object_detection.core.html#object_detection.core.data_decoder.DataDecoder" title="object_detection.core.data_decoder.DataDecoder"><code class="xref py py-class docutils literal"><span class="pre">object_detection.core.data_decoder.DataDecoder</span></code></a></p>
+<p>Tensorflow Example proto decoder.</p>
+<dl class="method">
+<dt id="object_detection.data_decoders.tf_example_decoder.TfExampleDecoder.decode">
+<code class="descname">decode</code><span class="sig-paren">(</span><em>tf_example_string_tensor</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.data_decoders.tf_example_decoder.TfExampleDecoder.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodes serialized tensorflow example and returns a tensor dictionary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tf_example_string_tensor</strong> &#8211; a string tensor holding a serialized tensorflow
+example proto.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary of the following tensors.
+fields.InputDataFields.image - 3D uint8 tensor of shape [None, None, 3]<blockquote>
+<div>containing image.</div></blockquote>
+<dl class="docutils">
+<dt>fields.InputDataFields.source_id - string tensor containing original</dt>
+<dd>image id.</dd>
+</dl>
+<p>fields.InputDataFields.key - string tensor with unique sha256 hash key.
+fields.InputDataFields.filename - string tensor with original dataset</p>
+<blockquote>
+<div>filename.</div></blockquote>
+<dl class="docutils">
+<dt>fields.InputDataFields.groundtruth_boxes - 2D float32 tensor of shape</dt>
+<dd>[None, 4] containing box corners.</dd>
+<dt>fields.InputDataFields.groundtruth_classes - 1D int64 tensor of shape</dt>
+<dd>[None] containing classes for the boxes.</dd>
+<dt>fields.InputDataFields.groundtruth_area - 1D float32 tensor of shape</dt>
+<dd>[None] containing containing object mask area in pixel squared.</dd>
+<dt>fields.InputDataFields.groundtruth_is_crowd - 1D bool tensor of shape</dt>
+<dd>[None] indicating if the boxes enclose a crowd.</dd>
+<dt>fields.InputDataFields.groundtruth_difficult - 1D bool tensor of shape</dt>
+<dd>[None] indicating if the boxes represent <cite>difficult</cite> instances.</dd>
+<dt>fields.InputDataFields.groundtruth_instance_masks - 3D int64 tensor of</dt>
+<dd>shape [None, None, None] containing instance masks.</dd>
+<dt>fields.InputDataFields.groundtruth_instance_classes - 1D int64 tensor</dt>
+<dd>of shape [None] containing classes for the instance masks.</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.data_decoders.tf_example_decoder_test">
+<span id="object-detection-data-decoders-tf-example-decoder-test-module"></span><h2>object_detection.data_decoders.tf_example_decoder_test module<a class="headerlink" href="#module-object_detection.data_decoders.tf_example_decoder_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for object_detection.data_decoders.tf_example_decoder.</p>
+<dl class="class">
+<dt id="object_detection.data_decoders.tf_example_decoder_test.TfExampleDecoderTest">
+<em class="property">class </em><code class="descclassname">object_detection.data_decoders.tf_example_decoder_test.</code><code class="descname">TfExampleDecoderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.data_decoders.tf_example_decoder_test.TfExampleDecoderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.data_decoders.tf_example_decoder_test.TfExampleDecoderTest.testDecodeBoundingBox">
+<code class="descname">testDecodeBoundingBox</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.data_decoders.tf_example_decoder_test.TfExampleDecoderTest.testDecodeBoundingBox" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.data_decoders.tf_example_decoder_test.TfExampleDecoderTest.testDecodeImageKeyAndFilename">
+<code class="descname">testDecodeImageKeyAndFilename</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.data_decoders.tf_example_decoder_test.TfExampleDecoderTest.testDecodeImageKeyAndFilename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.data_decoders.tf_example_decoder_test.TfExampleDecoderTest.testDecodeInstanceSegmentation">
+<code class="descname">testDecodeInstanceSegmentation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.data_decoders.tf_example_decoder_test.TfExampleDecoderTest.testDecodeInstanceSegmentation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.data_decoders.tf_example_decoder_test.TfExampleDecoderTest.testDecodeJpegImage">
+<code class="descname">testDecodeJpegImage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.data_decoders.tf_example_decoder_test.TfExampleDecoderTest.testDecodeJpegImage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.data_decoders.tf_example_decoder_test.TfExampleDecoderTest.testDecodeObjectArea">
+<code class="descname">testDecodeObjectArea</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.data_decoders.tf_example_decoder_test.TfExampleDecoderTest.testDecodeObjectArea" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.data_decoders.tf_example_decoder_test.TfExampleDecoderTest.testDecodeObjectDifficult">
+<code class="descname">testDecodeObjectDifficult</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.data_decoders.tf_example_decoder_test.TfExampleDecoderTest.testDecodeObjectDifficult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.data_decoders.tf_example_decoder_test.TfExampleDecoderTest.testDecodeObjectIsCrowd">
+<code class="descname">testDecodeObjectIsCrowd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.data_decoders.tf_example_decoder_test.TfExampleDecoderTest.testDecodeObjectIsCrowd" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.data_decoders.tf_example_decoder_test.TfExampleDecoderTest.testDecodeObjectLabel">
+<code class="descname">testDecodeObjectLabel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.data_decoders.tf_example_decoder_test.TfExampleDecoderTest.testDecodeObjectLabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.data_decoders.tf_example_decoder_test.TfExampleDecoderTest.testDecodePngImage">
+<code class="descname">testDecodePngImage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.data_decoders.tf_example_decoder_test.TfExampleDecoderTest.testDecodePngImage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.data_decoders">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-object_detection.data_decoders" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">object_detection.data_decoders package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-object_detection.data_decoders.tf_example_decoder">object_detection.data_decoders.tf_example_decoder module</a></li>
+<li><a class="reference internal" href="#module-object_detection.data_decoders.tf_example_decoder_test">object_detection.data_decoders.tf_example_decoder_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.data_decoders">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/object_detection.data_decoders.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, lance.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/object_detection.data_decoders.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

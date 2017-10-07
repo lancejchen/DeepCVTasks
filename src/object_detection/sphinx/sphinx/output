@@ -1,0 +1,48 @@
+Running Sphinx v1.5.1
+making output directory...
+loading pickled environment... not yet created
+building [mo]: targets for 0 po files that are out of date
+building [html]: targets for 13 source files that are out of date
+updating environment: 13 added, 0 changed, 0 removed
+reading sources... [  7%] index
+reading sources... [ 15%] modules
+reading sources... [ 23%] object_detection
+hello
+reading sources... [ 30%] object_detection.anchor_generators
+reading sources... [ 38%] object_detection.box_coders
+reading sources... [ 46%] object_detection.builders
+reading sources... [ 53%] object_detection.core
+reading sources... [ 61%] object_detection.data_decoders
+reading sources... [ 69%] object_detection.matchers
+reading sources... [ 76%] object_detection.meta_architectures
+reading sources... [ 84%] object_detection.models
+reading sources... [ 92%] object_detection.protos
+reading sources... [100%] object_detection.utils
+
+looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
+preparing documents... done
+writing output... [  7%] index
+writing output... [ 15%] modules
+writing output... [ 23%] object_detection
+writing output... [ 30%] object_detection.anchor_generators
+writing output... [ 38%] object_detection.box_coders
+writing output... [ 46%] object_detection.builders
+writing output... [ 53%] object_detection.core
+writing output... [ 61%] object_detection.data_decoders
+writing output... [ 69%] object_detection.matchers
+writing output... [ 76%] object_detection.meta_architectures
+writing output... [ 84%] object_detection.models
+writing output... [ 92%] object_detection.protos
+writing output... [100%] object_detection.utils
+
+generating indices... genindex py-modindex
+writing additional pages... search
+copying static files... done
+copying extra files... done
+dumping search index in English (code: en) ... done
+dumping object inventory... done
+build succeeded, 403 warnings.
+
+Build finished. The HTML pages are in _build/html.

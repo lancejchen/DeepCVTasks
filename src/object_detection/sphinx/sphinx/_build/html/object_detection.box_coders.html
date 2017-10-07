@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>object_detection.box_coders package &#8212; models 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="object-detection-box-coders-package">
+<h1>object_detection.box_coders package<a class="headerlink" href="#object-detection-box-coders-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-object_detection.box_coders.faster_rcnn_box_coder">
+<span id="object-detection-box-coders-faster-rcnn-box-coder-module"></span><h2>object_detection.box_coders.faster_rcnn_box_coder module<a class="headerlink" href="#module-object_detection.box_coders.faster_rcnn_box_coder" title="Permalink to this headline">¶</a></h2>
+<p>Faster RCNN box coder.</p>
+<dl class="docutils">
+<dt>Faster RCNN box coder follows the coding schema described below:</dt>
+<dd><p class="first">ty = (y - ya) / ha
+tx = (x - xa) / wa
+th = log(h / ha)
+tw = log(w / wa)
+where x, y, w, h denote the box&#8217;s center coordinates, width and height
+respectively. Similarly, xa, ya, wa, ha denote the anchor&#8217;s center
+coordinates, width and height. tx, ty, tw and th denote the anchor-encoded
+center, width and height respectively.</p>
+<p class="last">See <a class="reference external" href="http://arxiv.org/abs/1506.01497">http://arxiv.org/abs/1506.01497</a> for details.</p>
+</dd>
+</dl>
+<dl class="class">
+<dt id="object_detection.box_coders.faster_rcnn_box_coder.FasterRcnnBoxCoder">
+<em class="property">class </em><code class="descclassname">object_detection.box_coders.faster_rcnn_box_coder.</code><code class="descname">FasterRcnnBoxCoder</code><span class="sig-paren">(</span><em>scale_factors=None</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.faster_rcnn_box_coder.FasterRcnnBoxCoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="object_detection.core.html#object_detection.core.box_coder.BoxCoder" title="object_detection.core.box_coder.BoxCoder"><code class="xref py py-class docutils literal"><span class="pre">object_detection.core.box_coder.BoxCoder</span></code></a></p>
+<p>Faster RCNN box coder.</p>
+<dl class="attribute">
+<dt id="object_detection.box_coders.faster_rcnn_box_coder.FasterRcnnBoxCoder.code_size">
+<code class="descname">code_size</code><a class="headerlink" href="#object_detection.box_coders.faster_rcnn_box_coder.FasterRcnnBoxCoder.code_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.box_coders.faster_rcnn_box_coder_test">
+<span id="object-detection-box-coders-faster-rcnn-box-coder-test-module"></span><h2>object_detection.box_coders.faster_rcnn_box_coder_test module<a class="headerlink" href="#module-object_detection.box_coders.faster_rcnn_box_coder_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for object_detection.box_coder.faster_rcnn_box_coder.</p>
+<dl class="class">
+<dt id="object_detection.box_coders.faster_rcnn_box_coder_test.FasterRcnnBoxCoderTest">
+<em class="property">class </em><code class="descclassname">object_detection.box_coders.faster_rcnn_box_coder_test.</code><code class="descname">FasterRcnnBoxCoderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.faster_rcnn_box_coder_test.FasterRcnnBoxCoderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.box_coders.faster_rcnn_box_coder_test.FasterRcnnBoxCoderTest.test_get_correct_boxes_after_decoding">
+<code class="descname">test_get_correct_boxes_after_decoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.faster_rcnn_box_coder_test.FasterRcnnBoxCoderTest.test_get_correct_boxes_after_decoding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.box_coders.faster_rcnn_box_coder_test.FasterRcnnBoxCoderTest.test_get_correct_boxes_after_decoding_with_scaling">
+<code class="descname">test_get_correct_boxes_after_decoding_with_scaling</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.faster_rcnn_box_coder_test.FasterRcnnBoxCoderTest.test_get_correct_boxes_after_decoding_with_scaling" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.box_coders.faster_rcnn_box_coder_test.FasterRcnnBoxCoderTest.test_get_correct_relative_codes_after_encoding">
+<code class="descname">test_get_correct_relative_codes_after_encoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.faster_rcnn_box_coder_test.FasterRcnnBoxCoderTest.test_get_correct_relative_codes_after_encoding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.box_coders.faster_rcnn_box_coder_test.FasterRcnnBoxCoderTest.test_get_correct_relative_codes_after_encoding_with_scaling">
+<code class="descname">test_get_correct_relative_codes_after_encoding_with_scaling</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.faster_rcnn_box_coder_test.FasterRcnnBoxCoderTest.test_get_correct_relative_codes_after_encoding_with_scaling" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.box_coders.faster_rcnn_box_coder_test.FasterRcnnBoxCoderTest.test_very_small_Width_nan_after_encoding">
+<code class="descname">test_very_small_Width_nan_after_encoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.faster_rcnn_box_coder_test.FasterRcnnBoxCoderTest.test_very_small_Width_nan_after_encoding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.box_coders.keypoint_box_coder">
+<span id="object-detection-box-coders-keypoint-box-coder-module"></span><h2>object_detection.box_coders.keypoint_box_coder module<a class="headerlink" href="#module-object_detection.box_coders.keypoint_box_coder" title="Permalink to this headline">¶</a></h2>
+<p>Keypoint box coder.</p>
+<p>The keypoint box coder follows the coding schema described below (this is
+similar to the FasterRcnnBoxCoder, except that it encodes keypoints in addition
+to box coordinates):</p>
+<blockquote>
+<div>ty = (y - ya) / ha
+tx = (x - xa) / wa
+th = log(h / ha)
+tw = log(w / wa)
+tky0 = (ky0 - ya) / ha
+tkx0 = (kx0 - xa) / ha
+tky1 = (ky1 - ya) / ha
+tkx1 = (kx1 - xa) / ha
+...
+where x, y, w, h denote the box&#8217;s center coordinates, width and height
+respectively. Similarly, xa, ya, wa, ha denote the anchor&#8217;s center
+coordinates, width and height. tx, ty, tw and th denote the anchor-encoded
+center, width and height respectively. ky0, kx0, ky1, kx1, ... denote the
+keypoints&#8217; coordinates, and tky0, tkx0, tky1, tkx1, ... denote the
+anchor-encoded keypoint coordinates.</div></blockquote>
+<dl class="class">
+<dt id="object_detection.box_coders.keypoint_box_coder.KeypointBoxCoder">
+<em class="property">class </em><code class="descclassname">object_detection.box_coders.keypoint_box_coder.</code><code class="descname">KeypointBoxCoder</code><span class="sig-paren">(</span><em>num_keypoints</em>, <em>scale_factors=None</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.keypoint_box_coder.KeypointBoxCoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="object_detection.core.html#object_detection.core.box_coder.BoxCoder" title="object_detection.core.box_coder.BoxCoder"><code class="xref py py-class docutils literal"><span class="pre">object_detection.core.box_coder.BoxCoder</span></code></a></p>
+<p>Keypoint box coder.</p>
+<dl class="attribute">
+<dt id="object_detection.box_coders.keypoint_box_coder.KeypointBoxCoder.code_size">
+<code class="descname">code_size</code><a class="headerlink" href="#object_detection.box_coders.keypoint_box_coder.KeypointBoxCoder.code_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.box_coders.keypoint_box_coder_test">
+<span id="object-detection-box-coders-keypoint-box-coder-test-module"></span><h2>object_detection.box_coders.keypoint_box_coder_test module<a class="headerlink" href="#module-object_detection.box_coders.keypoint_box_coder_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for object_detection.box_coder.keypoint_box_coder.</p>
+<dl class="class">
+<dt id="object_detection.box_coders.keypoint_box_coder_test.KeypointBoxCoderTest">
+<em class="property">class </em><code class="descclassname">object_detection.box_coders.keypoint_box_coder_test.</code><code class="descname">KeypointBoxCoderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.keypoint_box_coder_test.KeypointBoxCoderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.box_coders.keypoint_box_coder_test.KeypointBoxCoderTest.test_get_correct_boxes_after_decoding">
+<code class="descname">test_get_correct_boxes_after_decoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.keypoint_box_coder_test.KeypointBoxCoderTest.test_get_correct_boxes_after_decoding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.box_coders.keypoint_box_coder_test.KeypointBoxCoderTest.test_get_correct_boxes_after_decoding_with_scaling">
+<code class="descname">test_get_correct_boxes_after_decoding_with_scaling</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.keypoint_box_coder_test.KeypointBoxCoderTest.test_get_correct_boxes_after_decoding_with_scaling" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.box_coders.keypoint_box_coder_test.KeypointBoxCoderTest.test_get_correct_relative_codes_after_encoding">
+<code class="descname">test_get_correct_relative_codes_after_encoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.keypoint_box_coder_test.KeypointBoxCoderTest.test_get_correct_relative_codes_after_encoding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.box_coders.keypoint_box_coder_test.KeypointBoxCoderTest.test_get_correct_relative_codes_after_encoding_with_scaling">
+<code class="descname">test_get_correct_relative_codes_after_encoding_with_scaling</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.keypoint_box_coder_test.KeypointBoxCoderTest.test_get_correct_relative_codes_after_encoding_with_scaling" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.box_coders.keypoint_box_coder_test.KeypointBoxCoderTest.test_very_small_width_nan_after_encoding">
+<code class="descname">test_very_small_width_nan_after_encoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.keypoint_box_coder_test.KeypointBoxCoderTest.test_very_small_width_nan_after_encoding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.box_coders.mean_stddev_box_coder">
+<span id="object-detection-box-coders-mean-stddev-box-coder-module"></span><h2>object_detection.box_coders.mean_stddev_box_coder module<a class="headerlink" href="#module-object_detection.box_coders.mean_stddev_box_coder" title="Permalink to this headline">¶</a></h2>
+<p>Mean stddev box coder.</p>
+<p>This box coder use the following coding schema to encode boxes:
+rel_code = (box_corner - anchor_corner_mean) / anchor_corner_stddev.</p>
+<dl class="class">
+<dt id="object_detection.box_coders.mean_stddev_box_coder.MeanStddevBoxCoder">
+<em class="property">class </em><code class="descclassname">object_detection.box_coders.mean_stddev_box_coder.</code><code class="descname">MeanStddevBoxCoder</code><a class="headerlink" href="#object_detection.box_coders.mean_stddev_box_coder.MeanStddevBoxCoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="object_detection.core.html#object_detection.core.box_coder.BoxCoder" title="object_detection.core.box_coder.BoxCoder"><code class="xref py py-class docutils literal"><span class="pre">object_detection.core.box_coder.BoxCoder</span></code></a></p>
+<p>Mean stddev box coder.</p>
+<dl class="attribute">
+<dt id="object_detection.box_coders.mean_stddev_box_coder.MeanStddevBoxCoder.code_size">
+<code class="descname">code_size</code><a class="headerlink" href="#object_detection.box_coders.mean_stddev_box_coder.MeanStddevBoxCoder.code_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.box_coders.mean_stddev_box_coder_test">
+<span id="object-detection-box-coders-mean-stddev-box-coder-test-module"></span><h2>object_detection.box_coders.mean_stddev_box_coder_test module<a class="headerlink" href="#module-object_detection.box_coders.mean_stddev_box_coder_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for object_detection.box_coder.mean_stddev_boxcoder.</p>
+<dl class="class">
+<dt id="object_detection.box_coders.mean_stddev_box_coder_test.MeanStddevBoxCoderTest">
+<em class="property">class </em><code class="descclassname">object_detection.box_coders.mean_stddev_box_coder_test.</code><code class="descname">MeanStddevBoxCoderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.mean_stddev_box_coder_test.MeanStddevBoxCoderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.box_coders.mean_stddev_box_coder_test.MeanStddevBoxCoderTest.testGetCorrectBoxesAfterDecoding">
+<code class="descname">testGetCorrectBoxesAfterDecoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.mean_stddev_box_coder_test.MeanStddevBoxCoderTest.testGetCorrectBoxesAfterDecoding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.box_coders.mean_stddev_box_coder_test.MeanStddevBoxCoderTest.testGetCorrectRelativeCodesAfterEncoding">
+<code class="descname">testGetCorrectRelativeCodesAfterEncoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.mean_stddev_box_coder_test.MeanStddevBoxCoderTest.testGetCorrectRelativeCodesAfterEncoding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.box_coders.square_box_coder">
+<span id="object-detection-box-coders-square-box-coder-module"></span><h2>object_detection.box_coders.square_box_coder module<a class="headerlink" href="#module-object_detection.box_coders.square_box_coder" title="Permalink to this headline">¶</a></h2>
+<p>Square box coder.</p>
+<p>Square box coder follows the coding schema described below:
+l = sqrt(h * w)
+la = sqrt(ha * wa)
+ty = (y - ya) / la
+tx = (x - xa) / la
+tl = log(l / la)
+where x, y, w, h denote the box&#8217;s center coordinates, width, and height,
+respectively. Similarly, xa, ya, wa, ha denote the anchor&#8217;s center
+coordinates, width and height. tx, ty, tl denote the anchor-encoded
+center, and length, respectively. Because the encoded box is a square, only
+one length is encoded.</p>
+<p>This has shown to provide performance improvements over the Faster RCNN box
+coder when the objects being detected tend to be square (e.g. faces) and when
+the input images are not distorted via resizing.</p>
+<dl class="class">
+<dt id="object_detection.box_coders.square_box_coder.SquareBoxCoder">
+<em class="property">class </em><code class="descclassname">object_detection.box_coders.square_box_coder.</code><code class="descname">SquareBoxCoder</code><span class="sig-paren">(</span><em>scale_factors=None</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.square_box_coder.SquareBoxCoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="object_detection.core.html#object_detection.core.box_coder.BoxCoder" title="object_detection.core.box_coder.BoxCoder"><code class="xref py py-class docutils literal"><span class="pre">object_detection.core.box_coder.BoxCoder</span></code></a></p>
+<p>Encodes a 3-scalar representation of a square box.</p>
+<dl class="attribute">
+<dt id="object_detection.box_coders.square_box_coder.SquareBoxCoder.code_size">
+<code class="descname">code_size</code><a class="headerlink" href="#object_detection.box_coders.square_box_coder.SquareBoxCoder.code_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.box_coders.square_box_coder_test">
+<span id="object-detection-box-coders-square-box-coder-test-module"></span><h2>object_detection.box_coders.square_box_coder_test module<a class="headerlink" href="#module-object_detection.box_coders.square_box_coder_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for object_detection.box_coder.square_box_coder.</p>
+<dl class="class">
+<dt id="object_detection.box_coders.square_box_coder_test.SquareBoxCoderTest">
+<em class="property">class </em><code class="descclassname">object_detection.box_coders.square_box_coder_test.</code><code class="descname">SquareBoxCoderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.square_box_coder_test.SquareBoxCoderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.box_coders.square_box_coder_test.SquareBoxCoderTest.test_correct_boxes_with_default_scale">
+<code class="descname">test_correct_boxes_with_default_scale</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.square_box_coder_test.SquareBoxCoderTest.test_correct_boxes_with_default_scale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.box_coders.square_box_coder_test.SquareBoxCoderTest.test_correct_boxes_with_non_default_scale">
+<code class="descname">test_correct_boxes_with_non_default_scale</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.square_box_coder_test.SquareBoxCoderTest.test_correct_boxes_with_non_default_scale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.box_coders.square_box_coder_test.SquareBoxCoderTest.test_correct_relative_codes_with_default_scale">
+<code class="descname">test_correct_relative_codes_with_default_scale</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.square_box_coder_test.SquareBoxCoderTest.test_correct_relative_codes_with_default_scale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.box_coders.square_box_coder_test.SquareBoxCoderTest.test_correct_relative_codes_with_non_default_scale">
+<code class="descname">test_correct_relative_codes_with_non_default_scale</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.square_box_coder_test.SquareBoxCoderTest.test_correct_relative_codes_with_non_default_scale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.box_coders.square_box_coder_test.SquareBoxCoderTest.test_correct_relative_codes_with_small_width">
+<code class="descname">test_correct_relative_codes_with_small_width</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.box_coders.square_box_coder_test.SquareBoxCoderTest.test_correct_relative_codes_with_small_width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.box_coders">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-object_detection.box_coders" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">object_detection.box_coders package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-object_detection.box_coders.faster_rcnn_box_coder">object_detection.box_coders.faster_rcnn_box_coder module</a></li>
+<li><a class="reference internal" href="#module-object_detection.box_coders.faster_rcnn_box_coder_test">object_detection.box_coders.faster_rcnn_box_coder_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.box_coders.keypoint_box_coder">object_detection.box_coders.keypoint_box_coder module</a></li>
+<li><a class="reference internal" href="#module-object_detection.box_coders.keypoint_box_coder_test">object_detection.box_coders.keypoint_box_coder_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.box_coders.mean_stddev_box_coder">object_detection.box_coders.mean_stddev_box_coder module</a></li>
+<li><a class="reference internal" href="#module-object_detection.box_coders.mean_stddev_box_coder_test">object_detection.box_coders.mean_stddev_box_coder_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.box_coders.square_box_coder">object_detection.box_coders.square_box_coder module</a></li>
+<li><a class="reference internal" href="#module-object_detection.box_coders.square_box_coder_test">object_detection.box_coders.square_box_coder_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.box_coders">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/object_detection.box_coders.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, lance.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/object_detection.box_coders.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

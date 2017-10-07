@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>object_detection.anchor_generators package &#8212; models 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="object-detection-anchor-generators-package">
+<h1>object_detection.anchor_generators package<a class="headerlink" href="#object-detection-anchor-generators-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-object_detection.anchor_generators.grid_anchor_generator">
+<span id="object-detection-anchor-generators-grid-anchor-generator-module"></span><h2>object_detection.anchor_generators.grid_anchor_generator module<a class="headerlink" href="#module-object_detection.anchor_generators.grid_anchor_generator" title="Permalink to this headline">¶</a></h2>
+<p>Generates grid anchors on the fly as used in Faster RCNN.</p>
+<p>Generates grid anchors on the fly as described in:
+&#8220;Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks&#8221;
+Shaoqing Ren, Kaiming He, Ross Girshick, and Jian Sun.</p>
+<dl class="class">
+<dt id="object_detection.anchor_generators.grid_anchor_generator.GridAnchorGenerator">
+<em class="property">class </em><code class="descclassname">object_detection.anchor_generators.grid_anchor_generator.</code><code class="descname">GridAnchorGenerator</code><span class="sig-paren">(</span><em>scales=(0.5</em>, <em>1.0</em>, <em>2.0)</em>, <em>aspect_ratios=(0.5</em>, <em>1.0</em>, <em>2.0)</em>, <em>base_anchor_size=None</em>, <em>anchor_stride=None</em>, <em>anchor_offset=None</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.grid_anchor_generator.GridAnchorGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="object_detection.core.html#object_detection.core.anchor_generator.AnchorGenerator" title="object_detection.core.anchor_generator.AnchorGenerator"><code class="xref py py-class docutils literal"><span class="pre">object_detection.core.anchor_generator.AnchorGenerator</span></code></a></p>
+<p>Generates a grid of anchors at given scales and aspect ratios.</p>
+<dl class="method">
+<dt id="object_detection.anchor_generators.grid_anchor_generator.GridAnchorGenerator.name_scope">
+<code class="descname">name_scope</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.grid_anchor_generator.GridAnchorGenerator.name_scope" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.anchor_generators.grid_anchor_generator.GridAnchorGenerator.num_anchors_per_location">
+<code class="descname">num_anchors_per_location</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.grid_anchor_generator.GridAnchorGenerator.num_anchors_per_location" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of anchors per spatial location.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of integers, one for each expected feature map to be passed to
+the <cite>generate</cite> function.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="object_detection.anchor_generators.grid_anchor_generator.tile_anchors">
+<code class="descclassname">object_detection.anchor_generators.grid_anchor_generator.</code><code class="descname">tile_anchors</code><span class="sig-paren">(</span><em>grid_height</em>, <em>grid_width</em>, <em>scales</em>, <em>aspect_ratios</em>, <em>base_anchor_size</em>, <em>anchor_stride</em>, <em>anchor_offset</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.grid_anchor_generator.tile_anchors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a tiled set of anchors strided along a grid in image space.</p>
+<p>This op creates a set of anchor boxes by placing a &#8220;basis&#8221; collection of
+boxes with user-specified scales and aspect ratios centered at evenly
+distributed points along a grid.  The basis collection is specified via the
+scale and aspect_ratios arguments.  For example, setting scales=[.1, .2, .2]
+and aspect ratios = [2,2,1/2] means that we create three boxes: one with scale
+.1, aspect ratio 2, one with scale .2, aspect ratio 2, and one with scale .2
+and aspect ratio 1/2.  Each box is multiplied by &#8220;base_anchor_size&#8221; before
+placing it over its respective center.</p>
+<p>Grid points are specified via grid_height, grid_width parameters as well as
+the anchor_stride and anchor_offset parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>grid_height</strong> &#8211; size of the grid in the y direction (int or int scalar tensor)</li>
+<li><strong>grid_width</strong> &#8211; size of the grid in the x direction (int or int scalar tensor)</li>
+<li><strong>scales</strong> &#8211; a 1-d  (float) tensor representing the scale of each box in the
+basis set.</li>
+<li><strong>aspect_ratios</strong> &#8211; a 1-d (float) tensor representing the aspect ratio of each
+box in the basis set.  The length of the scales and aspect_ratios tensors
+must be equal.</li>
+<li><strong>base_anchor_size</strong> &#8211; base anchor size as [height, width]
+(float tensor of shape [2])</li>
+<li><strong>anchor_stride</strong> &#8211; difference in centers between base anchors for adjacent grid
+positions (float tensor of shape [2])
+feature networks with only VALID padding and even receptive</li>
+<li><strong>anchor_offset</strong> &#8211; center of the anchor with scale and aspect ratio 1 for the
+upper left element of the grid, this should be zero for
+field size, but may need some additional calculation if other
+padding is used (float tensor of shape [2])</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a BoxList holding a collection of N anchor boxes</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.anchor_generators.grid_anchor_generator_test">
+<span id="object-detection-anchor-generators-grid-anchor-generator-test-module"></span><h2>object_detection.anchor_generators.grid_anchor_generator_test module<a class="headerlink" href="#module-object_detection.anchor_generators.grid_anchor_generator_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for object_detection.grid_anchor_generator.</p>
+<dl class="class">
+<dt id="object_detection.anchor_generators.grid_anchor_generator_test.GridAnchorGeneratorTest">
+<em class="property">class </em><code class="descclassname">object_detection.anchor_generators.grid_anchor_generator_test.</code><code class="descname">GridAnchorGeneratorTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.grid_anchor_generator_test.GridAnchorGeneratorTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.anchor_generators.grid_anchor_generator_test.GridAnchorGeneratorTest.test_construct_anchor_grid">
+<code class="descname">test_construct_anchor_grid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.grid_anchor_generator_test.GridAnchorGeneratorTest.test_construct_anchor_grid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.anchor_generators.grid_anchor_generator_test.GridAnchorGeneratorTest.test_construct_single_anchor">
+<code class="descname">test_construct_single_anchor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.grid_anchor_generator_test.GridAnchorGeneratorTest.test_construct_single_anchor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds a 1x1 anchor grid to test the size of the output boxes.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.anchor_generators.multiple_grid_anchor_generator">
+<span id="object-detection-anchor-generators-multiple-grid-anchor-generator-module"></span><h2>object_detection.anchor_generators.multiple_grid_anchor_generator module<a class="headerlink" href="#module-object_detection.anchor_generators.multiple_grid_anchor_generator" title="Permalink to this headline">¶</a></h2>
+<p>Generates grid anchors on the fly corresponding to multiple CNN layers.</p>
+<p>Generates grid anchors on the fly corresponding to multiple CNN layers as
+described in:
+&#8220;SSD: Single Shot MultiBox Detector&#8221;
+Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed,
+Cheng-Yang Fu, Alexander C. Berg
+(see Section 2.2: Choosing scales and aspect ratios for default boxes)</p>
+<dl class="class">
+<dt id="object_detection.anchor_generators.multiple_grid_anchor_generator.MultipleGridAnchorGenerator">
+<em class="property">class </em><code class="descclassname">object_detection.anchor_generators.multiple_grid_anchor_generator.</code><code class="descname">MultipleGridAnchorGenerator</code><span class="sig-paren">(</span><em>box_specs_list</em>, <em>base_anchor_size=None</em>, <em>clip_window=None</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.multiple_grid_anchor_generator.MultipleGridAnchorGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="object_detection.core.html#object_detection.core.anchor_generator.AnchorGenerator" title="object_detection.core.anchor_generator.AnchorGenerator"><code class="xref py py-class docutils literal"><span class="pre">object_detection.core.anchor_generator.AnchorGenerator</span></code></a></p>
+<p>Generate a grid of anchors for multiple CNN layers.</p>
+<dl class="method">
+<dt id="object_detection.anchor_generators.multiple_grid_anchor_generator.MultipleGridAnchorGenerator.name_scope">
+<code class="descname">name_scope</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.multiple_grid_anchor_generator.MultipleGridAnchorGenerator.name_scope" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.anchor_generators.multiple_grid_anchor_generator.MultipleGridAnchorGenerator.num_anchors_per_location">
+<code class="descname">num_anchors_per_location</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.multiple_grid_anchor_generator.MultipleGridAnchorGenerator.num_anchors_per_location" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of anchors per spatial location.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of integers, one for each expected feature map to be passed to
+the Generate function.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="object_detection.anchor_generators.multiple_grid_anchor_generator.create_ssd_anchors">
+<code class="descclassname">object_detection.anchor_generators.multiple_grid_anchor_generator.</code><code class="descname">create_ssd_anchors</code><span class="sig-paren">(</span><em>num_layers=6</em>, <em>min_scale=0.2</em>, <em>max_scale=0.95</em>, <em>aspect_ratios=(1.0</em>, <em>2.0</em>, <em>3.0</em>, <em>0.5</em>, <em>0.3333333333333333)</em>, <em>base_anchor_size=None</em>, <em>reduce_boxes_in_lowest_layer=True</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.multiple_grid_anchor_generator.create_ssd_anchors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates MultipleGridAnchorGenerator for SSD anchors.</p>
+<p>This function instantiates a MultipleGridAnchorGenerator that reproduces
+<code class="docutils literal"><span class="pre">default</span> <span class="pre">box</span></code> construction proposed by Liu et al in the SSD paper.
+See Section 2.2 for details. Grid sizes are assumed to be passed in
+at generation time from finest resolution to coarsest resolution &#8212; this is
+used to (linearly) interpolate scales of anchor boxes corresponding to the
+intermediate grid sizes.</p>
+<p>Anchors that are returned by calling the <cite>generate</cite> method on the returned
+MultipleGridAnchorGenerator object are always in normalized coordinates
+and clipped to the unit square: (i.e. all coordinates lie in [0, 1]x[0, 1]).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>num_layers</strong> &#8211; integer number of grid layers to create anchors for (actual
+grid sizes passed in at generation time)</li>
+<li><strong>min_scale</strong> &#8211; scale of anchors corresponding to finest resolution (float)</li>
+<li><strong>max_scale</strong> &#8211; scale of anchors corresponding to coarsest resolution (float)</li>
+<li><strong>aspect_ratios</strong> &#8211; list or tuple of (float) aspect ratios to place on each
+grid point.</li>
+<li><strong>base_anchor_size</strong> &#8211; base anchor size as [height, width].</li>
+<li><strong>reduce_boxes_in_lowest_layer</strong> &#8211; a boolean to indicate whether the fixed 3
+boxes per location is used in the lowest layer.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a MultipleGridAnchorGenerator</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.anchor_generators.multiple_grid_anchor_generator_test">
+<span id="object-detection-anchor-generators-multiple-grid-anchor-generator-test-module"></span><h2>object_detection.anchor_generators.multiple_grid_anchor_generator_test module<a class="headerlink" href="#module-object_detection.anchor_generators.multiple_grid_anchor_generator_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for anchor_generators.multiple_grid_anchor_generator_test.py.</p>
+<dl class="class">
+<dt id="object_detection.anchor_generators.multiple_grid_anchor_generator_test.CreateSSDAnchorsTest">
+<em class="property">class </em><code class="descclassname">object_detection.anchor_generators.multiple_grid_anchor_generator_test.</code><code class="descname">CreateSSDAnchorsTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.multiple_grid_anchor_generator_test.CreateSSDAnchorsTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.anchor_generators.multiple_grid_anchor_generator_test.CreateSSDAnchorsTest.test_create_ssd_anchors_returns_correct_shape">
+<code class="descname">test_create_ssd_anchors_returns_correct_shape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.multiple_grid_anchor_generator_test.CreateSSDAnchorsTest.test_create_ssd_anchors_returns_correct_shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="object_detection.anchor_generators.multiple_grid_anchor_generator_test.MultipleGridAnchorGeneratorTest">
+<em class="property">class </em><code class="descclassname">object_detection.anchor_generators.multiple_grid_anchor_generator_test.</code><code class="descname">MultipleGridAnchorGeneratorTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.multiple_grid_anchor_generator_test.MultipleGridAnchorGeneratorTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.anchor_generators.multiple_grid_anchor_generator_test.MultipleGridAnchorGeneratorTest.test_construct_anchor_grid">
+<code class="descname">test_construct_anchor_grid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.multiple_grid_anchor_generator_test.MultipleGridAnchorGeneratorTest.test_construct_anchor_grid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.anchor_generators.multiple_grid_anchor_generator_test.MultipleGridAnchorGeneratorTest.test_construct_anchor_grid_non_square">
+<code class="descname">test_construct_anchor_grid_non_square</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.multiple_grid_anchor_generator_test.MultipleGridAnchorGeneratorTest.test_construct_anchor_grid_non_square" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.anchor_generators.multiple_grid_anchor_generator_test.MultipleGridAnchorGeneratorTest.test_construct_anchor_grid_unnormalized">
+<code class="descname">test_construct_anchor_grid_unnormalized</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.multiple_grid_anchor_generator_test.MultipleGridAnchorGeneratorTest.test_construct_anchor_grid_unnormalized" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.anchor_generators.multiple_grid_anchor_generator_test.MultipleGridAnchorGeneratorTest.test_construct_multiple_grids">
+<code class="descname">test_construct_multiple_grids</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.multiple_grid_anchor_generator_test.MultipleGridAnchorGeneratorTest.test_construct_multiple_grids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.anchor_generators.multiple_grid_anchor_generator_test.MultipleGridAnchorGeneratorTest.test_construct_multiple_grids_with_clipping">
+<code class="descname">test_construct_multiple_grids_with_clipping</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.multiple_grid_anchor_generator_test.MultipleGridAnchorGeneratorTest.test_construct_multiple_grids_with_clipping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.anchor_generators.multiple_grid_anchor_generator_test.MultipleGridAnchorGeneratorTest.test_construct_single_anchor_grid">
+<code class="descname">test_construct_single_anchor_grid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.multiple_grid_anchor_generator_test.MultipleGridAnchorGeneratorTest.test_construct_single_anchor_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds a 1x1 anchor grid to test the size of the output boxes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.anchor_generators.multiple_grid_anchor_generator_test.MultipleGridAnchorGeneratorTest.test_invalid_box_specs">
+<code class="descname">test_invalid_box_specs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.multiple_grid_anchor_generator_test.MultipleGridAnchorGeneratorTest.test_invalid_box_specs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.anchor_generators.multiple_grid_anchor_generator_test.MultipleGridAnchorGeneratorTest.test_invalid_generate_arguments">
+<code class="descname">test_invalid_generate_arguments</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.anchor_generators.multiple_grid_anchor_generator_test.MultipleGridAnchorGeneratorTest.test_invalid_generate_arguments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.anchor_generators">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-object_detection.anchor_generators" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">object_detection.anchor_generators package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-object_detection.anchor_generators.grid_anchor_generator">object_detection.anchor_generators.grid_anchor_generator module</a></li>
+<li><a class="reference internal" href="#module-object_detection.anchor_generators.grid_anchor_generator_test">object_detection.anchor_generators.grid_anchor_generator_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.anchor_generators.multiple_grid_anchor_generator">object_detection.anchor_generators.multiple_grid_anchor_generator module</a></li>
+<li><a class="reference internal" href="#module-object_detection.anchor_generators.multiple_grid_anchor_generator_test">object_detection.anchor_generators.multiple_grid_anchor_generator_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.anchor_generators">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/object_detection.anchor_generators.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, lance.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/object_detection.anchor_generators.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

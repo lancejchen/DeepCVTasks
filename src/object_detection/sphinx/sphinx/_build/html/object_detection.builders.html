@@ -1,0 +1,1320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>object_detection.builders package &#8212; models 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="object-detection-builders-package">
+<h1>object_detection.builders package<a class="headerlink" href="#object-detection-builders-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-object_detection.builders.anchor_generator_builder">
+<span id="object-detection-builders-anchor-generator-builder-module"></span><h2>object_detection.builders.anchor_generator_builder module<a class="headerlink" href="#module-object_detection.builders.anchor_generator_builder" title="Permalink to this headline">¶</a></h2>
+<p>A function to build an object detection anchor generator from config.</p>
+<dl class="function">
+<dt id="object_detection.builders.anchor_generator_builder.build">
+<code class="descclassname">object_detection.builders.anchor_generator_builder.</code><code class="descname">build</code><span class="sig-paren">(</span><em>anchor_generator_config</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.anchor_generator_builder.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds an anchor generator based on the config.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>anchor_generator_config</strong> &#8211; An anchor_generator.proto object containing the
+config for the desired anchor generator.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Anchor generator based on the config.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; On empty anchor generator proto.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.anchor_generator_builder_test">
+<span id="object-detection-builders-anchor-generator-builder-test-module"></span><h2>object_detection.builders.anchor_generator_builder_test module<a class="headerlink" href="#module-object_detection.builders.anchor_generator_builder_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for anchor_generator_builder.</p>
+<dl class="class">
+<dt id="object_detection.builders.anchor_generator_builder_test.AnchorGeneratorBuilderTest">
+<em class="property">class </em><code class="descclassname">object_detection.builders.anchor_generator_builder_test.</code><code class="descname">AnchorGeneratorBuilderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.anchor_generator_builder_test.AnchorGeneratorBuilderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.builders.anchor_generator_builder_test.AnchorGeneratorBuilderTest.assert_almost_list_equal">
+<code class="descname">assert_almost_list_equal</code><span class="sig-paren">(</span><em>expected_list</em>, <em>actual_list</em>, <em>delta=None</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.anchor_generator_builder_test.AnchorGeneratorBuilderTest.assert_almost_list_equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.anchor_generator_builder_test.AnchorGeneratorBuilderTest.test_build_grid_anchor_generator_with_defaults">
+<code class="descname">test_build_grid_anchor_generator_with_defaults</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.anchor_generator_builder_test.AnchorGeneratorBuilderTest.test_build_grid_anchor_generator_with_defaults" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.anchor_generator_builder_test.AnchorGeneratorBuilderTest.test_build_grid_anchor_generator_with_non_default_parameters">
+<code class="descname">test_build_grid_anchor_generator_with_non_default_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.anchor_generator_builder_test.AnchorGeneratorBuilderTest.test_build_grid_anchor_generator_with_non_default_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.anchor_generator_builder_test.AnchorGeneratorBuilderTest.test_build_ssd_anchor_generator_with_defaults">
+<code class="descname">test_build_ssd_anchor_generator_with_defaults</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.anchor_generator_builder_test.AnchorGeneratorBuilderTest.test_build_ssd_anchor_generator_with_defaults" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.anchor_generator_builder_test.AnchorGeneratorBuilderTest.test_build_ssd_anchor_generator_with_non_default_parameters">
+<code class="descname">test_build_ssd_anchor_generator_with_non_default_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.anchor_generator_builder_test.AnchorGeneratorBuilderTest.test_build_ssd_anchor_generator_with_non_default_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.anchor_generator_builder_test.AnchorGeneratorBuilderTest.test_build_ssd_anchor_generator_withoud_reduced_boxes">
+<code class="descname">test_build_ssd_anchor_generator_withoud_reduced_boxes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.anchor_generator_builder_test.AnchorGeneratorBuilderTest.test_build_ssd_anchor_generator_withoud_reduced_boxes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.anchor_generator_builder_test.AnchorGeneratorBuilderTest.test_raise_value_error_on_empty_anchor_genertor">
+<code class="descname">test_raise_value_error_on_empty_anchor_genertor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.anchor_generator_builder_test.AnchorGeneratorBuilderTest.test_raise_value_error_on_empty_anchor_genertor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.box_coder_builder">
+<span id="object-detection-builders-box-coder-builder-module"></span><h2>object_detection.builders.box_coder_builder module<a class="headerlink" href="#module-object_detection.builders.box_coder_builder" title="Permalink to this headline">¶</a></h2>
+<p>A function to build an object detection box coder from configuration.</p>
+<dl class="function">
+<dt id="object_detection.builders.box_coder_builder.build">
+<code class="descclassname">object_detection.builders.box_coder_builder.</code><code class="descname">build</code><span class="sig-paren">(</span><em>box_coder_config</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_coder_builder.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds a box coder object based on the box coder config.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>box_coder_config</strong> &#8211; A box_coder.proto object containing the config for the
+desired box coder.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">BoxCoder based on the config.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; On empty box coder proto.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.box_coder_builder_test">
+<span id="object-detection-builders-box-coder-builder-test-module"></span><h2>object_detection.builders.box_coder_builder_test module<a class="headerlink" href="#module-object_detection.builders.box_coder_builder_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for box_coder_builder.</p>
+<dl class="class">
+<dt id="object_detection.builders.box_coder_builder_test.BoxCoderBuilderTest">
+<em class="property">class </em><code class="descclassname">object_detection.builders.box_coder_builder_test.</code><code class="descname">BoxCoderBuilderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_coder_builder_test.BoxCoderBuilderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.builders.box_coder_builder_test.BoxCoderBuilderTest.test_build_faster_rcnn_box_coder_with_defaults">
+<code class="descname">test_build_faster_rcnn_box_coder_with_defaults</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_coder_builder_test.BoxCoderBuilderTest.test_build_faster_rcnn_box_coder_with_defaults" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.box_coder_builder_test.BoxCoderBuilderTest.test_build_faster_rcnn_box_coder_with_non_default_parameters">
+<code class="descname">test_build_faster_rcnn_box_coder_with_non_default_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_coder_builder_test.BoxCoderBuilderTest.test_build_faster_rcnn_box_coder_with_non_default_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.box_coder_builder_test.BoxCoderBuilderTest.test_build_mean_stddev_box_coder">
+<code class="descname">test_build_mean_stddev_box_coder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_coder_builder_test.BoxCoderBuilderTest.test_build_mean_stddev_box_coder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.box_coder_builder_test.BoxCoderBuilderTest.test_build_square_box_coder_with_defaults">
+<code class="descname">test_build_square_box_coder_with_defaults</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_coder_builder_test.BoxCoderBuilderTest.test_build_square_box_coder_with_defaults" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.box_coder_builder_test.BoxCoderBuilderTest.test_build_square_box_coder_with_non_default_parameters">
+<code class="descname">test_build_square_box_coder_with_non_default_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_coder_builder_test.BoxCoderBuilderTest.test_build_square_box_coder_with_non_default_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.box_coder_builder_test.BoxCoderBuilderTest.test_raise_error_on_empty_box_coder">
+<code class="descname">test_raise_error_on_empty_box_coder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_coder_builder_test.BoxCoderBuilderTest.test_raise_error_on_empty_box_coder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.box_predictor_builder">
+<span id="object-detection-builders-box-predictor-builder-module"></span><h2>object_detection.builders.box_predictor_builder module<a class="headerlink" href="#module-object_detection.builders.box_predictor_builder" title="Permalink to this headline">¶</a></h2>
+<p>Function to build box predictor from configuration.</p>
+<dl class="function">
+<dt id="object_detection.builders.box_predictor_builder.build">
+<code class="descclassname">object_detection.builders.box_predictor_builder.</code><code class="descname">build</code><span class="sig-paren">(</span><em>argscope_fn</em>, <em>box_predictor_config</em>, <em>is_training</em>, <em>num_classes</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_predictor_builder.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds box predictor based on the configuration.</p>
+<p>Builds box predictor based on the configuration. See box_predictor.proto for
+configurable options. Also, see box_predictor.py for more details.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>argscope_fn</strong> &#8211; <dl class="docutils">
+<dt>A function that takes the following inputs:</dt>
+<dd><ul class="first last">
+<li>hyperparams_pb2.Hyperparams proto</li>
+<li>a boolean indicating if the model is in training mode.</li>
+</ul>
+</dd>
+</dl>
+<p>and returns a tf slim argscope for Conv and FC hyperparameters.</p>
+</li>
+<li><strong>box_predictor_config</strong> &#8211; box_predictor_pb2.BoxPredictor proto containing
+configuration.</li>
+<li><strong>is_training</strong> &#8211; Whether the models is in training mode.</li>
+<li><strong>num_classes</strong> &#8211; Number of classes to predict.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">box_predictor.BoxPredictor object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.box_predictor" title="object_detection.core.box_predictor">box_predictor</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; On unknown box predictor.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.box_predictor_builder_test">
+<span id="object-detection-builders-box-predictor-builder-test-module"></span><h2>object_detection.builders.box_predictor_builder_test module<a class="headerlink" href="#module-object_detection.builders.box_predictor_builder_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for box_predictor_builder.</p>
+<dl class="class">
+<dt id="object_detection.builders.box_predictor_builder_test.ConvolutionalBoxPredictorBuilderTest">
+<em class="property">class </em><code class="descclassname">object_detection.builders.box_predictor_builder_test.</code><code class="descname">ConvolutionalBoxPredictorBuilderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_predictor_builder_test.ConvolutionalBoxPredictorBuilderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.builders.box_predictor_builder_test.ConvolutionalBoxPredictorBuilderTest.test_box_predictor_calls_conv_argscope_fn">
+<code class="descname">test_box_predictor_calls_conv_argscope_fn</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_predictor_builder_test.ConvolutionalBoxPredictorBuilderTest.test_box_predictor_calls_conv_argscope_fn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.box_predictor_builder_test.ConvolutionalBoxPredictorBuilderTest.test_construct_default_conv_box_predictor">
+<code class="descname">test_construct_default_conv_box_predictor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_predictor_builder_test.ConvolutionalBoxPredictorBuilderTest.test_construct_default_conv_box_predictor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.box_predictor_builder_test.ConvolutionalBoxPredictorBuilderTest.test_construct_non_default_conv_box_predictor">
+<code class="descname">test_construct_non_default_conv_box_predictor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_predictor_builder_test.ConvolutionalBoxPredictorBuilderTest.test_construct_non_default_conv_box_predictor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="object_detection.builders.box_predictor_builder_test.MaskRCNNBoxPredictorBuilderTest">
+<em class="property">class </em><code class="descclassname">object_detection.builders.box_predictor_builder_test.</code><code class="descname">MaskRCNNBoxPredictorBuilderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_predictor_builder_test.MaskRCNNBoxPredictorBuilderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.builders.box_predictor_builder_test.MaskRCNNBoxPredictorBuilderTest.test_box_predictor_builder_calls_fc_argscope_fn">
+<code class="descname">test_box_predictor_builder_calls_fc_argscope_fn</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_predictor_builder_test.MaskRCNNBoxPredictorBuilderTest.test_box_predictor_builder_calls_fc_argscope_fn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.box_predictor_builder_test.MaskRCNNBoxPredictorBuilderTest.test_build_box_predictor_with_mask_branch">
+<code class="descname">test_build_box_predictor_with_mask_branch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_predictor_builder_test.MaskRCNNBoxPredictorBuilderTest.test_build_box_predictor_with_mask_branch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.box_predictor_builder_test.MaskRCNNBoxPredictorBuilderTest.test_build_default_mask_rcnn_box_predictor">
+<code class="descname">test_build_default_mask_rcnn_box_predictor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_predictor_builder_test.MaskRCNNBoxPredictorBuilderTest.test_build_default_mask_rcnn_box_predictor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.box_predictor_builder_test.MaskRCNNBoxPredictorBuilderTest.test_non_default_mask_rcnn_box_predictor">
+<code class="descname">test_non_default_mask_rcnn_box_predictor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_predictor_builder_test.MaskRCNNBoxPredictorBuilderTest.test_non_default_mask_rcnn_box_predictor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="object_detection.builders.box_predictor_builder_test.RfcnBoxPredictorBuilderTest">
+<em class="property">class </em><code class="descclassname">object_detection.builders.box_predictor_builder_test.</code><code class="descname">RfcnBoxPredictorBuilderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_predictor_builder_test.RfcnBoxPredictorBuilderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.builders.box_predictor_builder_test.RfcnBoxPredictorBuilderTest.test_box_predictor_calls_fc_argscope_fn">
+<code class="descname">test_box_predictor_calls_fc_argscope_fn</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_predictor_builder_test.RfcnBoxPredictorBuilderTest.test_box_predictor_calls_fc_argscope_fn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.box_predictor_builder_test.RfcnBoxPredictorBuilderTest.test_default_rfcn_box_predictor">
+<code class="descname">test_default_rfcn_box_predictor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_predictor_builder_test.RfcnBoxPredictorBuilderTest.test_default_rfcn_box_predictor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.box_predictor_builder_test.RfcnBoxPredictorBuilderTest.test_non_default_rfcn_box_predictor">
+<code class="descname">test_non_default_rfcn_box_predictor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.box_predictor_builder_test.RfcnBoxPredictorBuilderTest.test_non_default_rfcn_box_predictor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.hyperparams_builder">
+<span id="object-detection-builders-hyperparams-builder-module"></span><h2>object_detection.builders.hyperparams_builder module<a class="headerlink" href="#module-object_detection.builders.hyperparams_builder" title="Permalink to this headline">¶</a></h2>
+<p>Builder function to construct tf-slim arg_scope for convolution, fc ops.</p>
+<dl class="function">
+<dt id="object_detection.builders.hyperparams_builder.build">
+<code class="descclassname">object_detection.builders.hyperparams_builder.</code><code class="descname">build</code><span class="sig-paren">(</span><em>hyperparams_config</em>, <em>is_training</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds tf-slim arg_scope for convolution ops based on the config.</p>
+<p>Returns an arg_scope to use for convolution ops containing weights
+initializer, weights regularizer, activation function, batch norm function
+and batch norm parameters based on the configuration.</p>
+<p>Note that if the batch_norm parameteres are not specified in the config
+(i.e. left to default) then batch norm is excluded from the arg_scope.</p>
+<p>The batch norm parameters are set for updates based on <cite>is_training</cite> argument
+and conv_hyperparams_config.batch_norm.train parameter. During training, they
+are updated only if batch_norm.train parameter is true. However, during eval,
+no updates are made to the batch norm variables. In both cases, their current
+values are used during forward pass.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>hyperparams_config</strong> &#8211; hyperparams.proto object containing
+hyperparameters.</li>
+<li><strong>is_training</strong> &#8211; Whether the network is in training mode.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">tf-slim arg_scope containing hyperparameters for ops.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">arg_scope</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; if hyperparams_config is not of type hyperparams.Hyperparams.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.hyperparams_builder_test">
+<span id="object-detection-builders-hyperparams-builder-test-module"></span><h2>object_detection.builders.hyperparams_builder_test module<a class="headerlink" href="#module-object_detection.builders.hyperparams_builder_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests object_detection.core.hyperparams_builder.</p>
+<dl class="class">
+<dt id="object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest">
+<em class="property">class </em><code class="descclassname">object_detection.builders.hyperparams_builder_test.</code><code class="descname">HyperparamsBuilderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_default_arg_scope_has_conv2d_op">
+<code class="descname">test_default_arg_scope_has_conv2d_op</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_default_arg_scope_has_conv2d_op" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_default_arg_scope_has_conv2d_transpose_op">
+<code class="descname">test_default_arg_scope_has_conv2d_transpose_op</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_default_arg_scope_has_conv2d_transpose_op" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_default_arg_scope_has_separable_conv2d_op">
+<code class="descname">test_default_arg_scope_has_separable_conv2d_op</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_default_arg_scope_has_separable_conv2d_op" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_do_not_use_batch_norm_if_default">
+<code class="descname">test_do_not_use_batch_norm_if_default</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_do_not_use_batch_norm_if_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_explicit_fc_op_arg_scope_has_fully_connected_op">
+<code class="descname">test_explicit_fc_op_arg_scope_has_fully_connected_op</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_explicit_fc_op_arg_scope_has_fully_connected_op" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_return_batch_norm_params_with_notrain_during_eval">
+<code class="descname">test_return_batch_norm_params_with_notrain_during_eval</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_return_batch_norm_params_with_notrain_during_eval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_return_batch_norm_params_with_notrain_when_train_is_false">
+<code class="descname">test_return_batch_norm_params_with_notrain_when_train_is_false</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_return_batch_norm_params_with_notrain_when_train_is_false" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_return_l1_regularized_weights">
+<code class="descname">test_return_l1_regularized_weights</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_return_l1_regularized_weights" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_return_l2_regularizer_weights">
+<code class="descname">test_return_l2_regularizer_weights</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_return_l2_regularizer_weights" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_return_non_default_batch_norm_params_with_train_during_train">
+<code class="descname">test_return_non_default_batch_norm_params_with_train_during_train</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_return_non_default_batch_norm_params_with_train_during_train" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_separable_conv2d_and_conv2d_and_transpose_have_same_parameters">
+<code class="descname">test_separable_conv2d_and_conv2d_and_transpose_have_same_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_separable_conv2d_and_conv2d_and_transpose_have_same_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_use_none_activation">
+<code class="descname">test_use_none_activation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_use_none_activation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_use_relu_6_activation">
+<code class="descname">test_use_relu_6_activation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_use_relu_6_activation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_use_relu_activation">
+<code class="descname">test_use_relu_activation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_use_relu_activation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_variance_in_range_with_truncated_normal_initializer">
+<code class="descname">test_variance_in_range_with_truncated_normal_initializer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_variance_in_range_with_truncated_normal_initializer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_variance_in_range_with_variance_scaling_initializer_fan_avg">
+<code class="descname">test_variance_in_range_with_variance_scaling_initializer_fan_avg</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_variance_in_range_with_variance_scaling_initializer_fan_avg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_variance_in_range_with_variance_scaling_initializer_fan_in">
+<code class="descname">test_variance_in_range_with_variance_scaling_initializer_fan_in</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_variance_in_range_with_variance_scaling_initializer_fan_in" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_variance_in_range_with_variance_scaling_initializer_fan_out">
+<code class="descname">test_variance_in_range_with_variance_scaling_initializer_fan_out</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_variance_in_range_with_variance_scaling_initializer_fan_out" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_variance_in_range_with_variance_scaling_initializer_uniform">
+<code class="descname">test_variance_in_range_with_variance_scaling_initializer_uniform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.hyperparams_builder_test.HyperparamsBuilderTest.test_variance_in_range_with_variance_scaling_initializer_uniform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.image_resizer_builder">
+<span id="object-detection-builders-image-resizer-builder-module"></span><h2>object_detection.builders.image_resizer_builder module<a class="headerlink" href="#module-object_detection.builders.image_resizer_builder" title="Permalink to this headline">¶</a></h2>
+<p>Builder function for image resizing operations.</p>
+<dl class="function">
+<dt id="object_detection.builders.image_resizer_builder.build">
+<code class="descclassname">object_detection.builders.image_resizer_builder.</code><code class="descname">build</code><span class="sig-paren">(</span><em>image_resizer_config</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.image_resizer_builder.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds callable for image resizing operations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image_resizer_config</strong> &#8211; image_resizer.proto object containing parameters for
+an image resizing operation.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>Callable for image resizing.  This callable always takes</dt>
+<dd><p class="first last">a rank-3 image tensor (corresponding to a single image) and returns a
+rank-3 image tensor, possibly with new spatial dimensions.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">image_resizer_fn</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; if <cite>image_resizer_config</cite> is of incorrect type.</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; if <cite>image_resizer_config.image_resizer_oneof</cite> is of expected
+type.</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; if min_dimension &gt; max_dimension when keep_aspect_ratio_resizer
+is used.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.image_resizer_builder_test">
+<span id="object-detection-builders-image-resizer-builder-test-module"></span><h2>object_detection.builders.image_resizer_builder_test module<a class="headerlink" href="#module-object_detection.builders.image_resizer_builder_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for object_detection.builders.image_resizer_builder.</p>
+<dl class="class">
+<dt id="object_detection.builders.image_resizer_builder_test.ImageResizerBuilderTest">
+<em class="property">class </em><code class="descclassname">object_detection.builders.image_resizer_builder_test.</code><code class="descname">ImageResizerBuilderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.image_resizer_builder_test.ImageResizerBuilderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.builders.image_resizer_builder_test.ImageResizerBuilderTest.test_built_fixed_shape_resizer_returns_expected_shape">
+<code class="descname">test_built_fixed_shape_resizer_returns_expected_shape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.image_resizer_builder_test.ImageResizerBuilderTest.test_built_fixed_shape_resizer_returns_expected_shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.image_resizer_builder_test.ImageResizerBuilderTest.test_built_keep_aspect_ratio_resizer_returns_expected_shape">
+<code class="descname">test_built_keep_aspect_ratio_resizer_returns_expected_shape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.image_resizer_builder_test.ImageResizerBuilderTest.test_built_keep_aspect_ratio_resizer_returns_expected_shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.image_resizer_builder_test.ImageResizerBuilderTest.test_raises_error_on_invalid_input">
+<code class="descname">test_raises_error_on_invalid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.image_resizer_builder_test.ImageResizerBuilderTest.test_raises_error_on_invalid_input" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.input_reader_builder">
+<span id="object-detection-builders-input-reader-builder-module"></span><h2>object_detection.builders.input_reader_builder module<a class="headerlink" href="#module-object_detection.builders.input_reader_builder" title="Permalink to this headline">¶</a></h2>
+<p>Input reader builder.</p>
+<p>Creates data sources for DetectionModels from an InputReader config. See
+input_reader.proto for options.</p>
+<p>Note: If users wishes to also use their own InputReaders with the Object
+Detection configuration framework, they should define their own builder function
+that wraps the build function.</p>
+<dl class="function">
+<dt id="object_detection.builders.input_reader_builder.build">
+<code class="descclassname">object_detection.builders.input_reader_builder.</code><code class="descname">build</code><span class="sig-paren">(</span><em>input_reader_config</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.input_reader_builder.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds a tensor dictionary based on the InputReader config.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>input_reader_config</strong> &#8211; A input_reader_pb2.InputReader object.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A tensor dict based on the input_reader_config.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; On invalid input reader proto.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.input_reader_builder_test">
+<span id="object-detection-builders-input-reader-builder-test-module"></span><h2>object_detection.builders.input_reader_builder_test module<a class="headerlink" href="#module-object_detection.builders.input_reader_builder_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for input_reader_builder.</p>
+<dl class="class">
+<dt id="object_detection.builders.input_reader_builder_test.InputReaderBuilderTest">
+<em class="property">class </em><code class="descclassname">object_detection.builders.input_reader_builder_test.</code><code class="descname">InputReaderBuilderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.input_reader_builder_test.InputReaderBuilderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.builders.input_reader_builder_test.InputReaderBuilderTest.create_tf_record">
+<code class="descname">create_tf_record</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.input_reader_builder_test.InputReaderBuilderTest.create_tf_record" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.input_reader_builder_test.InputReaderBuilderTest.test_build_tf_record_input_reader">
+<code class="descname">test_build_tf_record_input_reader</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.input_reader_builder_test.InputReaderBuilderTest.test_build_tf_record_input_reader" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.losses_builder">
+<span id="object-detection-builders-losses-builder-module"></span><h2>object_detection.builders.losses_builder module<a class="headerlink" href="#module-object_detection.builders.losses_builder" title="Permalink to this headline">¶</a></h2>
+<p>A function to build localization and classification losses from config.</p>
+<dl class="function">
+<dt id="object_detection.builders.losses_builder.build">
+<code class="descclassname">object_detection.builders.losses_builder.</code><code class="descname">build</code><span class="sig-paren">(</span><em>loss_config</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build losses based on the config.</p>
+<p>Builds classification, localization losses and optionally a hard example miner
+based on the config.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>loss_config</strong> &#8211; A losses_pb2.Loss object.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Classification loss object.
+localization_loss: Localization loss object.
+classification_weight: Classification loss weight.
+localization_weight: Localization loss weight.
+hard_example_miner: Hard example miner object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">classification_loss</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="object_detection.builders.losses_builder.build_hard_example_miner">
+<code class="descclassname">object_detection.builders.losses_builder.</code><code class="descname">build_hard_example_miner</code><span class="sig-paren">(</span><em>config</em>, <em>classification_weight</em>, <em>localization_weight</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder.build_hard_example_miner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds hard example miner based on the config.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>config</strong> &#8211; A losses_pb2.HardExampleMiner object.</li>
+<li><strong>classification_weight</strong> &#8211; Classification loss weight.</li>
+<li><strong>localization_weight</strong> &#8211; Localization loss weight.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Hard example miner.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.losses_builder_test">
+<span id="object-detection-builders-losses-builder-test-module"></span><h2>object_detection.builders.losses_builder_test module<a class="headerlink" href="#module-object_detection.builders.losses_builder_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for losses_builder.</p>
+<dl class="class">
+<dt id="object_detection.builders.losses_builder_test.ClassificationLossBuilderTest">
+<em class="property">class </em><code class="descclassname">object_detection.builders.losses_builder_test.</code><code class="descname">ClassificationLossBuilderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder_test.ClassificationLossBuilderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.builders.losses_builder_test.ClassificationLossBuilderTest.test_anchorwise_output">
+<code class="descname">test_anchorwise_output</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder_test.ClassificationLossBuilderTest.test_anchorwise_output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.losses_builder_test.ClassificationLossBuilderTest.test_build_bootstrapped_sigmoid_classification_loss">
+<code class="descname">test_build_bootstrapped_sigmoid_classification_loss</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder_test.ClassificationLossBuilderTest.test_build_bootstrapped_sigmoid_classification_loss" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.losses_builder_test.ClassificationLossBuilderTest.test_build_weighted_sigmoid_classification_loss">
+<code class="descname">test_build_weighted_sigmoid_classification_loss</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder_test.ClassificationLossBuilderTest.test_build_weighted_sigmoid_classification_loss" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.losses_builder_test.ClassificationLossBuilderTest.test_build_weighted_softmax_classification_loss">
+<code class="descname">test_build_weighted_softmax_classification_loss</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder_test.ClassificationLossBuilderTest.test_build_weighted_softmax_classification_loss" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.losses_builder_test.ClassificationLossBuilderTest.test_raise_error_on_empty_config">
+<code class="descname">test_raise_error_on_empty_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder_test.ClassificationLossBuilderTest.test_raise_error_on_empty_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="object_detection.builders.losses_builder_test.HardExampleMinerBuilderTest">
+<em class="property">class </em><code class="descclassname">object_detection.builders.losses_builder_test.</code><code class="descname">HardExampleMinerBuilderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder_test.HardExampleMinerBuilderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.builders.losses_builder_test.HardExampleMinerBuilderTest.test_build_hard_example_miner_for_classification_loss">
+<code class="descname">test_build_hard_example_miner_for_classification_loss</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder_test.HardExampleMinerBuilderTest.test_build_hard_example_miner_for_classification_loss" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.losses_builder_test.HardExampleMinerBuilderTest.test_build_hard_example_miner_for_localization_loss">
+<code class="descname">test_build_hard_example_miner_for_localization_loss</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder_test.HardExampleMinerBuilderTest.test_build_hard_example_miner_for_localization_loss" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.losses_builder_test.HardExampleMinerBuilderTest.test_build_hard_example_miner_with_non_default_values">
+<code class="descname">test_build_hard_example_miner_with_non_default_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder_test.HardExampleMinerBuilderTest.test_build_hard_example_miner_with_non_default_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.losses_builder_test.HardExampleMinerBuilderTest.test_do_not_build_hard_example_miner_by_default">
+<code class="descname">test_do_not_build_hard_example_miner_by_default</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder_test.HardExampleMinerBuilderTest.test_do_not_build_hard_example_miner_by_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="object_detection.builders.losses_builder_test.LocalizationLossBuilderTest">
+<em class="property">class </em><code class="descclassname">object_detection.builders.losses_builder_test.</code><code class="descname">LocalizationLossBuilderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder_test.LocalizationLossBuilderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.builders.losses_builder_test.LocalizationLossBuilderTest.test_anchorwise_output">
+<code class="descname">test_anchorwise_output</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder_test.LocalizationLossBuilderTest.test_anchorwise_output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.losses_builder_test.LocalizationLossBuilderTest.test_build_weighted_iou_localization_loss">
+<code class="descname">test_build_weighted_iou_localization_loss</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder_test.LocalizationLossBuilderTest.test_build_weighted_iou_localization_loss" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.losses_builder_test.LocalizationLossBuilderTest.test_build_weighted_l2_localization_loss">
+<code class="descname">test_build_weighted_l2_localization_loss</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder_test.LocalizationLossBuilderTest.test_build_weighted_l2_localization_loss" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.losses_builder_test.LocalizationLossBuilderTest.test_build_weighted_smooth_l1_localization_loss">
+<code class="descname">test_build_weighted_smooth_l1_localization_loss</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder_test.LocalizationLossBuilderTest.test_build_weighted_smooth_l1_localization_loss" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.losses_builder_test.LocalizationLossBuilderTest.test_raise_error_on_empty_localization_config">
+<code class="descname">test_raise_error_on_empty_localization_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder_test.LocalizationLossBuilderTest.test_raise_error_on_empty_localization_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="object_detection.builders.losses_builder_test.LossBuilderTest">
+<em class="property">class </em><code class="descclassname">object_detection.builders.losses_builder_test.</code><code class="descname">LossBuilderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder_test.LossBuilderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.builders.losses_builder_test.LossBuilderTest.test_build_all_loss_parameters">
+<code class="descname">test_build_all_loss_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.losses_builder_test.LossBuilderTest.test_build_all_loss_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.matcher_builder">
+<span id="object-detection-builders-matcher-builder-module"></span><h2>object_detection.builders.matcher_builder module<a class="headerlink" href="#module-object_detection.builders.matcher_builder" title="Permalink to this headline">¶</a></h2>
+<p>A function to build an object detection matcher from configuration.</p>
+<dl class="function">
+<dt id="object_detection.builders.matcher_builder.build">
+<code class="descclassname">object_detection.builders.matcher_builder.</code><code class="descname">build</code><span class="sig-paren">(</span><em>matcher_config</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.matcher_builder.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds a matcher object based on the matcher config.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>matcher_config</strong> &#8211; A matcher.proto object containing the config for the desired
+Matcher.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Matcher based on the config.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; On empty matcher proto.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.matcher_builder_test">
+<span id="object-detection-builders-matcher-builder-test-module"></span><h2>object_detection.builders.matcher_builder_test module<a class="headerlink" href="#module-object_detection.builders.matcher_builder_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for matcher_builder.</p>
+<dl class="class">
+<dt id="object_detection.builders.matcher_builder_test.MatcherBuilderTest">
+<em class="property">class </em><code class="descclassname">object_detection.builders.matcher_builder_test.</code><code class="descname">MatcherBuilderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.matcher_builder_test.MatcherBuilderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.builders.matcher_builder_test.MatcherBuilderTest.test_build_arg_max_matcher_with_defaults">
+<code class="descname">test_build_arg_max_matcher_with_defaults</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.matcher_builder_test.MatcherBuilderTest.test_build_arg_max_matcher_with_defaults" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.matcher_builder_test.MatcherBuilderTest.test_build_arg_max_matcher_with_non_default_parameters">
+<code class="descname">test_build_arg_max_matcher_with_non_default_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.matcher_builder_test.MatcherBuilderTest.test_build_arg_max_matcher_with_non_default_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.matcher_builder_test.MatcherBuilderTest.test_build_arg_max_matcher_without_thresholds">
+<code class="descname">test_build_arg_max_matcher_without_thresholds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.matcher_builder_test.MatcherBuilderTest.test_build_arg_max_matcher_without_thresholds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.matcher_builder_test.MatcherBuilderTest.test_build_bipartite_matcher">
+<code class="descname">test_build_bipartite_matcher</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.matcher_builder_test.MatcherBuilderTest.test_build_bipartite_matcher" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.matcher_builder_test.MatcherBuilderTest.test_raise_error_on_empty_matcher">
+<code class="descname">test_raise_error_on_empty_matcher</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.matcher_builder_test.MatcherBuilderTest.test_raise_error_on_empty_matcher" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.model_builder">
+<span id="object-detection-builders-model-builder-module"></span><h2>object_detection.builders.model_builder module<a class="headerlink" href="#module-object_detection.builders.model_builder" title="Permalink to this headline">¶</a></h2>
+<p>A function to build a DetectionModel from configuration.</p>
+<dl class="function">
+<dt id="object_detection.builders.model_builder.build">
+<code class="descclassname">object_detection.builders.model_builder.</code><code class="descname">build</code><span class="sig-paren">(</span><em>model_config</em>, <em>is_training</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.model_builder.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds a DetectionModel based on the model config.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>model_config</strong> &#8211; A model.proto object containing the config for the desired
+DetectionModel.</li>
+<li><strong>is_training</strong> &#8211; True if this model is being built for training purposes.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">DetectionModel based on the config.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; On invalid meta architecture or model.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.model_builder_test">
+<span id="object-detection-builders-model-builder-test-module"></span><h2>object_detection.builders.model_builder_test module<a class="headerlink" href="#module-object_detection.builders.model_builder_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for object_detection.models.model_builder.</p>
+<dl class="class">
+<dt id="object_detection.builders.model_builder_test.ModelBuilderTest">
+<em class="property">class </em><code class="descclassname">object_detection.builders.model_builder_test.</code><code class="descname">ModelBuilderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.model_builder_test.ModelBuilderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.builders.model_builder_test.ModelBuilderTest.create_model">
+<code class="descname">create_model</code><span class="sig-paren">(</span><em>model_config</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.model_builder_test.ModelBuilderTest.create_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds a DetectionModel based on the model config.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_config</strong> &#8211; A model.proto object containing the config for the desired
+DetectionModel.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">DetectionModel based on the config.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.model_builder_test.ModelBuilderTest.test_create_faster_rcnn_inception_resnet_v2_model_from_config">
+<code class="descname">test_create_faster_rcnn_inception_resnet_v2_model_from_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.model_builder_test.ModelBuilderTest.test_create_faster_rcnn_inception_resnet_v2_model_from_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.model_builder_test.ModelBuilderTest.test_create_faster_rcnn_model_from_config_with_example_miner">
+<code class="descname">test_create_faster_rcnn_model_from_config_with_example_miner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.model_builder_test.ModelBuilderTest.test_create_faster_rcnn_model_from_config_with_example_miner" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.model_builder_test.ModelBuilderTest.test_create_faster_rcnn_resnet_v1_models_from_config">
+<code class="descname">test_create_faster_rcnn_resnet_v1_models_from_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.model_builder_test.ModelBuilderTest.test_create_faster_rcnn_resnet_v1_models_from_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.model_builder_test.ModelBuilderTest.test_create_rfcn_resnet_v1_model_from_config">
+<code class="descname">test_create_rfcn_resnet_v1_model_from_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.model_builder_test.ModelBuilderTest.test_create_rfcn_resnet_v1_model_from_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.model_builder_test.ModelBuilderTest.test_create_ssd_inception_v2_model_from_config">
+<code class="descname">test_create_ssd_inception_v2_model_from_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.model_builder_test.ModelBuilderTest.test_create_ssd_inception_v2_model_from_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.model_builder_test.ModelBuilderTest.test_create_ssd_mobilenet_v1_model_from_config">
+<code class="descname">test_create_ssd_mobilenet_v1_model_from_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.model_builder_test.ModelBuilderTest.test_create_ssd_mobilenet_v1_model_from_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.optimizer_builder">
+<span id="object-detection-builders-optimizer-builder-module"></span><h2>object_detection.builders.optimizer_builder module<a class="headerlink" href="#module-object_detection.builders.optimizer_builder" title="Permalink to this headline">¶</a></h2>
+<p>Functions to build DetectionModel training optimizers.</p>
+<dl class="function">
+<dt id="object_detection.builders.optimizer_builder.build">
+<code class="descclassname">object_detection.builders.optimizer_builder.</code><code class="descname">build</code><span class="sig-paren">(</span><em>optimizer_config</em>, <em>global_summaries</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.optimizer_builder.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create optimizer based on config.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>optimizer_config</strong> &#8211; A Optimizer proto message.</li>
+<li><strong>global_summaries</strong> &#8211; A set to attach learning rate summary to.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An optimizer.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; when using an unsupported input data type.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.optimizer_builder_test">
+<span id="object-detection-builders-optimizer-builder-test-module"></span><h2>object_detection.builders.optimizer_builder_test module<a class="headerlink" href="#module-object_detection.builders.optimizer_builder_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for optimizer_builder.</p>
+<dl class="class">
+<dt id="object_detection.builders.optimizer_builder_test.LearningRateBuilderTest">
+<em class="property">class </em><code class="descclassname">object_detection.builders.optimizer_builder_test.</code><code class="descname">LearningRateBuilderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.optimizer_builder_test.LearningRateBuilderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.builders.optimizer_builder_test.LearningRateBuilderTest.testBuildConstantLearningRate">
+<code class="descname">testBuildConstantLearningRate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.optimizer_builder_test.LearningRateBuilderTest.testBuildConstantLearningRate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.optimizer_builder_test.LearningRateBuilderTest.testBuildExponentialDecayLearningRate">
+<code class="descname">testBuildExponentialDecayLearningRate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.optimizer_builder_test.LearningRateBuilderTest.testBuildExponentialDecayLearningRate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.optimizer_builder_test.LearningRateBuilderTest.testBuildManualStepLearningRate">
+<code class="descname">testBuildManualStepLearningRate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.optimizer_builder_test.LearningRateBuilderTest.testBuildManualStepLearningRate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.optimizer_builder_test.LearningRateBuilderTest.testRaiseErrorOnEmptyLearningRate">
+<code class="descname">testRaiseErrorOnEmptyLearningRate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.optimizer_builder_test.LearningRateBuilderTest.testRaiseErrorOnEmptyLearningRate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="object_detection.builders.optimizer_builder_test.OptimizerBuilderTest">
+<em class="property">class </em><code class="descclassname">object_detection.builders.optimizer_builder_test.</code><code class="descname">OptimizerBuilderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.optimizer_builder_test.OptimizerBuilderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.builders.optimizer_builder_test.OptimizerBuilderTest.testBuildAdamOptimizer">
+<code class="descname">testBuildAdamOptimizer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.optimizer_builder_test.OptimizerBuilderTest.testBuildAdamOptimizer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.optimizer_builder_test.OptimizerBuilderTest.testBuildEmptyOptimizer">
+<code class="descname">testBuildEmptyOptimizer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.optimizer_builder_test.OptimizerBuilderTest.testBuildEmptyOptimizer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.optimizer_builder_test.OptimizerBuilderTest.testBuildMomentumOptimizer">
+<code class="descname">testBuildMomentumOptimizer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.optimizer_builder_test.OptimizerBuilderTest.testBuildMomentumOptimizer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.optimizer_builder_test.OptimizerBuilderTest.testBuildMovingAverageOptimizer">
+<code class="descname">testBuildMovingAverageOptimizer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.optimizer_builder_test.OptimizerBuilderTest.testBuildMovingAverageOptimizer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.optimizer_builder_test.OptimizerBuilderTest.testBuildMovingAverageOptimizerWithNonDefaultDecay">
+<code class="descname">testBuildMovingAverageOptimizerWithNonDefaultDecay</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.optimizer_builder_test.OptimizerBuilderTest.testBuildMovingAverageOptimizerWithNonDefaultDecay" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.optimizer_builder_test.OptimizerBuilderTest.testBuildRMSPropOptimizer">
+<code class="descname">testBuildRMSPropOptimizer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.optimizer_builder_test.OptimizerBuilderTest.testBuildRMSPropOptimizer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.post_processing_builder">
+<span id="object-detection-builders-post-processing-builder-module"></span><h2>object_detection.builders.post_processing_builder module<a class="headerlink" href="#module-object_detection.builders.post_processing_builder" title="Permalink to this headline">¶</a></h2>
+<p>Builder function for post processing operations.</p>
+<dl class="function">
+<dt id="object_detection.builders.post_processing_builder.build">
+<code class="descclassname">object_detection.builders.post_processing_builder.</code><code class="descname">build</code><span class="sig-paren">(</span><em>post_processing_config</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.post_processing_builder.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds callables for post-processing operations.</p>
+<p>Builds callables for non-max suppression and score conversion based on the
+configuration.</p>
+<p>Non-max suppression callable takes <cite>boxes</cite>, <cite>scores</cite>, and optionally
+<cite>clip_window</cite>, <cite>parallel_iterations</cite> and <cite>scope</cite> as inputs. It returns
+<cite>nms_boxes</cite>, <cite>nms_scores</cite>, <cite>nms_nms_classes</cite> and <cite>num_detections</cite>. See
+post_processing.batch_multiclass_non_max_suppression for the type and shape
+of these tensors.</p>
+<p>Score converter callable should be called with <cite>input</cite> tensor. The callable
+returns the output from one of 3 tf operations based on the configuration -
+tf.identity, tf.sigmoid or tf.nn.softmax. See tensorflow documentation for
+argument and return value descriptions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>post_processing_config</strong> &#8211; post_processing.proto object containing the
+parameters for the post-processing operations.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Callable for non-max suppression.
+score_converter_fn: Callable for score conversion.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">non_max_suppressor_fn</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; if the post_processing_config is of incorrect type.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.post_processing_builder_test">
+<span id="object-detection-builders-post-processing-builder-test-module"></span><h2>object_detection.builders.post_processing_builder_test module<a class="headerlink" href="#module-object_detection.builders.post_processing_builder_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for post_processing_builder.</p>
+<dl class="class">
+<dt id="object_detection.builders.post_processing_builder_test.PostProcessingBuilderTest">
+<em class="property">class </em><code class="descclassname">object_detection.builders.post_processing_builder_test.</code><code class="descname">PostProcessingBuilderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.post_processing_builder_test.PostProcessingBuilderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.builders.post_processing_builder_test.PostProcessingBuilderTest.test_build_identity_score_converter">
+<code class="descname">test_build_identity_score_converter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.post_processing_builder_test.PostProcessingBuilderTest.test_build_identity_score_converter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.post_processing_builder_test.PostProcessingBuilderTest.test_build_non_max_suppressor_with_correct_parameters">
+<code class="descname">test_build_non_max_suppressor_with_correct_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.post_processing_builder_test.PostProcessingBuilderTest.test_build_non_max_suppressor_with_correct_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.post_processing_builder_test.PostProcessingBuilderTest.test_build_sigmoid_score_converter">
+<code class="descname">test_build_sigmoid_score_converter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.post_processing_builder_test.PostProcessingBuilderTest.test_build_sigmoid_score_converter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.post_processing_builder_test.PostProcessingBuilderTest.test_build_softmax_score_converter">
+<code class="descname">test_build_softmax_score_converter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.post_processing_builder_test.PostProcessingBuilderTest.test_build_softmax_score_converter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.preprocessor_builder">
+<span id="object-detection-builders-preprocessor-builder-module"></span><h2>object_detection.builders.preprocessor_builder module<a class="headerlink" href="#module-object_detection.builders.preprocessor_builder" title="Permalink to this headline">¶</a></h2>
+<p>Builder for preprocessing steps.</p>
+<dl class="function">
+<dt id="object_detection.builders.preprocessor_builder.build">
+<code class="descclassname">object_detection.builders.preprocessor_builder.</code><code class="descname">build</code><span class="sig-paren">(</span><em>preprocessor_step_config</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds preprocessing step based on the configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>preprocessor_step_config</strong> &#8211; PreprocessingStep configuration proto.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>A callable function and an argument map to call function</dt>
+<dd>with.</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">function, argmap</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; On invalid configuration.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.preprocessor_builder_test">
+<span id="object-detection-builders-preprocessor-builder-test-module"></span><h2>object_detection.builders.preprocessor_builder_test module<a class="headerlink" href="#module-object_detection.builders.preprocessor_builder_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for preprocessor_builder.</p>
+<dl class="class">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest">
+<em class="property">class </em><code class="descclassname">object_detection.builders.preprocessor_builder_test.</code><code class="descname">PreprocessorBuilderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.assert_dictionary_close">
+<code class="descname">assert_dictionary_close</code><span class="sig-paren">(</span><em>dict1</em>, <em>dict2</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.assert_dictionary_close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper to check if two dicts with floatst or integers are close.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_normalize_image">
+<code class="descname">test_build_normalize_image</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_normalize_image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_adjust_brightness">
+<code class="descname">test_build_random_adjust_brightness</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_adjust_brightness" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_adjust_contrast">
+<code class="descname">test_build_random_adjust_contrast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_adjust_contrast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_adjust_hue">
+<code class="descname">test_build_random_adjust_hue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_adjust_hue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_adjust_saturation">
+<code class="descname">test_build_random_adjust_saturation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_adjust_saturation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_black_patches">
+<code class="descname">test_build_random_black_patches</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_black_patches" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_crop_image">
+<code class="descname">test_build_random_crop_image</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_crop_image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_crop_pad_image">
+<code class="descname">test_build_random_crop_pad_image</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_crop_pad_image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_crop_to_aspect_ratio">
+<code class="descname">test_build_random_crop_to_aspect_ratio</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_crop_to_aspect_ratio" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_distort_color">
+<code class="descname">test_build_random_distort_color</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_distort_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_horizontal_flip">
+<code class="descname">test_build_random_horizontal_flip</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_horizontal_flip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_image_scale">
+<code class="descname">test_build_random_image_scale</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_image_scale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_jitter_boxes">
+<code class="descname">test_build_random_jitter_boxes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_jitter_boxes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_pad_image">
+<code class="descname">test_build_random_pad_image</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_pad_image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_pixel_value_scale">
+<code class="descname">test_build_random_pixel_value_scale</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_pixel_value_scale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_resize_method">
+<code class="descname">test_build_random_resize_method</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_resize_method" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_rgb_to_gray">
+<code class="descname">test_build_random_rgb_to_gray</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_random_rgb_to_gray" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_resize_image">
+<code class="descname">test_build_resize_image</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_resize_image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_scale_boxes_to_pixel_coordinates">
+<code class="descname">test_build_scale_boxes_to_pixel_coordinates</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_scale_boxes_to_pixel_coordinates" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_ssd_random_crop">
+<code class="descname">test_build_ssd_random_crop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_ssd_random_crop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_ssd_random_crop_empty_operations">
+<code class="descname">test_build_ssd_random_crop_empty_operations</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_ssd_random_crop_empty_operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_ssd_random_crop_fixed_aspect_ratio">
+<code class="descname">test_build_ssd_random_crop_fixed_aspect_ratio</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_ssd_random_crop_fixed_aspect_ratio" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_ssd_random_crop_pad">
+<code class="descname">test_build_ssd_random_crop_pad</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_ssd_random_crop_pad" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_subtract_channel_mean">
+<code class="descname">test_build_subtract_channel_mean</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.preprocessor_builder_test.PreprocessorBuilderTest.test_build_subtract_channel_mean" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.region_similarity_calculator_builder">
+<span id="object-detection-builders-region-similarity-calculator-builder-module"></span><h2>object_detection.builders.region_similarity_calculator_builder module<a class="headerlink" href="#module-object_detection.builders.region_similarity_calculator_builder" title="Permalink to this headline">¶</a></h2>
+<p>Builder for region similarity calculators.</p>
+<dl class="function">
+<dt id="object_detection.builders.region_similarity_calculator_builder.build">
+<code class="descclassname">object_detection.builders.region_similarity_calculator_builder.</code><code class="descname">build</code><span class="sig-paren">(</span><em>region_similarity_calculator_config</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.region_similarity_calculator_builder.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds region similarity calculator based on the configuration.</p>
+<p>Builds one of [IouSimilarity, IoaSimilarity, NegSqDistSimilarity] objects. See
+core/region_similarity_calculator.proto for details.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>region_similarity_calculator_config</strong> &#8211; RegionSimilarityCalculator
+configuration proto.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">RegionSimilarityCalculator object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.region_similarity_calculator" title="object_detection.core.region_similarity_calculator">region_similarity_calculator</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; On unknown region similarity calculator.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders.region_similarity_calculator_builder_test">
+<span id="object-detection-builders-region-similarity-calculator-builder-test-module"></span><h2>object_detection.builders.region_similarity_calculator_builder_test module<a class="headerlink" href="#module-object_detection.builders.region_similarity_calculator_builder_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for region_similarity_calculator_builder.</p>
+<dl class="class">
+<dt id="object_detection.builders.region_similarity_calculator_builder_test.RegionSimilarityCalculatorBuilderTest">
+<em class="property">class </em><code class="descclassname">object_detection.builders.region_similarity_calculator_builder_test.</code><code class="descname">RegionSimilarityCalculatorBuilderTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.region_similarity_calculator_builder_test.RegionSimilarityCalculatorBuilderTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.builders.region_similarity_calculator_builder_test.RegionSimilarityCalculatorBuilderTest.testBuildIoaSimilarityCalculator">
+<code class="descname">testBuildIoaSimilarityCalculator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.region_similarity_calculator_builder_test.RegionSimilarityCalculatorBuilderTest.testBuildIoaSimilarityCalculator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.region_similarity_calculator_builder_test.RegionSimilarityCalculatorBuilderTest.testBuildIouSimilarityCalculator">
+<code class="descname">testBuildIouSimilarityCalculator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.region_similarity_calculator_builder_test.RegionSimilarityCalculatorBuilderTest.testBuildIouSimilarityCalculator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.builders.region_similarity_calculator_builder_test.RegionSimilarityCalculatorBuilderTest.testBuildNegSqDistSimilarityCalculator">
+<code class="descname">testBuildNegSqDistSimilarityCalculator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.builders.region_similarity_calculator_builder_test.RegionSimilarityCalculatorBuilderTest.testBuildNegSqDistSimilarityCalculator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.builders">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-object_detection.builders" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">object_detection.builders package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.anchor_generator_builder">object_detection.builders.anchor_generator_builder module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.anchor_generator_builder_test">object_detection.builders.anchor_generator_builder_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.box_coder_builder">object_detection.builders.box_coder_builder module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.box_coder_builder_test">object_detection.builders.box_coder_builder_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.box_predictor_builder">object_detection.builders.box_predictor_builder module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.box_predictor_builder_test">object_detection.builders.box_predictor_builder_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.hyperparams_builder">object_detection.builders.hyperparams_builder module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.hyperparams_builder_test">object_detection.builders.hyperparams_builder_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.image_resizer_builder">object_detection.builders.image_resizer_builder module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.image_resizer_builder_test">object_detection.builders.image_resizer_builder_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.input_reader_builder">object_detection.builders.input_reader_builder module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.input_reader_builder_test">object_detection.builders.input_reader_builder_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.losses_builder">object_detection.builders.losses_builder module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.losses_builder_test">object_detection.builders.losses_builder_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.matcher_builder">object_detection.builders.matcher_builder module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.matcher_builder_test">object_detection.builders.matcher_builder_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.model_builder">object_detection.builders.model_builder module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.model_builder_test">object_detection.builders.model_builder_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.optimizer_builder">object_detection.builders.optimizer_builder module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.optimizer_builder_test">object_detection.builders.optimizer_builder_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.post_processing_builder">object_detection.builders.post_processing_builder module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.post_processing_builder_test">object_detection.builders.post_processing_builder_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.preprocessor_builder">object_detection.builders.preprocessor_builder module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.preprocessor_builder_test">object_detection.builders.preprocessor_builder_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.region_similarity_calculator_builder">object_detection.builders.region_similarity_calculator_builder module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders.region_similarity_calculator_builder_test">object_detection.builders.region_similarity_calculator_builder_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.builders">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/object_detection.builders.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, lance.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/object_detection.builders.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

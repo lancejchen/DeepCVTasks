@@ -1,0 +1,1009 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>object_detection package &#8212; models 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="object-detection-package">
+<h1>object_detection package<a class="headerlink" href="#object-detection-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="object_detection.anchor_generators.html">object_detection.anchor_generators package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.anchor_generators.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.anchor_generators.html#module-object_detection.anchor_generators.grid_anchor_generator">object_detection.anchor_generators.grid_anchor_generator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.anchor_generators.html#module-object_detection.anchor_generators.grid_anchor_generator_test">object_detection.anchor_generators.grid_anchor_generator_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.anchor_generators.html#module-object_detection.anchor_generators.multiple_grid_anchor_generator">object_detection.anchor_generators.multiple_grid_anchor_generator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.anchor_generators.html#module-object_detection.anchor_generators.multiple_grid_anchor_generator_test">object_detection.anchor_generators.multiple_grid_anchor_generator_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.anchor_generators.html#module-object_detection.anchor_generators">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object_detection.box_coders.html">object_detection.box_coders package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.box_coders.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.box_coders.html#module-object_detection.box_coders.faster_rcnn_box_coder">object_detection.box_coders.faster_rcnn_box_coder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.box_coders.html#module-object_detection.box_coders.faster_rcnn_box_coder_test">object_detection.box_coders.faster_rcnn_box_coder_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.box_coders.html#module-object_detection.box_coders.keypoint_box_coder">object_detection.box_coders.keypoint_box_coder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.box_coders.html#module-object_detection.box_coders.keypoint_box_coder_test">object_detection.box_coders.keypoint_box_coder_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.box_coders.html#module-object_detection.box_coders.mean_stddev_box_coder">object_detection.box_coders.mean_stddev_box_coder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.box_coders.html#module-object_detection.box_coders.mean_stddev_box_coder_test">object_detection.box_coders.mean_stddev_box_coder_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.box_coders.html#module-object_detection.box_coders.square_box_coder">object_detection.box_coders.square_box_coder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.box_coders.html#module-object_detection.box_coders.square_box_coder_test">object_detection.box_coders.square_box_coder_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.box_coders.html#module-object_detection.box_coders">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object_detection.builders.html">object_detection.builders package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.anchor_generator_builder">object_detection.builders.anchor_generator_builder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.anchor_generator_builder_test">object_detection.builders.anchor_generator_builder_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.box_coder_builder">object_detection.builders.box_coder_builder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.box_coder_builder_test">object_detection.builders.box_coder_builder_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.box_predictor_builder">object_detection.builders.box_predictor_builder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.box_predictor_builder_test">object_detection.builders.box_predictor_builder_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.hyperparams_builder">object_detection.builders.hyperparams_builder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.hyperparams_builder_test">object_detection.builders.hyperparams_builder_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.image_resizer_builder">object_detection.builders.image_resizer_builder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.image_resizer_builder_test">object_detection.builders.image_resizer_builder_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.input_reader_builder">object_detection.builders.input_reader_builder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.input_reader_builder_test">object_detection.builders.input_reader_builder_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.losses_builder">object_detection.builders.losses_builder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.losses_builder_test">object_detection.builders.losses_builder_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.matcher_builder">object_detection.builders.matcher_builder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.matcher_builder_test">object_detection.builders.matcher_builder_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.model_builder">object_detection.builders.model_builder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.model_builder_test">object_detection.builders.model_builder_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.optimizer_builder">object_detection.builders.optimizer_builder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.optimizer_builder_test">object_detection.builders.optimizer_builder_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.post_processing_builder">object_detection.builders.post_processing_builder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.post_processing_builder_test">object_detection.builders.post_processing_builder_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.preprocessor_builder">object_detection.builders.preprocessor_builder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.preprocessor_builder_test">object_detection.builders.preprocessor_builder_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.region_similarity_calculator_builder">object_detection.builders.region_similarity_calculator_builder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders.region_similarity_calculator_builder_test">object_detection.builders.region_similarity_calculator_builder_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.builders.html#module-object_detection.builders">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object_detection.core.html">object_detection.core package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.anchor_generator">object_detection.core.anchor_generator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.balanced_positive_negative_sampler">object_detection.core.balanced_positive_negative_sampler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.balanced_positive_negative_sampler_test">object_detection.core.balanced_positive_negative_sampler_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.batcher">object_detection.core.batcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.batcher_test">object_detection.core.batcher_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.box_coder">object_detection.core.box_coder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.box_coder_test">object_detection.core.box_coder_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.box_list">object_detection.core.box_list module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.box_list_ops">object_detection.core.box_list_ops module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.box_list_ops_test">object_detection.core.box_list_ops_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.box_list_test">object_detection.core.box_list_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.box_predictor">object_detection.core.box_predictor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.box_predictor_test">object_detection.core.box_predictor_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.data_decoder">object_detection.core.data_decoder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.keypoint_ops">object_detection.core.keypoint_ops module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.keypoint_ops_test">object_detection.core.keypoint_ops_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.losses">object_detection.core.losses module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.losses_test">object_detection.core.losses_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.matcher">object_detection.core.matcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.matcher_test">object_detection.core.matcher_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.minibatch_sampler">object_detection.core.minibatch_sampler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.minibatch_sampler_test">object_detection.core.minibatch_sampler_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.model">object_detection.core.model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.post_processing">object_detection.core.post_processing module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.post_processing_test">object_detection.core.post_processing_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.prefetcher">object_detection.core.prefetcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.prefetcher_test">object_detection.core.prefetcher_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.preprocessor">object_detection.core.preprocessor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.preprocessor_test">object_detection.core.preprocessor_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.region_similarity_calculator">object_detection.core.region_similarity_calculator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.region_similarity_calculator_test">object_detection.core.region_similarity_calculator_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.standard_fields">object_detection.core.standard_fields module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.target_assigner">object_detection.core.target_assigner module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core.target_assigner_test">object_detection.core.target_assigner_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.core.html#module-object_detection.core">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object_detection.data_decoders.html">object_detection.data_decoders package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.data_decoders.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.data_decoders.html#module-object_detection.data_decoders.tf_example_decoder">object_detection.data_decoders.tf_example_decoder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.data_decoders.html#module-object_detection.data_decoders.tf_example_decoder_test">object_detection.data_decoders.tf_example_decoder_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.data_decoders.html#module-object_detection.data_decoders">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object_detection.matchers.html">object_detection.matchers package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.matchers.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.matchers.html#module-object_detection.matchers.argmax_matcher">object_detection.matchers.argmax_matcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.matchers.html#module-object_detection.matchers.argmax_matcher_test">object_detection.matchers.argmax_matcher_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.matchers.html#module-object_detection.matchers.bipartite_matcher">object_detection.matchers.bipartite_matcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.matchers.html#module-object_detection.matchers.bipartite_matcher_test">object_detection.matchers.bipartite_matcher_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.matchers.html#module-object_detection.matchers">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object_detection.meta_architectures.html">object_detection.meta_architectures package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.meta_architectures.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.meta_architectures.html#module-object_detection.meta_architectures.faster_rcnn_meta_arch">object_detection.meta_architectures.faster_rcnn_meta_arch module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.meta_architectures.html#module-object_detection.meta_architectures.faster_rcnn_meta_arch_test">object_detection.meta_architectures.faster_rcnn_meta_arch_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.meta_architectures.html#module-object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib">object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.meta_architectures.html#module-object_detection.meta_architectures.rfcn_meta_arch">object_detection.meta_architectures.rfcn_meta_arch module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.meta_architectures.html#module-object_detection.meta_architectures.rfcn_meta_arch_test">object_detection.meta_architectures.rfcn_meta_arch_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.meta_architectures.html#module-object_detection.meta_architectures.ssd_meta_arch">object_detection.meta_architectures.ssd_meta_arch module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.meta_architectures.html#module-object_detection.meta_architectures.ssd_meta_arch_test">object_detection.meta_architectures.ssd_meta_arch_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.meta_architectures.html#module-object_detection.meta_architectures">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object_detection.models.html">object_detection.models package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.models.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor">object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test">object_detection.models.faster_rcnn_inception_resnet_v2_feature_extractor_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.faster_rcnn_resnet_v1_feature_extractor">object_detection.models.faster_rcnn_resnet_v1_feature_extractor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test">object_detection.models.faster_rcnn_resnet_v1_feature_extractor_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.feature_map_generators">object_detection.models.feature_map_generators module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.feature_map_generators_test">object_detection.models.feature_map_generators_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.ssd_feature_extractor_test">object_detection.models.ssd_feature_extractor_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.ssd_inception_v2_feature_extractor">object_detection.models.ssd_inception_v2_feature_extractor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.ssd_inception_v2_feature_extractor_test">object_detection.models.ssd_inception_v2_feature_extractor_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.ssd_mobilenet_v1_feature_extractor">object_detection.models.ssd_mobilenet_v1_feature_extractor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.models.html#module-object_detection.models.ssd_mobilenet_v1_feature_extractor_test">object_detection.models.ssd_mobilenet_v1_feature_extractor_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.models.html#module-object_detection.models">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object_detection.protos.html">object_detection.protos package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.anchor_generator_pb2">object_detection.protos.anchor_generator_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.argmax_matcher_pb2">object_detection.protos.argmax_matcher_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.bipartite_matcher_pb2">object_detection.protos.bipartite_matcher_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.box_coder_pb2">object_detection.protos.box_coder_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.box_predictor_pb2">object_detection.protos.box_predictor_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.eval_pb2">object_detection.protos.eval_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.faster_rcnn_box_coder_pb2">object_detection.protos.faster_rcnn_box_coder_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.faster_rcnn_pb2">object_detection.protos.faster_rcnn_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.grid_anchor_generator_pb2">object_detection.protos.grid_anchor_generator_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.hyperparams_pb2">object_detection.protos.hyperparams_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.image_resizer_pb2">object_detection.protos.image_resizer_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.input_reader_pb2">object_detection.protos.input_reader_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.losses_pb2">object_detection.protos.losses_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.matcher_pb2">object_detection.protos.matcher_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.mean_stddev_box_coder_pb2">object_detection.protos.mean_stddev_box_coder_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.model_pb2">object_detection.protos.model_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.optimizer_pb2">object_detection.protos.optimizer_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.pipeline_pb2">object_detection.protos.pipeline_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.post_processing_pb2">object_detection.protos.post_processing_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.preprocessor_pb2">object_detection.protos.preprocessor_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.region_similarity_calculator_pb2">object_detection.protos.region_similarity_calculator_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.square_box_coder_pb2">object_detection.protos.square_box_coder_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.ssd_anchor_generator_pb2">object_detection.protos.ssd_anchor_generator_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.ssd_pb2">object_detection.protos.ssd_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.string_int_label_map_pb2">object_detection.protos.string_int_label_map_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos.train_pb2">object_detection.protos.train_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.protos.html#module-object_detection.protos">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object_detection.utils.html">object_detection.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.category_util">object_detection.utils.category_util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.category_util_test">object_detection.utils.category_util_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.dataset_util">object_detection.utils.dataset_util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.dataset_util_test">object_detection.utils.dataset_util_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.label_map_util">object_detection.utils.label_map_util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.label_map_util_test">object_detection.utils.label_map_util_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.learning_schedules">object_detection.utils.learning_schedules module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.learning_schedules_test">object_detection.utils.learning_schedules_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.metrics">object_detection.utils.metrics module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.metrics_test">object_detection.utils.metrics_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.np_box_list">object_detection.utils.np_box_list module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.np_box_list_ops">object_detection.utils.np_box_list_ops module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.np_box_list_ops_test">object_detection.utils.np_box_list_ops_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.np_box_list_test">object_detection.utils.np_box_list_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.np_box_ops">object_detection.utils.np_box_ops module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.np_box_ops_test">object_detection.utils.np_box_ops_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.object_detection_evaluation">object_detection.utils.object_detection_evaluation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.object_detection_evaluation_test">object_detection.utils.object_detection_evaluation_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.ops">object_detection.utils.ops module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.ops_test">object_detection.utils.ops_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.per_image_evaluation">object_detection.utils.per_image_evaluation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.per_image_evaluation_test">object_detection.utils.per_image_evaluation_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.shape_utils">object_detection.utils.shape_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.shape_utils_test">object_detection.utils.shape_utils_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.static_shape">object_detection.utils.static_shape module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.static_shape_test">object_detection.utils.static_shape_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.test_utils">object_detection.utils.test_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.test_utils_test">object_detection.utils.test_utils_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.variables_helper">object_detection.utils.variables_helper module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.variables_helper_test">object_detection.utils.variables_helper_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.visualization_utils">object_detection.utils.visualization_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils.visualization_utils_test">object_detection.utils.visualization_utils_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_detection.utils.html#module-object_detection.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-object_detection.create_pascal_tf_record">
+<span id="object-detection-create-pascal-tf-record-module"></span><h2>object_detection.create_pascal_tf_record module<a class="headerlink" href="#module-object_detection.create_pascal_tf_record" title="Permalink to this headline">¶</a></h2>
+<p>Convert raw PASCAL dataset to TFRecord for object_detection.</p>
+<dl class="docutils">
+<dt>Example usage:</dt>
+<dd><dl class="first last docutils">
+<dt>./create_pascal_tf_record &#8211;data_dir=/home/user/VOCdevkit </dt>
+<dd>&#8211;year=VOC2012 &#8211;output_path=/home/user/pascal.record</dd>
+</dl>
+</dd>
+</dl>
+<dl class="function">
+<dt id="object_detection.create_pascal_tf_record.dict_to_tf_example">
+<code class="descclassname">object_detection.create_pascal_tf_record.</code><code class="descname">dict_to_tf_example</code><span class="sig-paren">(</span><em>data</em>, <em>dataset_directory</em>, <em>label_map_dict</em>, <em>ignore_difficult_instances=False</em>, <em>image_subdirectory='JPEGImages'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.create_pascal_tf_record.dict_to_tf_example" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert XML derived dict to tf.Example proto.</p>
+<p>Notice that this function normalizes the bounding box coordinates provided
+by the raw data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> &#8211; dict holding PASCAL XML fields for a single image (obtained by
+running dataset_util.recursive_parse_xml_to_dict)</li>
+<li><strong>dataset_directory</strong> &#8211; Path to root directory holding PASCAL dataset</li>
+<li><strong>label_map_dict</strong> &#8211; A map from string label names to integers ids.</li>
+<li><strong>ignore_difficult_instances</strong> &#8211; Whether to skip difficult instances in the
+dataset  (default: False).</li>
+<li><strong>image_subdirectory</strong> &#8211; String specifying subdirectory within the
+PASCAL dataset directory holding the actual image data.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The converted tf.Example.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">example</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; if the image pointed to by data[&#8216;filename&#8217;] is not a valid JPEG</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="object_detection.create_pascal_tf_record.main">
+<code class="descclassname">object_detection.create_pascal_tf_record.</code><code class="descname">main</code><span class="sig-paren">(</span><em>_</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.create_pascal_tf_record.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.create_pascal_tf_record_test">
+<span id="object-detection-create-pascal-tf-record-test-module"></span><h2>object_detection.create_pascal_tf_record_test module<a class="headerlink" href="#module-object_detection.create_pascal_tf_record_test" title="Permalink to this headline">¶</a></h2>
+<p>Test for create_pascal_tf_record.py.</p>
+<dl class="class">
+<dt id="object_detection.create_pascal_tf_record_test.DictToTFExampleTest">
+<em class="property">class </em><code class="descclassname">object_detection.create_pascal_tf_record_test.</code><code class="descname">DictToTFExampleTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.create_pascal_tf_record_test.DictToTFExampleTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.create_pascal_tf_record_test.DictToTFExampleTest.test_dict_to_tf_example">
+<code class="descname">test_dict_to_tf_example</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.create_pascal_tf_record_test.DictToTFExampleTest.test_dict_to_tf_example" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="object-detection-create-pet-tf-record-module">
+<h2>object_detection.create_pet_tf_record module<a class="headerlink" href="#object-detection-create-pet-tf-record-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-object_detection.eval">
+<span id="object-detection-eval-module"></span><h2>object_detection.eval module<a class="headerlink" href="#module-object_detection.eval" title="Permalink to this headline">¶</a></h2>
+<p>Evaluation executable for detection models.</p>
+<p>This executable is used to evaluate DetectionModels. There are two ways of
+configuring the eval job.</p>
+<p>1) A single pipeline_pb2.TrainEvalPipelineConfig file maybe specified instead.
+In this mode, the &#8211;eval_training_data flag may be given to force the pipeline
+to evaluate on training data instead.</p>
+<dl class="docutils">
+<dt>Example usage:</dt>
+<dd><dl class="first last docutils">
+<dt>./eval </dt>
+<dd>&#8211;logtostderr &#8211;checkpoint_dir=path/to/checkpoint_dir &#8211;eval_dir=path/to/eval_dir &#8211;pipeline_config_path=pipeline_config.pbtxt</dd>
+</dl>
+</dd>
+</dl>
+<p>2) Three configuration files may be provided: a model_pb2.DetectionModel
+configuration file to define what type of DetectionModel is being evaluated, an
+input_reader_pb2.InputReader file to specify what data the model is evaluating
+and an eval_pb2.EvalConfig file to configure evaluation parameters.</p>
+<dl class="docutils">
+<dt>Example usage:</dt>
+<dd><dl class="first last docutils">
+<dt>./eval </dt>
+<dd>&#8211;logtostderr &#8211;checkpoint_dir=path/to/checkpoint_dir &#8211;eval_dir=path/to/eval_dir &#8211;eval_config_path=eval_config.pbtxt &#8211;model_config_path=model_config.pbtxt &#8211;input_config_path=eval_input_config.pbtxt</dd>
+</dl>
+</dd>
+</dl>
+<dl class="function">
+<dt id="object_detection.eval.get_configs_from_multiple_files">
+<code class="descclassname">object_detection.eval.</code><code class="descname">get_configs_from_multiple_files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.eval.get_configs_from_multiple_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads evaluation configuration from multiple config files.</p>
+<dl class="docutils">
+<dt>Reads the evaluation config from the following files:</dt>
+<dd>model_config: Read from &#8211;model_config_path
+eval_config: Read from &#8211;eval_config_path
+input_config: Read from &#8211;input_config_path</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a model_pb2.DetectionModel
+eval_config: a eval_pb2.EvalConfig
+input_config: a input_reader_pb2.InputReader</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">model_config</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="object_detection.eval.get_configs_from_pipeline_file">
+<code class="descclassname">object_detection.eval.</code><code class="descname">get_configs_from_pipeline_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.eval.get_configs_from_pipeline_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads evaluation configuration from a pipeline_pb2.TrainEvalPipelineConfig.</p>
+<p>Reads evaluation config from file specified by pipeline_config_path flag.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a model_pb2.DetectionModel
+eval_config: a eval_pb2.EvalConfig
+input_config: a input_reader_pb2.InputReader</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">model_config</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="object_detection.eval.main">
+<code class="descclassname">object_detection.eval.</code><code class="descname">main</code><span class="sig-paren">(</span><em>unused_argv</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.eval.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.eval_util">
+<span id="object-detection-eval-util-module"></span><h2>object_detection.eval_util module<a class="headerlink" href="#module-object_detection.eval_util" title="Permalink to this headline">¶</a></h2>
+<p>Common functions for repeatedly evaluating a checkpoint.</p>
+<dl class="function">
+<dt id="object_detection.eval_util.evaluate_detection_results_pascal_voc">
+<code class="descclassname">object_detection.eval_util.</code><code class="descname">evaluate_detection_results_pascal_voc</code><span class="sig-paren">(</span><em>result_lists</em>, <em>categories</em>, <em>label_id_offset=0</em>, <em>iou_thres=0.5</em>, <em>corloc_summary=False</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.eval_util.evaluate_detection_results_pascal_voc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes Pascal VOC detection metrics given groundtruth and detections.</p>
+<p>This function computes Pascal VOC metrics. This function by default
+takes detections and groundtruth boxes encoded in result_lists and writes
+evaluation results to tf summaries which can be viewed on tensorboard.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>result_lists</strong> &#8211; <p>a dictionary holding lists of groundtruth and detection
+data corresponding to each image being evaluated.  The following keys
+are required:</p>
+<blockquote>
+<div>&#8216;image_id&#8217;: a list of string ids
+&#8216;detection_boxes&#8217;: a list of float32 numpy arrays of shape [N, 4]
+&#8216;detection_scores&#8217;: a list of float32 numpy arrays of shape [N]
+&#8216;detection_classes&#8217;: a list of int32 numpy arrays of shape [N]
+&#8216;groundtruth_boxes&#8217;: a list of float32 numpy arrays of shape [M, 4]
+&#8216;groundtruth_classes&#8217;: a list of int32 numpy arrays of shape [M]</div></blockquote>
+<dl class="docutils">
+<dt>and the remaining fields below are optional:</dt>
+<dd><dl class="first last docutils">
+<dt>&#8216;difficult&#8217;: a list of boolean arrays of shape [M] indicating the</dt>
+<dd>difficulty of groundtruth boxes. Some datasets like PASCAL VOC provide
+this information and it is used to remove difficult examples from eval
+in order to not penalize the models on them.</dd>
+</dl>
+</dd>
+</dl>
+<p>Note that it is okay to have additional fields in result_lists &#8212; they
+are simply ignored.</p>
+</li>
+<li><strong>categories</strong> &#8211; <p>a list of dictionaries representing all possible categories.
+Each dict in this list has the following keys:</p>
+<blockquote>
+<div>&#8216;id&#8217;: (required) an integer id uniquely identifying this category
+&#8216;name&#8217;: (required) string representing category name<blockquote>
+<div>e.g., &#8216;cat&#8217;, &#8216;dog&#8217;, &#8216;pizza&#8217;</div></blockquote>
+</div></blockquote>
+</li>
+<li><strong>label_id_offset</strong> &#8211; an integer offset for the label space.</li>
+<li><strong>iou_thres</strong> &#8211; float determining the IoU threshold at which a box is considered
+correct. Defaults to the standard 0.5.</li>
+<li><strong>corloc_summary</strong> &#8211; boolean. If True, also outputs CorLoc metrics.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A dictionary of metric names to scalar values.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; if the set of keys in result_lists is not a superset of the
+expected list of keys.  Unexpected keys are ignored.</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; if the lists in result_lists have inconsistent sizes.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="object_detection.eval_util.repeated_checkpoint_run">
+<code class="descclassname">object_detection.eval_util.</code><code class="descname">repeated_checkpoint_run</code><span class="sig-paren">(</span><em>tensor_dict</em>, <em>update_op</em>, <em>summary_dir</em>, <em>aggregated_result_processor=None</em>, <em>batch_processor=None</em>, <em>checkpoint_dirs=None</em>, <em>variables_to_restore=None</em>, <em>restore_fn=None</em>, <em>num_batches=1</em>, <em>eval_interval_secs=120</em>, <em>max_number_of_evaluations=None</em>, <em>master=''</em>, <em>save_graph=False</em>, <em>save_graph_dir=''</em>, <em>metric_names_to_values=None</em>, <em>keys_to_exclude_from_results=()</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.eval_util.repeated_checkpoint_run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Periodically evaluates desired tensors using checkpoint_dirs or restore_fn.</p>
+<p>This function repeatedly loads a checkpoint and evaluates a desired
+set of tensors (provided by tensor_dict) and hands the resulting numpy
+arrays to a function result_processor which can be used to further
+process/save/visualize the results.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tensor_dict</strong> &#8211; a dictionary holding tensors representing a batch of detections
+and corresponding groundtruth annotations.</li>
+<li><strong>update_op</strong> &#8211; a tensorflow update op that will run for each batch along with
+the tensors in tensor_dict.</li>
+<li><strong>summary_dir</strong> &#8211; a directory to write metrics summaries.</li>
+<li><strong>aggregated_result_processor</strong> &#8211; <p>a function taking one argument:
+1. result_lists: a dictionary with keys matching those in tensor_dict</p>
+<blockquote>
+<div>and corresponding values being the list of results for each tensor
+in tensor_dict.  The length of each such list is num_batches.</div></blockquote>
+</li>
+<li><strong>batch_processor</strong> &#8211; <p>a function taking three arguments:
+1. tensor_dict: the same tensor_dict that is passed in as the first</p>
+<blockquote>
+<div>argument to this function.</div></blockquote>
+<ol class="arabic" start="2">
+<li>sess: a tensorflow session</li>
+<li>batch_index: an integer representing the index of the batch amongst</li>
+</ol>
+<blockquote>
+<div>all batches</div></blockquote>
+<p>4. update_op: a tensorflow update op that will run for each batch.
+and returns result_dict, a dictionary of results for that batch.
+By default, batch_processor is None, which defaults to running:</p>
+<blockquote>
+<div>return sess.run(tensor_dict)</div></blockquote>
+</li>
+<li><strong>checkpoint_dirs</strong> &#8211; list of directories to load into a DetectionModel or an
+EnsembleModel if restore_fn isn&#8217;t set. Also used to determine when to run
+next evaluation. Must have at least one element.</li>
+<li><strong>variables_to_restore</strong> &#8211; None, or a dictionary mapping variable names found in
+a checkpoint to model variables. The dictionary would normally be
+generated by creating a tf.train.ExponentialMovingAverage object and
+calling its variables_to_restore() method. Not used if restore_fn is set.</li>
+<li><strong>restore_fn</strong> &#8211; a function that takes a tf.Session object and correctly restores
+all necessary variables from the correct checkpoint file.</li>
+<li><strong>num_batches</strong> &#8211; the number of batches to use for evaluation.</li>
+<li><strong>eval_interval_secs</strong> &#8211; the number of seconds between each evaluation run.</li>
+<li><strong>max_number_of_evaluations</strong> &#8211; the max number of iterations of the evaluation.
+If the value is left as None the evaluation continues indefinitely.</li>
+<li><strong>master</strong> &#8211; the location of the Tensorflow session.</li>
+<li><strong>save_graph</strong> &#8211; whether or not the Tensorflow graph is saved as a pbtxt file.</li>
+<li><strong>save_graph_dir</strong> &#8211; where to save on disk the Tensorflow graph. If store_graph
+is True this must be non-empty.</li>
+<li><strong>metric_names_to_values</strong> &#8211; A dictionary containing metric names to tensors
+which will be evaluated after processing all batches
+of [tensor_dict, update_op]. If any metrics depend on statistics computed
+during each batch ensure that <cite>update_op</cite> tensor has a control dependency
+on the update ops that compute the statistics.</li>
+<li><strong>keys_to_exclude_from_results</strong> &#8211; keys in tensor_dict that will be excluded
+from results_list. Note that the tensors corresponding to these keys will
+still be evaluated for each batch, but won&#8217;t be added to results_list.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; if max_num_of_evaluations is not None or a positive number.</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; if checkpoint_dirs doesn&#8217;t have at least one element.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="object_detection.eval_util.run_checkpoint_once">
+<code class="descclassname">object_detection.eval_util.</code><code class="descname">run_checkpoint_once</code><span class="sig-paren">(</span><em>tensor_dict</em>, <em>update_op</em>, <em>summary_dir</em>, <em>aggregated_result_processor=None</em>, <em>batch_processor=None</em>, <em>checkpoint_dirs=None</em>, <em>variables_to_restore=None</em>, <em>restore_fn=None</em>, <em>num_batches=1</em>, <em>master=''</em>, <em>save_graph=False</em>, <em>save_graph_dir=''</em>, <em>metric_names_to_values=None</em>, <em>keys_to_exclude_from_results=()</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.eval_util.run_checkpoint_once" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates both python metrics and tensorflow slim metrics.</p>
+<p>Python metrics are processed in batch by the aggregated_result_processor,
+while tensorflow slim metrics statistics are computed by running
+metric_names_to_updates tensors and aggregated using metric_names_to_values
+tensor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tensor_dict</strong> &#8211; a dictionary holding tensors representing a batch of detections
+and corresponding groundtruth annotations.</li>
+<li><strong>update_op</strong> &#8211; a tensorflow update op that will run for each batch along with
+the tensors in tensor_dict..</li>
+<li><strong>summary_dir</strong> &#8211; a directory to write metrics summaries.</li>
+<li><strong>aggregated_result_processor</strong> &#8211; <p>a function taking one arguments:
+1. result_lists: a dictionary with keys matching those in tensor_dict</p>
+<blockquote>
+<div>and corresponding values being the list of results for each tensor
+in tensor_dict.  The length of each such list is num_batches.</div></blockquote>
+</li>
+<li><strong>batch_processor</strong> &#8211; <p>a function taking four arguments:
+1. tensor_dict: the same tensor_dict that is passed in as the first</p>
+<blockquote>
+<div>argument to this function.</div></blockquote>
+<ol class="arabic" start="2">
+<li>sess: a tensorflow session</li>
+<li>batch_index: an integer representing the index of the batch amongst</li>
+</ol>
+<blockquote>
+<div>all batches</div></blockquote>
+<p>4. update_op: a tensorflow update op that will run for each batch.
+and returns result_dict, a dictionary of results for that batch.
+By default, batch_processor is None, which defaults to running:</p>
+<blockquote>
+<div>return sess.run(tensor_dict)</div></blockquote>
+<p>To skip an image, it suffices to return an empty dictionary in place of
+result_dict.</p>
+</li>
+<li><strong>checkpoint_dirs</strong> &#8211; list of directories to load into an EnsembleModel. If it
+has only one directory, EnsembleModel will not be used &#8211; a DetectionModel
+will be instantiated directly. Not used if restore_fn is set.</li>
+<li><strong>variables_to_restore</strong> &#8211; None, or a dictionary mapping variable names found in
+a checkpoint to model variables. The dictionary would normally be
+generated by creating a tf.train.ExponentialMovingAverage object and
+calling its variables_to_restore() method. Not used if restore_fn is set.</li>
+<li><strong>restore_fn</strong> &#8211; None, or a function that takes a tf.Session object and correctly
+restores all necessary variables from the correct checkpoint file. If
+None, attempts to restore from the first directory in checkpoint_dirs.</li>
+<li><strong>num_batches</strong> &#8211; the number of batches to use for evaluation.</li>
+<li><strong>master</strong> &#8211; the location of the Tensorflow session.</li>
+<li><strong>save_graph</strong> &#8211; whether or not the Tensorflow graph is stored as a pbtxt file.</li>
+<li><strong>save_graph_dir</strong> &#8211; where to store the Tensorflow graph on disk. If save_graph
+is True this must be non-empty.</li>
+<li><strong>metric_names_to_values</strong> &#8211; A dictionary containing metric names to tensors
+which will be evaluated after processing all batches
+of [tensor_dict, update_op]. If any metrics depend on statistics computed
+during each batch ensure that <cite>update_op</cite> tensor has a control dependency
+on the update ops that compute the statistics.</li>
+<li><strong>keys_to_exclude_from_results</strong> &#8211; keys in tensor_dict that will be excluded
+from results_list. Note that the tensors corresponding to these keys will
+still be evaluated for each batch, but won&#8217;t be added to results_list.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; if restore_fn is None and checkpoint_dirs doesn&#8217;t have at least
+one element.</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; if save_graph is True and save_graph_dir is not defined.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="object_detection.eval_util.visualize_detection_results">
+<code class="descclassname">object_detection.eval_util.</code><code class="descname">visualize_detection_results</code><span class="sig-paren">(</span><em>result_dict</em>, <em>tag</em>, <em>global_step</em>, <em>categories</em>, <em>summary_dir=''</em>, <em>export_dir=''</em>, <em>agnostic_mode=False</em>, <em>show_groundtruth=False</em>, <em>min_score_thresh=0.5</em>, <em>max_num_predictions=20</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.eval_util.visualize_detection_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visualizes detection results and writes visualizations to image summaries.</p>
+<p>This function visualizes an image with its detected bounding boxes and writes
+to image summaries which can be viewed on tensorboard.  It optionally also
+writes images to a directory. In the case of missing entry in the label map,
+unknown class name in the visualization is shown as &#8220;N/A&#8221;.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>result_dict</strong> &#8211; <p>a dictionary holding groundtruth and detection
+data corresponding to each image being evaluated.  The following keys
+are required:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>&#8216;original_image&#8217;: a numpy array representing the image with shape</dt>
+<dd>[1, height, width, 3]</dd>
+</dl>
+<p>&#8216;detection_boxes&#8217;: a numpy array of shape [N, 4]
+&#8216;detection_scores&#8217;: a numpy array of shape [N]
+&#8216;detection_classes&#8217;: a numpy array of shape [N]</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>The following keys are optional:</dt>
+<dd>&#8216;groundtruth_boxes&#8217;: a numpy array of shape [N, 4]
+&#8216;groundtruth_keypoints&#8217;: a numpy array of shape [N, num_keypoints, 2]</dd>
+</dl>
+<p>Detections are assumed to be provided in decreasing order of score and for
+display, and we assume that scores are probabilities between 0 and 1.</p>
+</li>
+<li><strong>tag</strong> &#8211; tensorboard tag (string) to associate with image.</li>
+<li><strong>global_step</strong> &#8211; global step at which the visualization are generated.</li>
+<li><strong>categories</strong> &#8211; <p>a list of dictionaries representing all possible categories.
+Each dict in this list has the following keys:</p>
+<blockquote>
+<div>&#8216;id&#8217;: (required) an integer id uniquely identifying this category
+&#8216;name&#8217;: (required) string representing category name<blockquote>
+<div>e.g., &#8216;cat&#8217;, &#8216;dog&#8217;, &#8216;pizza&#8217;</div></blockquote>
+<dl class="docutils">
+<dt>&#8216;supercategory&#8217;: (optional) string representing the supercategory</dt>
+<dd>e.g., &#8216;animal&#8217;, &#8216;vehicle&#8217;, &#8216;food&#8217;, etc</dd>
+</dl>
+</div></blockquote>
+</li>
+<li><strong>summary_dir</strong> &#8211; the output directory to which the image summaries are written.</li>
+<li><strong>export_dir</strong> &#8211; the output directory to which images are written.  If this is
+empty (default), then images are not exported.</li>
+<li><strong>agnostic_mode</strong> &#8211; boolean (default: False) controlling whether to evaluate in
+class-agnostic mode or not.</li>
+<li><strong>show_groundtruth</strong> &#8211; boolean (default: False) controlling whether to show
+groundtruth boxes in addition to detected boxes</li>
+<li><strong>min_score_thresh</strong> &#8211; minimum score threshold for a box to be visualized</li>
+<li><strong>max_num_predictions</strong> &#8211; maximum number of detections to visualize</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; if result_dict does not contain the expected keys (i.e.,
+&#8216;original_image&#8217;, &#8216;detection_boxes&#8217;, &#8216;detection_scores&#8217;,
+&#8216;detection_classes&#8217;)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="object_detection.eval_util.write_metrics">
+<code class="descclassname">object_detection.eval_util.</code><code class="descname">write_metrics</code><span class="sig-paren">(</span><em>metrics</em>, <em>global_step</em>, <em>summary_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.eval_util.write_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write metrics to a summary directory.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>metrics</strong> &#8211; A dictionary containing metric names and values.</li>
+<li><strong>global_step</strong> &#8211; Global step at which the metrics are computed.</li>
+<li><strong>summary_dir</strong> &#8211; Directory to write tensorflow summaries to.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.evaluator">
+<span id="object-detection-evaluator-module"></span><h2>object_detection.evaluator module<a class="headerlink" href="#module-object_detection.evaluator" title="Permalink to this headline">¶</a></h2>
+<p>Detection model evaluator.</p>
+<p>This file provides a generic evaluation method that can be used to evaluate a
+DetectionModel.</p>
+<dl class="function">
+<dt id="object_detection.evaluator.evaluate">
+<code class="descclassname">object_detection.evaluator.</code><code class="descname">evaluate</code><span class="sig-paren">(</span><em>create_input_dict_fn</em>, <em>create_model_fn</em>, <em>eval_config</em>, <em>categories</em>, <em>checkpoint_dir</em>, <em>eval_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.evaluator.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluation function for detection models.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>create_input_dict_fn</strong> &#8211; a function to create a tensor input dictionary.</li>
+<li><strong>create_model_fn</strong> &#8211; a function that creates a DetectionModel.</li>
+<li><strong>eval_config</strong> &#8211; a eval_pb2.EvalConfig protobuf.</li>
+<li><strong>categories</strong> &#8211; a list of category dictionaries. Each dict in the list should
+have an integer &#8216;id&#8217; field and string &#8216;name&#8217; field.</li>
+<li><strong>checkpoint_dir</strong> &#8211; directory to load the checkpoints to evaluate from.</li>
+<li><strong>eval_dir</strong> &#8211; directory to write evaluation metrics summary to.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="object-detection-export-inference-graph-module">
+<h2>object_detection.export_inference_graph module<a class="headerlink" href="#object-detection-export-inference-graph-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="object-detection-exporter-module">
+<h2>object_detection.exporter module<a class="headerlink" href="#object-detection-exporter-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="object-detection-exporter-test-module">
+<h2>object_detection.exporter_test module<a class="headerlink" href="#object-detection-exporter-test-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-object_detection.test">
+<span id="object-detection-test-module"></span><h2>object_detection.test module<a class="headerlink" href="#module-object_detection.test" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="object-detection-train-module">
+<h2>object_detection.train module<a class="headerlink" href="#object-detection-train-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-object_detection.trainer">
+<span id="object-detection-trainer-module"></span><h2>object_detection.trainer module<a class="headerlink" href="#module-object_detection.trainer" title="Permalink to this headline">¶</a></h2>
+<p>Detection model trainer.</p>
+<p>This file provides a generic training method that can be used to train a
+DetectionModel.</p>
+<dl class="function">
+<dt id="object_detection.trainer.train">
+<code class="descclassname">object_detection.trainer.</code><code class="descname">train</code><span class="sig-paren">(</span><em>create_tensor_dict_fn</em>, <em>create_model_fn</em>, <em>train_config</em>, <em>master</em>, <em>task</em>, <em>num_clones</em>, <em>worker_replicas</em>, <em>clone_on_cpu</em>, <em>ps_tasks</em>, <em>worker_job_name</em>, <em>is_chief</em>, <em>train_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.trainer.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>Training function for detection models.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>create_tensor_dict_fn</strong> &#8211; a function to create a tensor input dictionary.</li>
+<li><strong>create_model_fn</strong> &#8211; a function that creates a DetectionModel and generates
+losses.</li>
+<li><strong>train_config</strong> &#8211; a train_pb2.TrainConfig protobuf.</li>
+<li><strong>master</strong> &#8211; BNS name of the TensorFlow master to use.</li>
+<li><strong>task</strong> &#8211; The task id of this training instance.</li>
+<li><strong>num_clones</strong> &#8211; The number of clones to run per machine.</li>
+<li><strong>worker_replicas</strong> &#8211; The number of work replicas to train with.</li>
+<li><strong>clone_on_cpu</strong> &#8211; True if clones should be forced to run on CPU.</li>
+<li><strong>ps_tasks</strong> &#8211; Number of parameter server tasks.</li>
+<li><strong>worker_job_name</strong> &#8211; Name of the worker job.</li>
+<li><strong>is_chief</strong> &#8211; Whether this replica is the chief replica.</li>
+<li><strong>train_dir</strong> &#8211; Directory to write checkpoints and training summaries to.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.trainer_test">
+<span id="object-detection-trainer-test-module"></span><h2>object_detection.trainer_test module<a class="headerlink" href="#module-object_detection.trainer_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for object_detection.trainer.</p>
+<dl class="class">
+<dt id="object_detection.trainer_test.FakeDetectionModel">
+<em class="property">class </em><code class="descclassname">object_detection.trainer_test.</code><code class="descname">FakeDetectionModel</code><a class="headerlink" href="#object_detection.trainer_test.FakeDetectionModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="object_detection.core.html#object_detection.core.model.DetectionModel" title="object_detection.core.model.DetectionModel"><code class="xref py py-class docutils literal"><span class="pre">object_detection.core.model.DetectionModel</span></code></a></p>
+<p>A simple (and poor) DetectionModel for use in test.</p>
+<dl class="method">
+<dt id="object_detection.trainer_test.FakeDetectionModel.loss">
+<code class="descname">loss</code><span class="sig-paren">(</span><em>prediction_dict</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.trainer_test.FakeDetectionModel.loss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute scalar loss tensors with respect to provided groundtruth.</p>
+<p>Calling this function requires that groundtruth tensors have been
+provided via the provide_groundtruth function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>prediction_dict</strong> &#8211; a dictionary holding predicted tensors</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>a dictionary mapping strings (loss names) to scalar tensors representing</dt>
+<dd>loss values.</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.trainer_test.FakeDetectionModel.postprocess">
+<code class="descname">postprocess</code><span class="sig-paren">(</span><em>prediction_dict</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.trainer_test.FakeDetectionModel.postprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert predicted output tensors to final detections. Unused.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>prediction_dict</strong> &#8211; a dictionary holding prediction tensors.</li>
+<li><strong>**params</strong> &#8211; Additional keyword arguments for specific implementations of
+DetectionModel.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a dictionary with empty fields.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">detections</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.trainer_test.FakeDetectionModel.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>preprocessed_inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.trainer_test.FakeDetectionModel.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prediction tensors from inputs tensor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>preprocessed_inputs</strong> &#8211; a [batch, 28, 28, channels] float32 tensor.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>a dictionary holding prediction tensors to be</dt>
+<dd>passed to the Loss or Postprocess functions.</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">prediction_dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.trainer_test.FakeDetectionModel.preprocess">
+<code class="descname">preprocess</code><span class="sig-paren">(</span><em>inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.trainer_test.FakeDetectionModel.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input preprocessing, resizes images to 28x28.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inputs</strong> &#8211; a [batch, height_in, width_in, channels] float32 tensor
+representing a batch of images with values between 0 and 255.0.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a [batch, 28, 28, channels] float32 tensor.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">preprocessed_inputs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.trainer_test.FakeDetectionModel.restore_map">
+<code class="descname">restore_map</code><span class="sig-paren">(</span><em>from_detection_checkpoint=True</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.trainer_test.FakeDetectionModel.restore_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a map of variables to load from a foreign checkpoint.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>from_detection_checkpoint</strong> &#8211; whether to restore from a full detection
+checkpoint (with compatible variable names) or to restore from a
+classification checkpoint for initialization prior to training.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dict mapping variable names to variables.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="object_detection.trainer_test.TrainerTest">
+<em class="property">class </em><code class="descclassname">object_detection.trainer_test.</code><code class="descname">TrainerTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.trainer_test.TrainerTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.trainer_test.TrainerTest.test_configure_trainer_and_train_two_steps">
+<code class="descname">test_configure_trainer_and_train_two_steps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.trainer_test.TrainerTest.test_configure_trainer_and_train_two_steps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="object_detection.trainer_test.get_input_function">
+<code class="descclassname">object_detection.trainer_test.</code><code class="descname">get_input_function</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.trainer_test.get_input_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to get test inputs. Returns an image with one box.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-object_detection" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">object_detection package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-object_detection.create_pascal_tf_record">object_detection.create_pascal_tf_record module</a></li>
+<li><a class="reference internal" href="#module-object_detection.create_pascal_tf_record_test">object_detection.create_pascal_tf_record_test module</a></li>
+<li><a class="reference internal" href="#object-detection-create-pet-tf-record-module">object_detection.create_pet_tf_record module</a></li>
+<li><a class="reference internal" href="#module-object_detection.eval">object_detection.eval module</a></li>
+<li><a class="reference internal" href="#module-object_detection.eval_util">object_detection.eval_util module</a></li>
+<li><a class="reference internal" href="#module-object_detection.evaluator">object_detection.evaluator module</a></li>
+<li><a class="reference internal" href="#object-detection-export-inference-graph-module">object_detection.export_inference_graph module</a></li>
+<li><a class="reference internal" href="#object-detection-exporter-module">object_detection.exporter module</a></li>
+<li><a class="reference internal" href="#object-detection-exporter-test-module">object_detection.exporter_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.test">object_detection.test module</a></li>
+<li><a class="reference internal" href="#object-detection-train-module">object_detection.train module</a></li>
+<li><a class="reference internal" href="#module-object_detection.trainer">object_detection.trainer module</a></li>
+<li><a class="reference internal" href="#module-object_detection.trainer_test">object_detection.trainer_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/object_detection.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, lance.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/object_detection.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

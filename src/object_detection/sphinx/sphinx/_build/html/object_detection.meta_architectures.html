@@ -1,0 +1,1031 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>object_detection.meta_architectures package &#8212; models 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="object-detection-meta-architectures-package">
+<h1>object_detection.meta_architectures package<a class="headerlink" href="#object-detection-meta-architectures-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-object_detection.meta_architectures.faster_rcnn_meta_arch">
+<span id="object-detection-meta-architectures-faster-rcnn-meta-arch-module"></span><h2>object_detection.meta_architectures.faster_rcnn_meta_arch module<a class="headerlink" href="#module-object_detection.meta_architectures.faster_rcnn_meta_arch" title="Permalink to this headline">¶</a></h2>
+<p>Faster R-CNN meta-architecture definition.</p>
+<p>General tensorflow implementation of Faster R-CNN detection models.</p>
+<p>See Faster R-CNN: Ren, Shaoqing, et al.
+&#8220;Faster R-CNN: Towards real-time object detection with region proposal
+networks.&#8221; Advances in neural information processing systems. 2015.</p>
+<p>We allow for two modes: first_stage_only=True and first_stage_only=False.  In
+the former setting, all of the user facing methods (e.g., predict, postprocess,
+loss) can be used as if the model consisted only of the RPN, returning class
+agnostic proposals (these can be thought of as approximate detections with no
+associated class information).  In the latter setting, proposals are computed,
+then passed through a second stage &#8220;box classifier&#8221; to yield (multi-class)
+detections.</p>
+<p>Implementations of Faster R-CNN models must define a new
+FasterRCNNFeatureExtractor and override three methods: <cite>preprocess</cite>,
+<cite>_extract_proposal_features</cite> (the first stage of the model), and
+<cite>_extract_box_classifier_features</cite> (the second stage of the model). Optionally,
+the <cite>restore_fn</cite> method can be overridden.  See tests for an example.</p>
+<p>A few important notes:
++ Batching conventions:  We support batched inference and training where
+all images within a batch have the same resolution.  Batch sizes are determined
+dynamically via the shape of the input tensors (rather than being specified
+directly as, e.g., a model constructor).</p>
+<p>A complication is that due to non-max suppression, we are not guaranteed to get
+the same number of proposals from the first stage RPN (region proposal network)
+for each image (though in practice, we should often get the same number of
+proposals).  For this reason we pad to a max number of proposals per image
+within a batch. This <cite>self.max_num_proposals</cite> property is set to the
+<cite>first_stage_max_proposals</cite> parameter at inference time and the
+<cite>second_stage_batch_size</cite> at training time since we subsample the batch to
+be sent through the box classifier during training.</p>
+<p>For the second stage of the pipeline, we arrange the proposals for all images
+within the batch along a single batch dimension.  For example, the input to
+_extract_box_classifier_features is a tensor of shape
+<cite>[total_num_proposals, crop_height, crop_width, depth]</cite> where
+total_num_proposals is batch_size * self.max_num_proposals.  (And note that per
+the above comment, a subset of these entries correspond to zero paddings.)</p>
+<ul class="simple">
+<li>Coordinate representations:</li>
+</ul>
+<p>Following the API (see model.DetectionModel definition), our outputs after
+postprocessing operations are always normalized boxes however, internally, we
+sometimes convert to absolute &#8212; e.g. for loss computation.  In particular,
+anchors and proposal_boxes are both represented as absolute coordinates.</p>
+<p>TODO: Support TPU implementations and sigmoid loss.</p>
+<dl class="class">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNFeatureExtractor">
+<em class="property">class </em><code class="descclassname">object_detection.meta_architectures.faster_rcnn_meta_arch.</code><code class="descname">FasterRCNNFeatureExtractor</code><span class="sig-paren">(</span><em>is_training</em>, <em>first_stage_features_stride</em>, <em>reuse_weights=None</em>, <em>weight_decay=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNFeatureExtractor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Faster R-CNN Feature Extractor definition.</p>
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNFeatureExtractor.extract_box_classifier_features">
+<code class="descname">extract_box_classifier_features</code><span class="sig-paren">(</span><em>proposal_feature_maps</em>, <em>scope</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNFeatureExtractor.extract_box_classifier_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts second stage box classifier features.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>proposal_feature_maps</strong> &#8211; A 4-D float tensor with shape
+[batch_size * self.max_num_proposals, crop_height, crop_width, depth]
+representing the feature map cropped to each proposal.</li>
+<li><strong>scope</strong> &#8211; A scope name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>A 4-D float tensor with shape</dt>
+<dd><p class="first last">[batch_size * self.max_num_proposals, height, width, depth]
+representing box classifier features for each proposal.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">proposal_classifier_features</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNFeatureExtractor.extract_proposal_features">
+<code class="descname">extract_proposal_features</code><span class="sig-paren">(</span><em>preprocessed_inputs</em>, <em>scope</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNFeatureExtractor.extract_proposal_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts first stage RPN features.</p>
+<p>This function is responsible for extracting feature maps from preprocessed
+images.  These features are used by the region proposal network (RPN) to
+predict proposals.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>preprocessed_inputs</strong> &#8211; A [batch, height, width, channels] float tensor
+representing a batch of images.</li>
+<li><strong>scope</strong> &#8211; A scope name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A tensor with shape [batch, height, width, depth]</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">rpn_feature_map</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNFeatureExtractor.preprocess">
+<code class="descname">preprocess</code><span class="sig-paren">(</span><em>resized_inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNFeatureExtractor.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Feature-extractor specific preprocessing (minus image resizing).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNFeatureExtractor.restore_from_classification_checkpoint_fn">
+<code class="descname">restore_from_classification_checkpoint_fn</code><span class="sig-paren">(</span><em>first_stage_feature_extractor_scope</em>, <em>second_stage_feature_extractor_scope</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNFeatureExtractor.restore_from_classification_checkpoint_fn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a map of variables to load from a foreign checkpoint.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>first_stage_feature_extractor_scope</strong> &#8211; A scope name for the first stage
+feature extractor.</li>
+<li><strong>second_stage_feature_extractor_scope</strong> &#8211; A scope name for the second stage
+feature extractor.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dict mapping variable names (to load from a checkpoint) to variables in
+the model graph.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch">
+<em class="property">class </em><code class="descclassname">object_detection.meta_architectures.faster_rcnn_meta_arch.</code><code class="descname">FasterRCNNMetaArch</code><span class="sig-paren">(</span><em>is_training</em>, <em>num_classes</em>, <em>image_resizer_fn</em>, <em>feature_extractor</em>, <em>first_stage_only</em>, <em>first_stage_anchor_generator</em>, <em>first_stage_atrous_rate</em>, <em>first_stage_box_predictor_arg_scope</em>, <em>first_stage_box_predictor_kernel_size</em>, <em>first_stage_box_predictor_depth</em>, <em>first_stage_minibatch_size</em>, <em>first_stage_positive_balance_fraction</em>, <em>first_stage_nms_score_threshold</em>, <em>first_stage_nms_iou_threshold</em>, <em>first_stage_max_proposals</em>, <em>first_stage_localization_loss_weight</em>, <em>first_stage_objectness_loss_weight</em>, <em>initial_crop_size</em>, <em>maxpool_kernel_size</em>, <em>maxpool_stride</em>, <em>second_stage_mask_rcnn_box_predictor</em>, <em>second_stage_batch_size</em>, <em>second_stage_balance_fraction</em>, <em>second_stage_non_max_suppression_fn</em>, <em>second_stage_score_conversion_fn</em>, <em>second_stage_localization_loss_weight</em>, <em>second_stage_classification_loss_weight</em>, <em>hard_example_miner</em>, <em>parallel_iterations=16</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="object_detection.core.html#object_detection.core.model.DetectionModel" title="object_detection.core.model.DetectionModel"><code class="xref py py-class docutils literal"><span class="pre">object_detection.core.model.DetectionModel</span></code></a></p>
+<p>Faster R-CNN Meta-architecture definition.</p>
+<dl class="attribute">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch.first_stage_box_predictor_scope">
+<code class="descname">first_stage_box_predictor_scope</code><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch.first_stage_box_predictor_scope" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch.first_stage_feature_extractor_scope">
+<code class="descname">first_stage_feature_extractor_scope</code><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch.first_stage_feature_extractor_scope" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch.loss">
+<code class="descname">loss</code><span class="sig-paren">(</span><em>prediction_dict</em>, <em>scope=None</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch.loss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute scalar loss tensors given prediction tensors.</p>
+<p>If first_stage_only=True, only RPN related losses are computed (i.e.,
+<cite>rpn_localization_loss</cite> and <cite>rpn_objectness_loss</cite>).  Otherwise all
+losses are computed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>prediction_dict</strong> &#8211; a dictionary holding prediction tensors (see the
+documentation for the predict method.  If first_stage_only=True, we
+expect prediction_dict to contain <cite>rpn_box_encodings</cite>,
+<cite>rpn_objectness_predictions_with_background</cite>, <cite>rpn_features_to_crop</cite>,
+<cite>image_shape</cite>, and <cite>anchors</cite> fields.  Otherwise we expect
+prediction_dict to additionally contain <cite>refined_box_encodings</cite>,
+<cite>class_predictions_with_background</cite>, <cite>num_proposals</cite>, and
+<cite>proposal_boxes</cite> fields.</li>
+<li><strong>scope</strong> &#8211; Optional scope name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><dl class="docutils">
+<dt>a dictionary mapping loss keys (<cite>first_stage_localization_loss</cite>,</dt>
+<dd><p class="first last"><cite>first_stage_objectness_loss</cite>, &#8216;second_stage_localization_loss&#8217;,
+&#8216;second_stage_classification_loss&#8217;) to scalar tensors representing
+corresponding loss values.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch.max_num_proposals">
+<code class="descname">max_num_proposals</code><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch.max_num_proposals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Max number of proposals (to pad to) for each image in the input batch.</p>
+<p>At training time, this is set to be the <cite>second_stage_batch_size</cite> if hard
+example miner is not configured, else it is set to
+<cite>first_stage_max_proposals</cite>. At inference time, this is always set to
+<cite>first_stage_max_proposals</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A positive integer.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch.postprocess">
+<code class="descname">postprocess</code><span class="sig-paren">(</span><em>prediction_dict</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch.postprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert prediction tensors to final detections.</p>
+<p>This function converts raw predictions tensors to final detection results.
+See base class for output format conventions.  Note also that by default,
+scores are to be interpreted as logits, but if a score_converter is used,
+then scores are remapped (and may thus have a different interpretation).</p>
+<p>If first_stage_only=True, the returned results represent proposals from the
+first stage RPN and are padded to have self.max_num_proposals for each
+image; otherwise, the results can be interpreted as multiclass detections
+from the full two-stage model and are padded to self._max_detections.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>prediction_dict</strong> &#8211; a dictionary holding prediction tensors (see the
+documentation for the predict method.  If first_stage_only=True, we
+expect prediction_dict to contain <cite>rpn_box_encodings</cite>,
+<cite>rpn_objectness_predictions_with_background</cite>, <cite>rpn_features_to_crop</cite>,
+<cite>image_shape</cite>, and <cite>anchors</cite> fields.  Otherwise we expect
+prediction_dict to additionally contain <cite>refined_box_encodings</cite>,
+<cite>class_predictions_with_background</cite>, <cite>num_proposals</cite>,
+<cite>proposal_boxes</cite> and, optionally, <cite>mask_predictions</cite> fields.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>a dictionary containing the following fields</dt>
+<dd>detection_boxes: [batch, max_detection, 4]
+detection_scores: [batch, max_detections]
+detection_classes: [batch, max_detections]<blockquote>
+<div>(this entry is only created if rpn_mode=False)</div></blockquote>
+<p class="last">num_detections: [batch]</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">detections</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>preprocessed_inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predicts unpostprocessed tensors from input tensor.</p>
+<p>This function takes an input batch of images and runs it through the
+forward pass of the network to yield &#8220;raw&#8221; un-postprocessed predictions.
+If <cite>first_stage_only</cite> is True, this function only returns first stage
+RPN predictions (un-postprocessed).  Otherwise it returns both
+first stage RPN predictions as well as second stage box classifier
+predictions.</p>
+<p>Other remarks:
++ Anchor pruning vs. clipping: following the recommendation of the Faster
+R-CNN paper, we prune anchors that venture outside the image window at
+training time and clip anchors to the image window at inference time.
++ Proposal padding: as described at the top of the file, proposals are
+padded to self._max_num_proposals and flattened so that proposals from all
+images within the input batch are arranged along the same batch dimension.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>preprocessed_inputs</strong> &#8211; a [batch, height, width, channels] float tensor
+representing a batch of images.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>a dictionary holding &#8220;raw&#8221; prediction tensors:</dt>
+<dd><ol class="first arabic simple">
+<li>rpn_box_predictor_features: A 4-D float32 tensor with shape</li>
+</ol>
+<blockquote>
+<div>[batch_size, height, width, depth] to be used for predicting proposal
+boxes and corresponding objectness scores.</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>rpn_features_to_crop: A 4-D float32 tensor with shape</li>
+</ol>
+<blockquote>
+<div>[batch_size, height, width, depth] representing image features to crop
+using the proposal boxes predicted by the RPN.</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>image_shape: a 1-D tensor of shape [4] representing the input</li>
+</ol>
+<blockquote>
+<div>image shape.</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>rpn_box_encodings:  3-D float tensor of shape</li>
+</ol>
+<blockquote>
+<div>[batch_size, num_anchors, self._box_coder.code_size] containing
+predicted boxes.</div></blockquote>
+<ol class="arabic simple" start="5">
+<li>rpn_objectness_predictions_with_background: 3-D float tensor of shape</li>
+</ol>
+<blockquote>
+<div>[batch_size, num_anchors, 2] containing class
+predictions (logits) for each of the anchors.  Note that this
+tensor <em>includes</em> background class predictions (at class index 0).</div></blockquote>
+<ol class="arabic simple" start="6">
+<li>anchors: A 2-D tensor of shape [num_anchors, 4] representing anchors</li>
+</ol>
+<blockquote>
+<div>for the first stage RPN (in absolute coordinates).  Note that
+<cite>num_anchors</cite> can differ depending on whether the model is created in
+training or inference mode.</div></blockquote>
+<p>(and if first_stage_only=False):
+7) refined_box_encodings: a 3-D tensor with shape</p>
+<blockquote>
+<div>[total_num_proposals, num_classes, 4] representing predicted
+(final) refined box encodings, where
+total_num_proposals=batch_size*self._max_num_proposals</div></blockquote>
+<ol class="arabic simple" start="8">
+<li>class_predictions_with_background: a 2-D tensor with shape</li>
+</ol>
+<blockquote>
+<div>[total_num_proposals, num_classes + 1] containing class
+predictions (logits) for each of the anchors, where
+total_num_proposals=batch_size*self._max_num_proposals.
+Note that this tensor <em>includes</em> background class predictions
+(at class index 0).</div></blockquote>
+<ol class="arabic simple" start="9">
+<li>num_proposals: An int32 tensor of shape [batch_size] representing the</li>
+</ol>
+<blockquote>
+<div>number of proposals generated by the RPN.  <cite>num_proposals</cite> allows us
+to keep track of which entries are to be treated as zero paddings and
+which are not since we always pad the number of proposals to be
+<cite>self.max_num_proposals</cite> for each image.</div></blockquote>
+<ol class="arabic simple" start="10">
+<li>proposal_boxes: A float32 tensor of shape</li>
+</ol>
+<blockquote>
+<div>[batch_size, self.max_num_proposals, 4] representing
+decoded proposal bounding boxes (in absolute coordinates).</div></blockquote>
+<ol class="arabic simple" start="11">
+<li>mask_predictions: (optional) a 4-D tensor with shape</li>
+</ol>
+<blockquote class="last">
+<div>[total_num_padded_proposals, num_classes, mask_height, mask_width]
+containing instance mask predictions.</div></blockquote>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">prediction_dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch.preprocess">
+<code class="descname">preprocess</code><span class="sig-paren">(</span><em>inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Feature-extractor specific preprocessing.</p>
+<p>See base class.</p>
+<p>For Faster R-CNN, we perform image resizing in the base class &#8212; each
+class subclassing FasterRCNNMetaArch is responsible for any additional
+preprocessing (e.g., scaling pixel values to be in [-1, 1]).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inputs</strong> &#8211; a [batch, height_in, width_in, channels] float tensor representing
+a batch of images with values between 0 and 255.0.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>a [batch, height_out, width_out, channels] float</dt>
+<dd>tensor representing a batch of images.</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">preprocessed_inputs</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; if inputs tensor does not have type tf.float32</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch.restore_map">
+<code class="descname">restore_map</code><span class="sig-paren">(</span><em>from_detection_checkpoint=True</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch.restore_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a map of variables to load from a foreign checkpoint.</p>
+<p>See parent class for details.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>from_detection_checkpoint</strong> &#8211; whether to restore from a full detection
+checkpoint (with compatible variable names) or to restore from a
+classification checkpoint for initialization prior to training.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dict mapping variable names (to load from a checkpoint) to variables in
+the model graph.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch.second_stage_box_predictor_scope">
+<code class="descname">second_stage_box_predictor_scope</code><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch.second_stage_box_predictor_scope" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch.second_stage_feature_extractor_scope">
+<code class="descname">second_stage_feature_extractor_scope</code><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch.second_stage_feature_extractor_scope" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.meta_architectures.faster_rcnn_meta_arch_test">
+<span id="object-detection-meta-architectures-faster-rcnn-meta-arch-test-module"></span><h2>object_detection.meta_architectures.faster_rcnn_meta_arch_test module<a class="headerlink" href="#module-object_detection.meta_architectures.faster_rcnn_meta_arch_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for object_detection.meta_architectures.faster_rcnn_meta_arch.</p>
+<dl class="class">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch_test.FasterRCNNMetaArchTest">
+<em class="property">class </em><code class="descclassname">object_detection.meta_architectures.faster_rcnn_meta_arch_test.</code><code class="descname">FasterRCNNMetaArchTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test.FasterRCNNMetaArchTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase" title="object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase"><code class="xref py py-class docutils literal"><span class="pre">object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase</span></code></a></p>
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch_test.FasterRCNNMetaArchTest.test_postprocess_second_stage_only_inference_mode_with_masks">
+<code class="descname">test_postprocess_second_stage_only_inference_mode_with_masks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test.FasterRCNNMetaArchTest.test_postprocess_second_stage_only_inference_mode_with_masks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib">
+<span id="object-detection-meta-architectures-faster-rcnn-meta-arch-test-lib-module"></span><h2>object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib module<a class="headerlink" href="#module-object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib" title="Permalink to this headline">¶</a></h2>
+<p>Tests for object_detection.meta_architectures.faster_rcnn_meta_arch.</p>
+<dl class="class">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FakeFasterRCNNFeatureExtractor">
+<em class="property">class </em><code class="descclassname">object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.</code><code class="descname">FakeFasterRCNNFeatureExtractor</code><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FakeFasterRCNNFeatureExtractor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNFeatureExtractor" title="object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNFeatureExtractor"><code class="xref py py-class docutils literal"><span class="pre">object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNFeatureExtractor</span></code></a></p>
+<p>Fake feature extracture to use in tests.</p>
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FakeFasterRCNNFeatureExtractor.preprocess">
+<code class="descname">preprocess</code><span class="sig-paren">(</span><em>resized_inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FakeFasterRCNNFeatureExtractor.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase">
+<em class="property">class </em><code class="descclassname">object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.</code><code class="descname">FasterRCNNMetaArchTestBase</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<p>Base class to test Faster R-CNN and R-FCN meta architectures.</p>
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_loss_first_stage_only_mode">
+<code class="descname">test_loss_first_stage_only_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_loss_first_stage_only_mode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_loss_full">
+<code class="descname">test_loss_full</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_loss_full" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_loss_full_zero_padded_proposals">
+<code class="descname">test_loss_full_zero_padded_proposals</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_loss_full_zero_padded_proposals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_loss_full_zero_padded_proposals_nonzero_loss_with_two_images">
+<code class="descname">test_loss_full_zero_padded_proposals_nonzero_loss_with_two_images</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_loss_full_zero_padded_proposals_nonzero_loss_with_two_images" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_loss_with_hard_mining">
+<code class="descname">test_loss_with_hard_mining</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_loss_with_hard_mining" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_postprocess_first_stage_only_inference_mode">
+<code class="descname">test_postprocess_first_stage_only_inference_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_postprocess_first_stage_only_inference_mode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_postprocess_first_stage_only_train_mode">
+<code class="descname">test_postprocess_first_stage_only_train_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_postprocess_first_stage_only_train_mode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_postprocess_second_stage_only_inference_mode">
+<code class="descname">test_postprocess_second_stage_only_inference_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_postprocess_second_stage_only_inference_mode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_predict_correct_shapes_in_inference_mode_both_stages">
+<code class="descname">test_predict_correct_shapes_in_inference_mode_both_stages</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_predict_correct_shapes_in_inference_mode_both_stages" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_predict_gives_correct_shapes_in_inference_mode_both_stages">
+<code class="descname">test_predict_gives_correct_shapes_in_inference_mode_both_stages</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_predict_gives_correct_shapes_in_inference_mode_both_stages" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_predict_gives_correct_shapes_in_train_mode_both_stages">
+<code class="descname">test_predict_gives_correct_shapes_in_train_mode_both_stages</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_predict_gives_correct_shapes_in_train_mode_both_stages" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_predict_gives_valid_anchors_in_training_mode_first_stage_only">
+<code class="descname">test_predict_gives_valid_anchors_in_training_mode_first_stage_only</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_predict_gives_valid_anchors_in_training_mode_first_stage_only" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_preprocess_preserves_input_shapes">
+<code class="descname">test_preprocess_preserves_input_shapes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_preprocess_preserves_input_shapes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_restore_map_for_classification_ckpt">
+<code class="descname">test_restore_map_for_classification_ckpt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_restore_map_for_classification_ckpt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_restore_map_for_detection_ckpt">
+<code class="descname">test_restore_map_for_detection_ckpt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase.test_restore_map_for_detection_ckpt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.meta_architectures.rfcn_meta_arch">
+<span id="object-detection-meta-architectures-rfcn-meta-arch-module"></span><h2>object_detection.meta_architectures.rfcn_meta_arch module<a class="headerlink" href="#module-object_detection.meta_architectures.rfcn_meta_arch" title="Permalink to this headline">¶</a></h2>
+<p>R-FCN meta-architecture definition.</p>
+<p>R-FCN: Dai, Jifeng, et al. &#8220;R-FCN: Object Detection via Region-based
+Fully Convolutional Networks.&#8221; arXiv preprint arXiv:1605.06409 (2016).</p>
+<p>The R-FCN meta architecture is similar to Faster R-CNN and only differs in the
+second stage. Hence this class inherits FasterRCNNMetaArch and overrides only
+the <cite>_predict_second_stage</cite> method.</p>
+<p>Similar to Faster R-CNN we allow for two modes: first_stage_only=True and
+first_stage_only=False.  In the former setting, all of the user facing methods
+(e.g., predict, postprocess, loss) can be used as if the model consisted
+only of the RPN, returning class agnostic proposals (these can be thought of as
+approximate detections with no associated class information).  In the latter
+setting, proposals are computed, then passed through a second stage
+&#8220;box classifier&#8221; to yield (multi-class) detections.</p>
+<p>Implementations of R-FCN models must define a new FasterRCNNFeatureExtractor and
+override three methods: <cite>preprocess</cite>, <cite>_extract_proposal_features</cite> (the first
+stage of the model), and <cite>_extract_box_classifier_features</cite> (the second stage of
+the model). Optionally, the <cite>restore_fn</cite> method can be overridden.  See tests
+for an example.</p>
+<p>See notes in the documentation of Faster R-CNN meta-architecture as they all
+apply here.</p>
+<dl class="class">
+<dt id="object_detection.meta_architectures.rfcn_meta_arch.RFCNMetaArch">
+<em class="property">class </em><code class="descclassname">object_detection.meta_architectures.rfcn_meta_arch.</code><code class="descname">RFCNMetaArch</code><span class="sig-paren">(</span><em>is_training</em>, <em>num_classes</em>, <em>image_resizer_fn</em>, <em>feature_extractor</em>, <em>first_stage_only</em>, <em>first_stage_anchor_generator</em>, <em>first_stage_atrous_rate</em>, <em>first_stage_box_predictor_arg_scope</em>, <em>first_stage_box_predictor_kernel_size</em>, <em>first_stage_box_predictor_depth</em>, <em>first_stage_minibatch_size</em>, <em>first_stage_positive_balance_fraction</em>, <em>first_stage_nms_score_threshold</em>, <em>first_stage_nms_iou_threshold</em>, <em>first_stage_max_proposals</em>, <em>first_stage_localization_loss_weight</em>, <em>first_stage_objectness_loss_weight</em>, <em>second_stage_rfcn_box_predictor</em>, <em>second_stage_batch_size</em>, <em>second_stage_balance_fraction</em>, <em>second_stage_non_max_suppression_fn</em>, <em>second_stage_score_conversion_fn</em>, <em>second_stage_localization_loss_weight</em>, <em>second_stage_classification_loss_weight</em>, <em>hard_example_miner</em>, <em>parallel_iterations=16</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.rfcn_meta_arch.RFCNMetaArch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch" title="object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch"><code class="xref py py-class docutils literal"><span class="pre">object_detection.meta_architectures.faster_rcnn_meta_arch.FasterRCNNMetaArch</span></code></a></p>
+<p>R-FCN Meta-architecture definition.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.meta_architectures.rfcn_meta_arch_test">
+<span id="object-detection-meta-architectures-rfcn-meta-arch-test-module"></span><h2>object_detection.meta_architectures.rfcn_meta_arch_test module<a class="headerlink" href="#module-object_detection.meta_architectures.rfcn_meta_arch_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for object_detection.meta_architectures.rfcn_meta_arch.</p>
+<dl class="class">
+<dt id="object_detection.meta_architectures.rfcn_meta_arch_test.RFCNMetaArchTest">
+<em class="property">class </em><code class="descclassname">object_detection.meta_architectures.rfcn_meta_arch_test.</code><code class="descname">RFCNMetaArchTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.rfcn_meta_arch_test.RFCNMetaArchTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase" title="object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase"><code class="xref py py-class docutils literal"><span class="pre">object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib.FasterRCNNMetaArchTestBase</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.meta_architectures.ssd_meta_arch">
+<span id="object-detection-meta-architectures-ssd-meta-arch-module"></span><h2>object_detection.meta_architectures.ssd_meta_arch module<a class="headerlink" href="#module-object_detection.meta_architectures.ssd_meta_arch" title="Permalink to this headline">¶</a></h2>
+<p>SSD Meta-architecture definition.</p>
+<p>General tensorflow implementation of convolutional Multibox/SSD detection
+models.</p>
+<dl class="class">
+<dt id="object_detection.meta_architectures.ssd_meta_arch.SSDFeatureExtractor">
+<em class="property">class </em><code class="descclassname">object_detection.meta_architectures.ssd_meta_arch.</code><code class="descname">SSDFeatureExtractor</code><span class="sig-paren">(</span><em>depth_multiplier</em>, <em>min_depth</em>, <em>conv_hyperparams</em>, <em>reuse_weights=None</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch.SSDFeatureExtractor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>SSD Feature Extractor definition.</p>
+<dl class="method">
+<dt id="object_detection.meta_architectures.ssd_meta_arch.SSDFeatureExtractor.extract_features">
+<code class="descname">extract_features</code><span class="sig-paren">(</span><em>preprocessed_inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch.SSDFeatureExtractor.extract_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts features from preprocessed inputs.</p>
+<p>This function is responsible for extracting feature maps from preprocessed
+images.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>preprocessed_inputs</strong> &#8211; a [batch, height, width, channels] float tensor
+representing a batch of images.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>a list of tensors where the ith tensor has shape</dt>
+<dd>[batch, height_i, width_i, depth_i]</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">feature_maps</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.ssd_meta_arch.SSDFeatureExtractor.preprocess">
+<code class="descname">preprocess</code><span class="sig-paren">(</span><em>resized_inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch.SSDFeatureExtractor.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Preprocesses images for feature extraction (minus image resizing).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>resized_inputs</strong> &#8211; a [batch, height, width, channels] float tensor
+representing a batch of images.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>a [batch, height, width, channels] float tensor</dt>
+<dd>representing a batch of images.</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">preprocessed_inputs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="object_detection.meta_architectures.ssd_meta_arch.SSDMetaArch">
+<em class="property">class </em><code class="descclassname">object_detection.meta_architectures.ssd_meta_arch.</code><code class="descname">SSDMetaArch</code><span class="sig-paren">(</span><em>is_training</em>, <em>anchor_generator</em>, <em>box_predictor</em>, <em>box_coder</em>, <em>feature_extractor</em>, <em>matcher</em>, <em>region_similarity_calculator</em>, <em>image_resizer_fn</em>, <em>non_max_suppression_fn</em>, <em>score_conversion_fn</em>, <em>classification_loss</em>, <em>localization_loss</em>, <em>classification_loss_weight</em>, <em>localization_loss_weight</em>, <em>normalize_loss_by_num_matches</em>, <em>hard_example_miner</em>, <em>add_summaries=True</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch.SSDMetaArch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="object_detection.core.html#object_detection.core.model.DetectionModel" title="object_detection.core.model.DetectionModel"><code class="xref py py-class docutils literal"><span class="pre">object_detection.core.model.DetectionModel</span></code></a></p>
+<p>SSD Meta-architecture definition.</p>
+<dl class="attribute">
+<dt id="object_detection.meta_architectures.ssd_meta_arch.SSDMetaArch.anchors">
+<code class="descname">anchors</code><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch.SSDMetaArch.anchors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.ssd_meta_arch.SSDMetaArch.loss">
+<code class="descname">loss</code><span class="sig-paren">(</span><em>prediction_dict</em>, <em>scope=None</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch.SSDMetaArch.loss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute scalar loss tensors with respect to provided groundtruth.</p>
+<p>Calling this function requires that groundtruth tensors have been
+provided via the provide_groundtruth function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>prediction_dict</strong> &#8211; <p>a dictionary holding prediction tensors with
+1) box_encodings: 3-D float tensor of shape [batch_size, num_anchors,</p>
+<blockquote>
+<div>box_code_dimension] containing predicted boxes.</div></blockquote>
+<ol class="arabic" start="2">
+<li>class_predictions_with_background: 3-D float tensor of shape</li>
+</ol>
+<blockquote>
+<div>[batch_size, num_anchors, num_classes+1] containing class predictions
+(logits) for each of the anchors.  Note that this tensor <em>includes</em>
+background class predictions.</div></blockquote>
+</li>
+<li><strong>scope</strong> &#8211; Optional scope name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><dl class="docutils">
+<dt>a dictionary mapping loss keys (<cite>localization_loss</cite> and</dt>
+<dd><p class="first last"><cite>classification_loss</cite>) to scalar tensors representing corresponding loss
+values.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.ssd_meta_arch.SSDMetaArch.postprocess">
+<code class="descname">postprocess</code><span class="sig-paren">(</span><em>prediction_dict</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch.SSDMetaArch.postprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts prediction tensors to final detections.</p>
+<p>This function converts raw predictions tensors to final detection results by
+slicing off the background class, decoding box predictions and applying
+non max suppression and clipping to the image window.</p>
+<p>See base class for output format conventions.  Note also that by default,
+scores are to be interpreted as logits, but if a score_conversion_fn is
+used, then scores are remapped (and may thus have a different
+interpretation).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>prediction_dict</strong> &#8211; <p>a dictionary holding prediction tensors with
+1) box_encodings: 3-D float tensor of shape [batch_size, num_anchors,</p>
+<blockquote>
+<div>box_code_dimension] containing predicted boxes.</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>class_predictions_with_background: 3-D float tensor of shape</li>
+</ol>
+<blockquote>
+<div>[batch_size, num_anchors, num_classes+1] containing class predictions
+(logits) for each of the anchors.  Note that this tensor <em>includes</em>
+background class predictions.</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>a dictionary containing the following fields</dt>
+<dd>detection_boxes: [batch, max_detection, 4]
+detection_scores: [batch, max_detections]
+detection_classes: [batch, max_detections]
+num_detections: [batch]</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">detections</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; if prediction_dict does not contain <cite>box_encodings</cite> or
+<cite>class_predictions_with_background</cite> fields.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.ssd_meta_arch.SSDMetaArch.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>preprocessed_inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch.SSDMetaArch.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predicts unpostprocessed tensors from input tensor.</p>
+<p>This function takes an input batch of images and runs it through the forward
+pass of the network to yield unpostprocessesed predictions.</p>
+<p>A side effect of calling the predict method is that self._anchors is
+populated with a box_list.BoxList of anchors.  These anchors must be
+constructed before the postprocess or loss functions can be called.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>preprocessed_inputs</strong> &#8211; a [batch, height, width, channels] image tensor.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>a dictionary holding &#8220;raw&#8221; prediction tensors:</dt>
+<dd><ol class="first arabic simple">
+<li>box_encodings: 3-D float tensor of shape [batch_size, num_anchors,</li>
+</ol>
+<blockquote>
+<div>box_code_dimension] containing predicted boxes.</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>class_predictions_with_background: 3-D float tensor of shape</li>
+</ol>
+<blockquote>
+<div>[batch_size, num_anchors, num_classes+1] containing class predictions
+(logits) for each of the anchors.  Note that this tensor <em>includes</em>
+background class predictions (at class index 0).</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>feature_maps: a list of tensors where the ith tensor has shape</li>
+</ol>
+<blockquote class="last">
+<div>[batch, height_i, width_i, depth_i].</div></blockquote>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">prediction_dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.ssd_meta_arch.SSDMetaArch.preprocess">
+<code class="descname">preprocess</code><span class="sig-paren">(</span><em>inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch.SSDMetaArch.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Feature-extractor specific preprocessing.</p>
+<p>See base class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inputs</strong> &#8211; a [batch, height_in, width_in, channels] float tensor representing
+a batch of images with values between 0 and 255.0.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>a [batch, height_out, width_out, channels] float</dt>
+<dd>tensor representing a batch of images.</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">preprocessed_inputs</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211; if inputs tensor does not have type tf.float32</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.ssd_meta_arch.SSDMetaArch.restore_map">
+<code class="descname">restore_map</code><span class="sig-paren">(</span><em>from_detection_checkpoint=True</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch.SSDMetaArch.restore_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a map of variables to load from a foreign checkpoint.</p>
+<p>See parent class for details.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>from_detection_checkpoint</strong> &#8211; whether to restore from a full detection
+checkpoint (with compatible variable names) or to restore from a
+classification checkpoint for initialization prior to training.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dict mapping variable names (to load from a checkpoint) to variables in
+the model graph.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.meta_architectures.ssd_meta_arch_test">
+<span id="object-detection-meta-architectures-ssd-meta-arch-test-module"></span><h2>object_detection.meta_architectures.ssd_meta_arch_test module<a class="headerlink" href="#module-object_detection.meta_architectures.ssd_meta_arch_test" title="Permalink to this headline">¶</a></h2>
+<p>Tests for object_detection.meta_architectures.ssd_meta_arch.</p>
+<dl class="class">
+<dt id="object_detection.meta_architectures.ssd_meta_arch_test.FakeSSDFeatureExtractor">
+<em class="property">class </em><code class="descclassname">object_detection.meta_architectures.ssd_meta_arch_test.</code><code class="descname">FakeSSDFeatureExtractor</code><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch_test.FakeSSDFeatureExtractor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#object_detection.meta_architectures.ssd_meta_arch.SSDFeatureExtractor" title="object_detection.meta_architectures.ssd_meta_arch.SSDFeatureExtractor"><code class="xref py py-class docutils literal"><span class="pre">object_detection.meta_architectures.ssd_meta_arch.SSDFeatureExtractor</span></code></a></p>
+<dl class="method">
+<dt id="object_detection.meta_architectures.ssd_meta_arch_test.FakeSSDFeatureExtractor.extract_features">
+<code class="descname">extract_features</code><span class="sig-paren">(</span><em>preprocessed_inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch_test.FakeSSDFeatureExtractor.extract_features" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.ssd_meta_arch_test.FakeSSDFeatureExtractor.preprocess">
+<code class="descname">preprocess</code><span class="sig-paren">(</span><em>resized_inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch_test.FakeSSDFeatureExtractor.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="object_detection.meta_architectures.ssd_meta_arch_test.MockAnchorGenerator2x2">
+<em class="property">class </em><code class="descclassname">object_detection.meta_architectures.ssd_meta_arch_test.</code><code class="descname">MockAnchorGenerator2x2</code><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch_test.MockAnchorGenerator2x2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="object_detection.core.html#object_detection.core.anchor_generator.AnchorGenerator" title="object_detection.core.anchor_generator.AnchorGenerator"><code class="xref py py-class docutils literal"><span class="pre">object_detection.core.anchor_generator.AnchorGenerator</span></code></a></p>
+<p>Sets up a simple 2x2 anchor grid on the unit square.</p>
+<dl class="method">
+<dt id="object_detection.meta_architectures.ssd_meta_arch_test.MockAnchorGenerator2x2.name_scope">
+<code class="descname">name_scope</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch_test.MockAnchorGenerator2x2.name_scope" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.ssd_meta_arch_test.MockAnchorGenerator2x2.num_anchors_per_location">
+<code class="descname">num_anchors_per_location</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch_test.MockAnchorGenerator2x2.num_anchors_per_location" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="object_detection.meta_architectures.ssd_meta_arch_test.SsdMetaArchTest">
+<em class="property">class </em><code class="descclassname">object_detection.meta_architectures.ssd_meta_arch_test.</code><code class="descname">SsdMetaArchTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch_test.SsdMetaArchTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tensorflow.python.framework.test_util.TensorFlowTestCase</span></code></p>
+<dl class="method">
+<dt id="object_detection.meta_architectures.ssd_meta_arch_test.SsdMetaArchTest.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch_test.SsdMetaArchTest.setUp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set up mock SSD model.</p>
+<p>Here we set up a simple mock SSD model that will always predict 4
+detections that happen to always be exactly the anchors that are set up
+in the above MockAnchorGenerator.  Because we let max_detections=5,
+we will also always end up with an extra padded row in the detection
+results.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.ssd_meta_arch_test.SsdMetaArchTest.test_loss_results_are_correct">
+<code class="descname">test_loss_results_are_correct</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch_test.SsdMetaArchTest.test_loss_results_are_correct" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.ssd_meta_arch_test.SsdMetaArchTest.test_postprocess_results_are_correct">
+<code class="descname">test_postprocess_results_are_correct</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch_test.SsdMetaArchTest.test_postprocess_results_are_correct" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.ssd_meta_arch_test.SsdMetaArchTest.test_predict_results_have_correct_keys_and_shapes">
+<code class="descname">test_predict_results_have_correct_keys_and_shapes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch_test.SsdMetaArchTest.test_predict_results_have_correct_keys_and_shapes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.ssd_meta_arch_test.SsdMetaArchTest.test_preprocess_preserves_input_shapes">
+<code class="descname">test_preprocess_preserves_input_shapes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch_test.SsdMetaArchTest.test_preprocess_preserves_input_shapes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.ssd_meta_arch_test.SsdMetaArchTest.test_restore_map_for_classification_ckpt">
+<code class="descname">test_restore_map_for_classification_ckpt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch_test.SsdMetaArchTest.test_restore_map_for_classification_ckpt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="object_detection.meta_architectures.ssd_meta_arch_test.SsdMetaArchTest.test_restore_map_for_detection_ckpt">
+<code class="descname">test_restore_map_for_detection_ckpt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#object_detection.meta_architectures.ssd_meta_arch_test.SsdMetaArchTest.test_restore_map_for_detection_ckpt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-object_detection.meta_architectures">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-object_detection.meta_architectures" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">object_detection.meta_architectures package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-object_detection.meta_architectures.faster_rcnn_meta_arch">object_detection.meta_architectures.faster_rcnn_meta_arch module</a></li>
+<li><a class="reference internal" href="#module-object_detection.meta_architectures.faster_rcnn_meta_arch_test">object_detection.meta_architectures.faster_rcnn_meta_arch_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib">object_detection.meta_architectures.faster_rcnn_meta_arch_test_lib module</a></li>
+<li><a class="reference internal" href="#module-object_detection.meta_architectures.rfcn_meta_arch">object_detection.meta_architectures.rfcn_meta_arch module</a></li>
+<li><a class="reference internal" href="#module-object_detection.meta_architectures.rfcn_meta_arch_test">object_detection.meta_architectures.rfcn_meta_arch_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.meta_architectures.ssd_meta_arch">object_detection.meta_architectures.ssd_meta_arch module</a></li>
+<li><a class="reference internal" href="#module-object_detection.meta_architectures.ssd_meta_arch_test">object_detection.meta_architectures.ssd_meta_arch_test module</a></li>
+<li><a class="reference internal" href="#module-object_detection.meta_architectures">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/object_detection.meta_architectures.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, lance.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/object_detection.meta_architectures.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
